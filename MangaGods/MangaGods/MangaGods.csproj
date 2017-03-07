@@ -211,7 +211,9 @@
     <Content Include="Catalogo\Imagenes\school-rumble-l0.jpg" />
     <Content Include="Catalogo\Imagenes\yamada-kun-to-7-nin-no-majo-l0.jpg" />
     <Content Include="Contact.aspx" />
+    <Content Include="Content\bootstrap-Original.css" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min-Original.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
