@@ -200,6 +200,15 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="Catalogo\Imagenes\bleach-l0.jpg" />
+    <Content Include="Catalogo\Imagenes\dgray-man-l0.jpg" />
+    <Content Include="Catalogo\Imagenes\gekkan-shoujo-nozaki-kun-l0.jpg" />
+    <Content Include="Catalogo\Imagenes\jojos-bizarre-adventure-part-1-phantom-blood-l0.jpg" />
+    <Content Include="Catalogo\Imagenes\katekyo-hitman-reborn-l0.jpg" />
+    <Content Include="Catalogo\Imagenes\naruto-l0.jpg" />
+    <Content Include="Catalogo\Imagenes\nisekoi-l0.jpg" />
+    <Content Include="Catalogo\Imagenes\school-rumble-l0.jpg" />
+    <Content Include="Catalogo\Imagenes\yamada-kun-to-7-nin-no-majo-l0.jpg" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -430,6 +439,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Logic\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
