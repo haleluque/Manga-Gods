@@ -200,6 +200,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="Catalogo\Imagenes\15-manga-font.jpg" />
     <Content Include="Catalogo\Imagenes\bleach-l0.jpg" />
     <Content Include="Catalogo\Imagenes\dgray-man-l0.jpg" />
     <Content Include="Catalogo\Imagenes\gekkan-shoujo-nozaki-kun-l0.jpg" />
