@@ -261,6 +261,11 @@
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Views\Administrador\AdminAutores.aspx" />
+    <Content Include="Views\Administrador\AdminGenero.aspx" />
+    <Content Include="Views\Administrador\AdminMangas.aspx" />
+    <Content Include="Views\DetalleManga.aspx" />
+    <Content Include="Views\Generos.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="packages.config" />
@@ -439,11 +444,45 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Administrador\AdminAutores.aspx.cs">
+      <DependentUpon>AdminAutores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\AdminAutores.aspx.designer.cs">
+      <DependentUpon>AdminAutores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\AdminGenero.aspx.cs">
+      <DependentUpon>AdminGenero.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\AdminGenero.aspx.designer.cs">
+      <DependentUpon>AdminGenero.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\AdminMangas.aspx.cs">
+      <DependentUpon>AdminMangas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\AdminMangas.aspx.designer.cs">
+      <DependentUpon>AdminMangas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DetalleManga.aspx.cs">
+      <DependentUpon>DetalleManga.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\DetalleManga.aspx.designer.cs">
+      <DependentUpon>DetalleManga.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Generos.aspx.cs">
+      <DependentUpon>Generos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Generos.aspx.designer.cs">
+      <DependentUpon>Generos.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Logic\" />
-    <Folder Include="Views\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
