@@ -413,6 +413,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\CoreAutor.cs" />
     <Compile Include="Models\Autor.cs" />
     <Compile Include="Models\Carrito.cs" />
     <Compile Include="Models\DetalleOrden.cs" />
@@ -482,7 +483,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Logic\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
