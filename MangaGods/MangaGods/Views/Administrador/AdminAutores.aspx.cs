@@ -1,6 +1,7 @@
 ﻿using MangaGods.Logic;
 using MangaGods.Models;
 using System;
+using System.Web;
 using System.Web.UI;
 
 namespace MangaGods.Views.Administrador
@@ -38,12 +39,12 @@ namespace MangaGods.Views.Administrador
                 Empresa = txtEmpresa.Text
             }))
             {
-                alerta.InnerText = "El autor se ha creado exitosamente";
-                LimpiarCampos();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionCreacionAutor").ToString();
+                LimpiarCampos(1);
             }
             else
             {
-                alerta.InnerText = "Ha ocurrido un error al crear el autor.";
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCreacionAutor").ToString();
             }           
         }
 
@@ -54,20 +55,43 @@ namespace MangaGods.Views.Administrador
         /// <param name="e"></param>
         protected void Buscar_Click(object sender, EventArgs e)
         {
+            alerta.InnerText = string.Empty;
             var autor = Core.ObtenerAutorXId(Convert.ToInt32(txtId.Text));
             if (autor != null)
             {
-                MostrarDatosAutor();
+                MostrarDatosAutor(true);
                 CargarDatosAutor(autor);
             }
             else
             {
-                alerta.InnerText = "El id escrito no exite";
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdAutor").ToString();
             }
         }
 
+        /// <summary>
+        /// Evento que maneja la actualización de los datos de un autor
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Actualizar_Click(object sender, EventArgs e)
         {
+            // Se valida que la creación haya sido exitosa
+            if (Core.ActualizarAutor(new Autor
+            {
+                Id = Convert.ToInt32(txtId.Text),
+                Nombre = txtNombreConsulta.Text,
+                Edad = string.IsNullOrEmpty(txtEdadConsulta.Text) ? (int?)null : Convert.ToInt32(txtEdadConsulta.Text),
+                Empresa = txtEmpresaConsulta.Text
+            }))
+            {
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionActualizacionAutor").ToString();
+                LimpiarCampos(2);
+                MostrarDatosAutor(false);
+            }
+            else
+            {
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarAutor").ToString();
+            }
         }
 
         protected void Borrar_Click(object sender, EventArgs e)
@@ -77,11 +101,12 @@ namespace MangaGods.Views.Administrador
         /// <summary>
         /// Muestra los datos de un autor Consultado
         /// </summary>
-        private void MostrarDatosAutor()
+        private void MostrarDatosAutor(bool estado)
         {
-            datosAutor.Visible = true;
-            btnActualizar.Visible = true;
-            btnBorrar.Visible = true;
+            datosAutor.Visible = estado;
+            btnActualizar.Visible = estado;
+            btnBorrar.Visible = estado;
+            btnBuscar.Visible = !estado;
         }
 
         /// <summary>
@@ -96,14 +121,27 @@ namespace MangaGods.Views.Administrador
         }
 
         /// <summary>
-        /// Limpia los campos del formulario de creación de la
-        /// página de autor
+        /// Limpia los campos de la página de autor dependiendo del tipo
+        /// de evento que se envía
         /// </summary>
-        private void LimpiarCampos()
+        /// <param name="evento"></param>
+        private void LimpiarCampos(int evento)
         {
-            txtNombreAutor.Text = string.Empty;
-            txtEdad.Text = string.Empty;
-            txtEmpresa.Text = string.Empty;
+            //Creando autor
+            if (evento == 1)
+            {
+                txtNombreAutor.Text = string.Empty;
+                txtEdad.Text = string.Empty;
+                txtEmpresa.Text = string.Empty;
+            }
+            else if (evento == 2) //Actualizando
+            {
+                txtId.Text = string.Empty;
+                txtNombreConsulta.Text = string.Empty;
+                txtEdadConsulta.Text = string.Empty;
+                txtEmpresaConsulta.Text = string.Empty;
+            }
+            
         }
     }
 }

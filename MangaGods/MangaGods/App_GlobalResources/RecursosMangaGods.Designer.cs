@@ -61,6 +61,51 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El autor se ha actualizado exitosamente.
+        /// </summary>
+        internal static string ConfirmacionActualizacionAutor {
+            get {
+                return ResourceManager.GetString("ConfirmacionActualizacionAutor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El autor se ha creado exitosamente.
+        /// </summary>
+        internal static string ConfirmacionCreacionAutor {
+            get {
+                return ResourceManager.GetString("ConfirmacionCreacionAutor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ha ocurrido un error al actualizar los datos del autor..
+        /// </summary>
+        internal static string ErrorActualizarAutor {
+            get {
+                return ResourceManager.GetString("ErrorActualizarAutor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ha ocurrido un error al crear el autor..
+        /// </summary>
+        internal static string ErrorCreacionAutor {
+            get {
+                return ResourceManager.GetString("ErrorCreacionAutor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El Id del autor ingresado no existe.
+        /// </summary>
+        internal static string ErrorIdAutor {
+            get {
+                return ResourceManager.GetString("ErrorIdAutor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edad.
         /// </summary>
         internal static string lblEdad {
