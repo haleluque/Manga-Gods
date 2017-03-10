@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El autor se ha borrado exitosamente..
+        /// </summary>
+        internal static string ConfirmacionBorradoAutor {
+            get {
+                return ResourceManager.GetString("ConfirmacionBorradoAutor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El autor se ha creado exitosamente.
         /// </summary>
         internal static string ConfirmacionCreacionAutor {
@@ -84,6 +93,15 @@ namespace Resources {
         internal static string ErrorActualizarAutor {
             get {
                 return ResourceManager.GetString("ErrorActualizarAutor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ha ocurrido un error al borrar el autor.
+        /// </summary>
+        internal static string ErrorBorrarAutor {
+            get {
+                return ResourceManager.GetString("ErrorBorrarAutor", resourceCulture);
             }
         }
         

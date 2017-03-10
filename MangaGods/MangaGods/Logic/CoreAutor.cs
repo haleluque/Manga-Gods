@@ -85,6 +85,7 @@ namespace MangaGods.Logic
             using (contexto = new MangaContext())
             {
                 contexto.Autor.Remove(contexto.Autor.FirstOrDefault(x => x.Id == id));
+                contexto.SaveChanges();
             }
             return true;
         }

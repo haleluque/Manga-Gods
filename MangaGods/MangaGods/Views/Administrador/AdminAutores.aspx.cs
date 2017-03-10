@@ -94,8 +94,23 @@ namespace MangaGods.Views.Administrador
             }
         }
 
+        /// <summary>
+        /// Evento que maneja el borrado de un autor
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Borrar_Click(object sender, EventArgs e)
         {
+            if (Core.BorrarAutor(Convert.ToInt32(txtId.Text)))
+            {
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionBorradoAutor").ToString();
+                LimpiarCampos(2);
+                MostrarDatosAutor(false);
+            }
+            else
+            {
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorrarAutor").ToString();
+            }
         }
 
         /// <summary>

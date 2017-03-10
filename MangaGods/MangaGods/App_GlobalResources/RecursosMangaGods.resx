@@ -120,11 +120,17 @@
   <data name="ConfirmacionActualizacionAutor" xml:space="preserve">
     <value>El autor se ha actualizado exitosamente</value>
   </data>
+  <data name="ConfirmacionBorradoAutor" xml:space="preserve">
+    <value>El autor se ha borrado exitosamente.</value>
+  </data>
   <data name="ConfirmacionCreacionAutor" xml:space="preserve">
     <value>El autor se ha creado exitosamente</value>
   </data>
   <data name="ErrorActualizarAutor" xml:space="preserve">
     <value>Ha ocurrido un error al actualizar los datos del autor.</value>
+  </data>
+  <data name="ErrorBorrarAutor" xml:space="preserve">
+    <value>Ha ocurrido un error al borrar el autor</value>
   </data>
   <data name="ErrorCreacionAutor" xml:space="preserve">
     <value>Ha ocurrido un error al crear el autor.</value>
