@@ -48,6 +48,54 @@ namespace MangaGods.Views.Administrador
         }
 
         /// <summary>
+        /// Evento que maneja la búsqueda de un autor por id
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Buscar_Click(object sender, EventArgs e)
+        {
+            var autor = Core.ObtenerAutorXId(Convert.ToInt32(txtId.Text));
+            if (autor != null)
+            {
+                MostrarDatosAutor();
+                CargarDatosAutor(autor);
+            }
+            else
+            {
+                alerta.InnerText = "El id escrito no exite";
+            }
+        }
+
+        protected void Actualizar_Click(object sender, EventArgs e)
+        {
+        }
+
+        protected void Borrar_Click(object sender, EventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Muestra los datos de un autor Consultado
+        /// </summary>
+        private void MostrarDatosAutor()
+        {
+            datosAutor.Visible = true;
+            btnActualizar.Visible = true;
+            btnBorrar.Visible = true;
+        }
+
+        /// <summary>
+        /// Asigna a la interfaz los datos consultados
+        /// </summary>
+        /// <param name="consulta"></param>
+        private void CargarDatosAutor(Autor consulta)
+        {
+            txtNombreConsulta.Text = consulta.Nombre;
+            txtEdadConsulta.Text = consulta.Edad == null ? "" : consulta.Edad.ToString();
+            txtEmpresaConsulta.Text = consulta.Empresa;
+        }
+
+        /// <summary>
         /// Limpia los campos del formulario de creación de la
         /// página de autor
         /// </summary>

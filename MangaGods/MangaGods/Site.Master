@@ -87,7 +87,8 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
+            <br />
+            <footer class="col-md-12">
                 <p>&copy; <%: DateTime.Now.Year %> - Manga Gods</p>
             </footer>
         </div>
