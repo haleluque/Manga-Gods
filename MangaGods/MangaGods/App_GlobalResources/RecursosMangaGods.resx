@@ -120,11 +120,20 @@
   <data name="ConfirmacionActualizacionAutor" xml:space="preserve">
     <value>El autor se ha actualizado exitosamente</value>
   </data>
+  <data name="ConfirmacionActualizacionGenero" xml:space="preserve">
+    <value>El género se ha actualizado exitosamente</value>
+  </data>
   <data name="ConfirmacionBorradoAutor" xml:space="preserve">
     <value>El autor se ha borrado exitosamente.</value>
   </data>
+  <data name="ConfirmacionBorradoGenero" xml:space="preserve">
+    <value>El género se ha borrado exitosamente.</value>
+  </data>
   <data name="ConfirmacionCreacionAutor" xml:space="preserve">
     <value>El autor se ha creado exitosamente</value>
+  </data>
+  <data name="ConfirmacionCreacionGenero" xml:space="preserve">
+    <value>El género de manga se ha creado exitosamente</value>
   </data>
   <data name="ErrorActualizarAutor" xml:space="preserve">
     <value>Ha ocurrido un error al actualizar los datos del autor.</value>
@@ -135,8 +144,17 @@
   <data name="ErrorCreacionAutor" xml:space="preserve">
     <value>Ha ocurrido un error al crear el autor.</value>
   </data>
+  <data name="ErrorCreacionGenero" xml:space="preserve">
+    <value>Ha ocurrido un error al crear el género.</value>
+  </data>
   <data name="ErrorIdAutor" xml:space="preserve">
     <value>El Id del autor ingresado no existe</value>
+  </data>
+  <data name="ErrorIdGenero" xml:space="preserve">
+    <value>El Id del género ingresado no existe</value>
+  </data>
+  <data name="lblDescripcion" xml:space="preserve">
+    <value>Descripción</value>
   </data>
   <data name="lblEdad" xml:space="preserve">
     <value>Edad</value>
@@ -150,12 +168,24 @@
   <data name="lblNombre" xml:space="preserve">
     <value>Nombre</value>
   </data>
+  <data name="lblNombreGenero" xml:space="preserve">
+    <value>Nombre Género</value>
+  </data>
+  <data name="spanErrorDescripcionGenero" xml:space="preserve">
+    <value>* El la descripción del género es obligatoria</value>
+  </data>
   <data name="spanErrorEmpresaAutor" xml:space="preserve">
     <value>* La descripción de la empresa es obligatoria</value>
     <comment>Mensaje de error al valida obligatoriedad de la empresa del autor</comment>
   </data>
+  <data name="spanErrorId" xml:space="preserve">
+    <value>* El campo Id es obligatorio</value>
+  </data>
   <data name="spanErrorNombreAutor" xml:space="preserve">
     <value>* El Nombre del autor es obligatorio</value>
     <comment>Mensaje de error al valida obligatoriedad del nombre del autor</comment>
+  </data>
+  <data name="spanErrorNombreGenero" xml:space="preserve">
+    <value>* El Nombre del genero es obligatorio</value>
   </data>
 </root>

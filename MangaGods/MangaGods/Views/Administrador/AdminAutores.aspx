@@ -48,30 +48,38 @@
                 <div>
                     <div>
                         <asp:Label ID="lblId" runat="server" Text="<%$ Resources:RecursosMangaGods, lblId %>"></asp:Label>
-                        <asp:TextBox ID="txtId" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="requeridoId" ValidationGroup="grupoConsulta" runat="server" Text="* El Id del autor es obligatorio"
-                            ControlToValidate="txtId" SetFocusOnError="true" Display="Dynamic">
-                        </asp:RequiredFieldValidator>
+                        <div>
+                            <asp:TextBox ID="txtId" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="requeridoId" ValidationGroup="grupoConsulta" runat="server" Text="<%$ Resources:RecursosMangaGods, spanErrorId %>"
+                                ControlToValidate="txtId" SetFocusOnError="true" Display="Dynamic">
+                            </asp:RequiredFieldValidator>
+                        </div>
                     </div>
                 </div>
                 <div id="datosAutor" runat="server" visible="false">
                     <div>
                         <asp:Label ID="lblNombreConsulta" runat="server" Text="<%$ Resources:RecursosMangaGods, lblNombre %>"></asp:Label>
-                        <asp:TextBox ID="txtNombreConsulta" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="requeridoNombreConsulta" ValidationGroup="grupoActualizar" runat="server" Text="<%$ Resources:RecursosMangaGods, spanErrorNombreAutor %>"
-                            ControlToValidate="txtNombreConsulta" SetFocusOnError="true" Display="Dynamic">
-                        </asp:RequiredFieldValidator>
+                        <div>
+                            <asp:TextBox ID="txtNombreConsulta" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="requeridoNombreConsulta" ValidationGroup="grupoActualizar" runat="server" Text="<%$ Resources:RecursosMangaGods, spanErrorNombreAutor %>"
+                                ControlToValidate="txtNombreConsulta" SetFocusOnError="true" Display="Dynamic">
+                            </asp:RequiredFieldValidator>
+                        </div>
                     </div>
                     <div>
                         <asp:Label ID="lblEdadConsulta" runat="server" Text="<%$ Resources:RecursosMangaGods, lblEdad %>"></asp:Label>
-                        <asp:TextBox ID="txtEdadConsulta" runat="server"></asp:TextBox>
+                        <div>
+                            <asp:TextBox ID="txtEdadConsulta" runat="server"></asp:TextBox>
+                        </div>
                     </div>
                     <div>
                         <asp:Label ID="lblEmpresaConsulta" runat="server" Text="<%$ Resources:RecursosMangaGods, lblEmpresa %>"></asp:Label>
-                        <asp:TextBox ID="txtEmpresaConsulta" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="requeridoEmpresaConsulta" ValidationGroup="grupoActualizar" runat="server" Text="<%$ Resources:RecursosMangaGods, spanErrorNombreAutor %>"
-                            ControlToValidate="txtEmpresaConsulta" SetFocusOnError="true" Display="Dynamic">
-                        </asp:RequiredFieldValidator>
+                        <div>
+                            <asp:TextBox ID="txtEmpresaConsulta" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="requeridoEmpresaConsulta" ValidationGroup="grupoActualizar" runat="server" Text="<%$ Resources:RecursosMangaGods, spanErrorNombreAutor %>"
+                                ControlToValidate="txtEmpresaConsulta" SetFocusOnError="true" Display="Dynamic">
+                            </asp:RequiredFieldValidator>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -7,8 +7,8 @@ using System.Web.UI;
 namespace MangaGods.Views.Administrador
 {
     /// <summary>
-    /// Clase que maneja los eventos, atributos y eventos de la página de 
-    /// administración de autores
+    /// Clase que maneja los eventos, atributos y métodos de la página de 
+    /// administración de autores de manga
     /// </summary>
     public partial class AdminAutores : Page
     {

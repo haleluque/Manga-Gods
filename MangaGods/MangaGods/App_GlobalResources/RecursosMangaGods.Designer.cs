@@ -88,6 +88,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El género de manga se ha creado exitosamente.
+        /// </summary>
+        internal static string ConfirmacionCreacionGenero {
+            get {
+                return ResourceManager.GetString("ConfirmacionCreacionGenero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ha ocurrido un error al actualizar los datos del autor..
         /// </summary>
         internal static string ErrorActualizarAutor {
@@ -115,11 +124,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ha ocurrido un error al crear el género..
+        /// </summary>
+        internal static string ErrorCreacionGenero {
+            get {
+                return ResourceManager.GetString("ErrorCreacionGenero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El Id del autor ingresado no existe.
         /// </summary>
         internal static string ErrorIdAutor {
             get {
                 return ResourceManager.GetString("ErrorIdAutor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El Id del género ingresado no existe.
+        /// </summary>
+        internal static string ErrorIdGenero {
+            get {
+                return ResourceManager.GetString("ErrorIdGenero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Descripción.
+        /// </summary>
+        internal static string lblDescripcion {
+            get {
+                return ResourceManager.GetString("lblDescripcion", resourceCulture);
             }
         }
         
@@ -160,6 +196,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nombre Género.
+        /// </summary>
+        internal static string lblNombreGenero {
+            get {
+                return ResourceManager.GetString("lblNombreGenero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to * El la descripción del género es obligatoria.
+        /// </summary>
+        internal static string spanErrorDescripcionGenero {
+            get {
+                return ResourceManager.GetString("spanErrorDescripcionGenero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to * La descripción de la empresa es obligatoria.
         /// </summary>
         internal static string spanErrorEmpresaAutor {
@@ -169,11 +223,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to * El campo Id es obligatorio.
+        /// </summary>
+        internal static string spanErrorId {
+            get {
+                return ResourceManager.GetString("spanErrorId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to * El Nombre del autor es obligatorio.
         /// </summary>
         internal static string spanErrorNombreAutor {
             get {
                 return ResourceManager.GetString("spanErrorNombreAutor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to * El Nombre del genero es obligatorio.
+        /// </summary>
+        internal static string spanErrorNombreGenero {
+            get {
+                return ResourceManager.GetString("spanErrorNombreGenero", resourceCulture);
             }
         }
     }
