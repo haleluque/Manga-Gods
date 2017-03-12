@@ -162,6 +162,9 @@
   <data name="ErrorIdGenero" xml:space="preserve">
     <value>El Id del género ingresado no existe</value>
   </data>
+  <data name="ErrorIdManga" xml:space="preserve">
+    <value>El Id del manga ingresado no existe</value>
+  </data>
   <data name="lblAniadirImagen" xml:space="preserve">
     <value>Imagen</value>
   </data>

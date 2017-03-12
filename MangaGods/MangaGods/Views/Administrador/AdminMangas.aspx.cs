@@ -13,7 +13,7 @@ namespace MangaGods.Views.Administrador
     /// Clase que maneja los eventos, atributos y métodos de la página de 
     /// administración de mangas
     /// </summary>
-    public partial class AdminMangas : System.Web.UI.Page
+    public partial class AdminMangas : Page
     {
         private CoreManga Core;
         private CoreGenero CoreGenero;
@@ -29,8 +29,9 @@ namespace MangaGods.Views.Administrador
             Core = new CoreManga();
             CoreGenero = new CoreGenero();
             CoreAutor = new CoreAutor();
-            comboAutor.Items.Insert(0, "Seleccione.....");
-            comboGenero.Items.Insert(0, "Seleccione.....");
+
+            if (comboAutor.Items.Count <= 0) comboAutor.Items.Insert(0, "Seleccione.....");
+            if (comboGenero.Items.Count <= 0) comboGenero.Items.Insert(0, "Seleccione.....");
         }
 
         /// <summary>
@@ -94,7 +95,7 @@ namespace MangaGods.Views.Administrador
                     IdGenero = convertirAInt(comboGenero.SelectedValue),
                     IdAutor = convertirAInt(comboAutor.SelectedValue),
                     Volumen = convertirAInt(txtVolumen.Text),
-                    Precio = convertirAInt(txtPrecio.Text),
+                    Precio = convertirADouble(txtPrecio.Text),
                     ImagePath = Archivo.FileName
                 };
 
@@ -116,6 +117,57 @@ namespace MangaGods.Views.Administrador
         }
 
         /// <summary>
+        /// Evento que maneja la búsqueda de un manga por id
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Buscar_Click(object sender, EventArgs e)
+        {
+            CargarComboGeneros();
+            CargarComboAutores();
+            alerta.InnerText = string.Empty;
+            var manga = Core.ObtenerMangaXId(Convert.ToInt32(txtId.Text));
+            if (manga != null)
+            {
+                MostrarDatos(true);
+                CargarDatos(manga);
+            }
+            else
+            {
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdManga").ToString();
+            }
+        }
+
+        /// <summary>
+        /// Evento que maneja la actualización de los datos de un manga
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Actualizar_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        /// <summary>
+        /// Evento que maneja el borrado de un manga
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Borrar_Click(object sender, EventArgs e)
+        {
+            if (Core.BorrarManga(Convert.ToInt32(txtId.Text)))
+            {
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionBorradoGenero").ToString();
+                LimpiarCampos(2);
+                MostrarDatos(false);
+            }
+            else
+            {
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorrarAutor").ToString();
+            }
+        }
+
+        /// <summary>
         /// convierte un string a int
         /// </summary>
         /// <returns></returns>
@@ -124,6 +176,22 @@ namespace MangaGods.Views.Administrador
             try
             {
                 return Convert.ToInt32(valor);
+            }
+            catch (FormatException e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
+        /// convierte un string a double
+        /// </summary>
+        /// <returns></returns>
+        public double convertirADouble(string valor)
+        {
+            try
+            {
+                return Convert.ToDouble(valor);
             }
             catch (FormatException e)
             {
@@ -152,6 +220,54 @@ namespace MangaGods.Views.Administrador
             else if (evento == 2) //Actualizando
             {
             }
+        }
+
+        /// <summary>
+        /// Muestra los datos de un manga Consultado
+        /// </summary>
+        private void MostrarDatos(bool estado)
+        {
+            datosManga.Visible = estado;
+            btnActualizar.Visible = estado;
+            btnBorrar.Visible = estado;
+            btnBuscar.Visible = !estado;
+        }
+
+        /// <summary>
+        /// Asigna a la interfaz los datos consultados
+        /// </summary>
+        /// <param name="consulta"></param>
+        private void CargarDatos(Manga consulta)
+        {
+            txtMangaConsulta.Text = consulta.Nombre;
+            txtDescripcionConsulta.Text = consulta.Descripcion;
+            txtPrecioConsulta.Text = consulta.Precio.ToString();
+            txtVolumenConsulta.Text = consulta.Volumen.ToString();
+            comboAutorConsulta.SelectedValue = consulta.IdAutor.ToString();
+            comboGeneroConsulta.SelectedValue = consulta.IdGenero.ToString();
+        }
+
+        /// <summary>
+        /// Carga la información de los géneros de manga manualmente
+        /// </summary>
+        public void CargarComboGeneros()
+        {
+            if (comboGeneroConsulta.Items.Count >= 2) return;
+            comboGeneroConsulta.Items.Insert(0, "Seleccione.....");
+            comboGeneroConsulta.DataSource = ((IEnumerable<Genero>)ObtenerTodosGeneros()).ToList();
+            comboGeneroConsulta.DataBind();
+        }
+
+        /// <summary>
+        /// Carga la información de los autores de manga manualmente
+        /// </summary>
+        public void CargarComboAutores()
+        {
+            if (comboAutorConsulta.Items.Count >= 2) return;
+            comboAutorConsulta.Items.Insert(0, "Seleccione.....");
+            comboAutorConsulta.DataSource = ((IEnumerable<Autor>)ObtenerTodosAutores()).ToList();
+            comboAutorConsulta.DataBind();
+
         }
     }
 }

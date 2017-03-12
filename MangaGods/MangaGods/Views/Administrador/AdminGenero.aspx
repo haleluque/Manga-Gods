@@ -75,9 +75,9 @@
             <asp:Button ID="btnActualizar" ValidationGroup="grupoConsulta" runat="server" Visible="false" Text="Actualizar" OnClick="Actualizar_Click" CausesValidation="true" />
             <asp:Button ID="btnBorrar" ValidationGroup="grupoConsulta" runat="server" Visible="false" Text="Borrar" OnClick="Borrar_Click" CausesValidation="true" />
         </div>
-        <br />
-        <div>
-            <span id="alerta" runat="server"></span>
-        </div>
+    </div>
+    <br />
+    <div>
+        <span id="alerta" runat="server"></span>
     </div>
 </asp:Content>
