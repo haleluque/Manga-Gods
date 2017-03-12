@@ -123,11 +123,17 @@
   <data name="ConfirmacionActualizacionGenero" xml:space="preserve">
     <value>El género se ha actualizado exitosamente</value>
   </data>
+  <data name="ConfirmacionActualizacionManga" xml:space="preserve">
+    <value>El manga se ha actualizado exitosamente</value>
+  </data>
   <data name="ConfirmacionBorradoAutor" xml:space="preserve">
     <value>El autor se ha borrado exitosamente.</value>
   </data>
   <data name="ConfirmacionBorradoGenero" xml:space="preserve">
     <value>El género se ha borrado exitosamente.</value>
+  </data>
+  <data name="ConfirmacionBorradoManga" xml:space="preserve">
+    <value>El manga se ha borrado exitosamente</value>
   </data>
   <data name="ConfirmacionCreacionAutor" xml:space="preserve">
     <value>El autor se ha creado exitosamente</value>
@@ -140,6 +146,12 @@
   </data>
   <data name="ErrorActualizarAutor" xml:space="preserve">
     <value>Ha ocurrido un error al actualizar los datos del autor.</value>
+  </data>
+  <data name="ErrorActualizarManga" xml:space="preserve">
+    <value>Ha ocurrido un error al actualizar los datos del manga.</value>
+  </data>
+  <data name="ErrorBorradoManga" xml:space="preserve">
+    <value>Ha ocurrido un error al borrar el manga</value>
   </data>
   <data name="ErrorBorrarAutor" xml:space="preserve">
     <value>Ha ocurrido un error al borrar el autor</value>

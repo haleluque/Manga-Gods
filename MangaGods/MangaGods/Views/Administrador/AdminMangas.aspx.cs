@@ -145,7 +145,63 @@ namespace MangaGods.Views.Administrador
         /// <param name="e"></param>
         protected void Actualizar_Click(object sender, EventArgs e)
         {
-            
+            bool cumple = false;
+            string path = Server.MapPath("~/Catalogo/Imagenes/");
+
+            //valida que la extensión del archivo sea la correcta
+            if (archivoConsulta.HasFile)
+            {
+                string fileExtension = System.IO.Path.GetExtension(archivoConsulta.FileName).ToLower();
+                string[] extensionArchivo = { ".gif", ".png", ".jpeg", ".jpg" };
+                for (int i = 0; i < extensionArchivo.Length; i++)
+                {
+                    if (fileExtension == extensionArchivo[i])
+                    {
+                        cumple = true;
+                    }
+                }
+            }
+
+            if (cumple)
+            {
+                try
+                {
+                    // Save to Images folder.
+                    archivoConsulta.PostedFile.SaveAs(path + archivoConsulta.FileName);
+                }
+                catch (Exception ex)
+                {
+                    alerta.InnerText = ex.Message;
+                }
+
+                //Se crea la entidad a crear
+                var manga = new Manga
+                {
+                    Id = convertirAInt(txtId.Text),
+                    Nombre = txtMangaConsulta.Text,
+                    Descripcion = txtDescripcionConsulta.Text,
+                    IdGenero = convertirAInt(comboGeneroConsulta.SelectedValue),
+                    IdAutor = convertirAInt(comboAutorConsulta.SelectedValue),
+                    Volumen = convertirAInt(txtVolumenConsulta.Text),
+                    Precio = convertirADouble(txtPrecioConsulta.Text),
+                    ImagePath = archivoConsulta.FileName
+                };
+
+                if (Core.ActualizarManga(manga))
+                {
+                    alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionActualizacionManga").ToString();
+                    LimpiarCampos(1);
+                }
+                else
+                {
+                    alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarManga").ToString();
+                }
+            }
+            else
+            {
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorFormatoArchivo").ToString();
+
+            }
         }
 
         /// <summary>
@@ -157,13 +213,13 @@ namespace MangaGods.Views.Administrador
         {
             if (Core.BorrarManga(Convert.ToInt32(txtId.Text)))
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionBorradoGenero").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionBorradoManga").ToString();
                 LimpiarCampos(2);
                 MostrarDatos(false);
             }
             else
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorrarAutor").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorradoManga").ToString();
             }
         }
 

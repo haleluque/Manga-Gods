@@ -180,7 +180,7 @@
                         <div>
                             <asp:FileUpload ID="archivoConsulta" runat="server" />
                             <asp:RequiredFieldValidator ID="requeridoArchivoConsulta" ValidationGroup="grupoActualizar" runat="server" Text="<%$ Resources:RecursosMangaGods, spanErrorPathImagen %>"
-                                ControlToValidate="Archivo" SetFocusOnError="true" Display="Dynamic">
+                                ControlToValidate="archivoConsulta" SetFocusOnError="true" Display="Dynamic">
                             </asp:RequiredFieldValidator>
                         </div>
                     </div>
@@ -190,7 +190,7 @@
             <p></p>
             <asp:Button ID="btnBuscar" ValidationGroup="grupoActualizar" runat="server" Text="Buscar" OnClick="Buscar_Click" CausesValidation="true" />
             <asp:Button ID="btnActualizar" ValidationGroup="grupoActualizar" runat="server" Visible="false" Text="Actualizar" OnClick="Actualizar_Click" CausesValidation="true" />
-            <asp:Button ID="btnBorrar" ValidationGroup="grupoActualizar" runat="server" Visible="false" Text="Borrar" OnClick="Borrar_Click" CausesValidation="true" />
+            <asp:Button ID="btnBorrar" runat="server" Visible="false" Text="Borrar" OnClick="Borrar_Click" CausesValidation="true" />
         </div>
     </div>
     <br />
