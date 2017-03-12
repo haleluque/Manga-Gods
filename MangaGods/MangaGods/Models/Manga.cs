@@ -23,7 +23,7 @@ namespace MangaGods.Models
         public string Nombre { get; set; }
 
         [Required]
-        [StringLength(500)]
+        //[StringLength(500)]
         public string Descripcion { get; set; }
 
         public int IdGenero { get; set; }

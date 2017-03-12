@@ -135,6 +135,9 @@
   <data name="ConfirmacionCreacionGenero" xml:space="preserve">
     <value>El género de manga se ha creado exitosamente</value>
   </data>
+  <data name="ConfirmacionCreacionManga" xml:space="preserve">
+    <value>El manga se ha creado exitosamente</value>
+  </data>
   <data name="ErrorActualizarAutor" xml:space="preserve">
     <value>Ha ocurrido un error al actualizar los datos del autor.</value>
   </data>
@@ -147,11 +150,20 @@
   <data name="ErrorCreacionGenero" xml:space="preserve">
     <value>Ha ocurrido un error al crear el género.</value>
   </data>
+  <data name="ErrorCreacionManga" xml:space="preserve">
+    <value>Ha ocurrido un error al crear el manga</value>
+  </data>
+  <data name="ErrorFormatoArchivo" xml:space="preserve">
+    <value>La imágen tiene que ser de formato gif, png, jpeg o jpg</value>
+  </data>
   <data name="ErrorIdAutor" xml:space="preserve">
     <value>El Id del autor ingresado no existe</value>
   </data>
   <data name="ErrorIdGenero" xml:space="preserve">
     <value>El Id del género ingresado no existe</value>
+  </data>
+  <data name="lblAniadirImagen" xml:space="preserve">
+    <value>Imagen</value>
   </data>
   <data name="lblDescripcion" xml:space="preserve">
     <value>Descripción</value>
@@ -168,15 +180,36 @@
   <data name="lblNombre" xml:space="preserve">
     <value>Nombre</value>
   </data>
+  <data name="lblNombreAutor" xml:space="preserve">
+    <value>Nombre Autor</value>
+  </data>
   <data name="lblNombreGenero" xml:space="preserve">
     <value>Nombre Género</value>
   </data>
+  <data name="lblPrecio" xml:space="preserve">
+    <value>Precio</value>
+  </data>
+  <data name="lblVolumen" xml:space="preserve">
+    <value>No. Volumen</value>
+  </data>
+  <data name="spanErrorAutor" xml:space="preserve">
+    <value>* Por favor seleccione un autor</value>
+  </data>
   <data name="spanErrorDescripcionGenero" xml:space="preserve">
-    <value>* El la descripción del género es obligatoria</value>
+    <value>* La descripción del género es obligatoria</value>
+  </data>
+  <data name="spanErrorDescripcionManga" xml:space="preserve">
+    <value>* La descripción del manga es obligatoria</value>
   </data>
   <data name="spanErrorEmpresaAutor" xml:space="preserve">
     <value>* La descripción de la empresa es obligatoria</value>
     <comment>Mensaje de error al valida obligatoriedad de la empresa del autor</comment>
+  </data>
+  <data name="spanErrorFormatoPrecio" xml:space="preserve">
+    <value>* El formato del precio no es correcto</value>
+  </data>
+  <data name="spanErrorGenero" xml:space="preserve">
+    <value>* Por favor seleccione un género</value>
   </data>
   <data name="spanErrorId" xml:space="preserve">
     <value>* El campo Id es obligatorio</value>
@@ -187,5 +220,17 @@
   </data>
   <data name="spanErrorNombreGenero" xml:space="preserve">
     <value>* El Nombre del genero es obligatorio</value>
+  </data>
+  <data name="spanErrorNombreManga" xml:space="preserve">
+    <value>* El nombre del manga es obligatorio</value>
+  </data>
+  <data name="spanErrorPathImagen" xml:space="preserve">
+    <value>* La Imagen es obligatoria</value>
+  </data>
+  <data name="spanErrorPrecio" xml:space="preserve">
+    <value>* El precio del manga es obligatorio</value>
+  </data>
+  <data name="spanErrorVolumen" xml:space="preserve">
+    <value>* El No. del volumen del manga es obligatoria</value>
   </data>
 </root>
