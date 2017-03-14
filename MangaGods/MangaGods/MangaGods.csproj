@@ -200,6 +200,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="Catalogo\Imagenes\15-manga-font.jpg" />
     <Content Include="Catalogo\Imagenes\naruto-l0.jpg" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-Original.css" />

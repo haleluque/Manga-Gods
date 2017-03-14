@@ -45,6 +45,14 @@ namespace MangaGods.Logic
             return contexto.Manga.FirstOrDefault(x => x.Id == id);
         }
 
+        /// <summary>
+        /// Obtiene un manga por el id del género
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<Manga> ObtenerMangaXIdGenero(int id)
+        {
+            return contexto.Manga.Where(x => x.IdGenero == id);
+        }
 
         /// <summary>
         /// Crea un nuevo manga en la db

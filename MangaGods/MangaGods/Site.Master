@@ -11,7 +11,7 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
@@ -55,7 +55,7 @@
                         <%--<li><a runat="server" href="~/Contact">Contátenos</a></li>--%>
                         <li><a runat="server" href="~/Views/Administrador/AdminAutores">Autores</a></li>
                         <li><a runat="server" href="~/Views/Administrador/AdminGenero">Generos</a></li>
-                        <li><a runat="server" href="~/Views/Administrador/AdminMangas">Mangas</a></li>                        
+                        <li><a runat="server" href="~/Views/Administrador/AdminMangas">Mangas</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
@@ -77,12 +77,27 @@
             </div>
         </div>
         <%-- Se agrega un Logo de la Página --%>
-        <div id="TitleContent" style="text-align: center"> 
-            <a runat="server" href="~/"> 
-                <asp:Image ID="Image1" runat="server" ImageUrl="~/Catalogo/Imagenes/15-manga-font.jpg" BorderStyle="None" /> 
-            </a> 
-            <br /> 
-        </div> 
+        <div id="TitleContent" style="text-align: center">
+            <a runat="server" href="~/">
+                <asp:Image ID="Image1" runat="server" ImageUrl="~/Catalogo/Imagenes/15-manga-font.jpg" BorderStyle="None" />
+            </a>
+            <br />
+        </div>
+        <div id="MenuGenero" style="text-align: center">
+            <asp:ListView ID="listaGeneros"
+                ItemType="MangaGods.Models.Genero"
+                runat="server"
+                SelectMethod="ObtenerTodosGeneros">
+                <ItemTemplate>
+                    <b style="font-size: large; font-style: normal">
+                        <a href="/Views/Generos.aspx?id=<%#: Item.Id %>">
+                            <%#: Item.Nombre %>
+                        </a>
+                    </b>
+                </ItemTemplate>
+                <ItemSeparatorTemplate>| </ItemSeparatorTemplate>
+            </asp:ListView>
+        </div>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
