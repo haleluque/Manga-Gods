@@ -29,15 +29,15 @@
                         <table>
                             <tr>
                                 <td>
-                                    <a href="Views/DetalleManga.aspx?Id=<%#:Item.Id%>">
+                                    <a href="DetalleManga.aspx?Id=<%#:Item.Id%>">
                                         <img src="/Catalogo/Imagenes/<%#:Item.ImagePath%>"
-                                            width="100" height="75" style="border: solid" />
+                                            width="100%" height="100%" style="border: solid" />
                                     </a>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="Views/DetalleManga.aspx?Id=<%#:Item.Id%>">
+                                    <a href="DetalleManga.aspx?Id=<%#:Item.Id%>">
                                         <span>
                                             <%#:Item.Nombre%>
                                         </span>
@@ -45,7 +45,7 @@
                                     <br />
                                     <br />
                                     <span>
-                                        <b>Precio: </b><%#:String.Format("{0:c}", Item.Precio)%>
+                                        <b>Precio: </b><%#:String.Format("{0:N2}", "$" + Item.Precio)%>
                                     </span>
                                     <br />
                                     <%--<a href="/AddToCart.aspx?productID=<%#:Item.Id %>">

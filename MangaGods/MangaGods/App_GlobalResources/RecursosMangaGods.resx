@@ -190,7 +190,7 @@
     <value>Empresa</value>
   </data>
   <data name="lblId" xml:space="preserve">
-    <value>Id</value>
+    <value>Código</value>
   </data>
   <data name="lblNombre" xml:space="preserve">
     <value>Nombre</value>
