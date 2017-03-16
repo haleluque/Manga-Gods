@@ -9,7 +9,7 @@ namespace MangaGods.Models
     [Table("Carrito")]
     public partial class Carrito
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string IdCarrito { get; set; }
 

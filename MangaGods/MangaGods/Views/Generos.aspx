@@ -48,11 +48,11 @@
                                         <b>Precio: </b><%#:String.Format("{0:N2}", "$" + Item.Precio)%>
                                     </span>
                                     <br />
-                                    <%--<a href="/AddToCart.aspx?productID=<%#:Item.Id %>">
+                                    <a href="/CarritoCompra.aspx?productID=<%#:Item.Id %>">
                                         <span class="ProductListItem">
                                             <b>Add To Cart<b>
                                         </span>
-                                    </a>--%>
+                                    </a>
                                 </td>
                             </tr>
                         </table>

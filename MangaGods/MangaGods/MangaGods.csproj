@@ -256,6 +256,7 @@
     <Content Include="Views\Administrador\AdminAutores.aspx" />
     <Content Include="Views\Administrador\AdminGenero.aspx" />
     <Content Include="Views\Administrador\AdminMangas.aspx" />
+    <Content Include="Views\CarritoCompra.aspx" />
     <Content Include="Views\DetalleManga.aspx" />
     <Content Include="Views\Generos.aspx" />
     <Content Include="Web.config" />
@@ -411,6 +412,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Logic\CoreAutor.cs" />
+    <Compile Include="Logic\CoreCarrito.cs" />
     <Compile Include="Logic\CoreGenero.cs" />
     <Compile Include="Logic\CoreManga.cs" />
     <Compile Include="Models\Autor.cs" />
@@ -464,6 +466,13 @@
     </Compile>
     <Compile Include="Views\Administrador\AdminMangas.aspx.designer.cs">
       <DependentUpon>AdminMangas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CarritoCompra.aspx.cs">
+      <DependentUpon>CarritoCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CarritoCompra.aspx.designer.cs">
+      <DependentUpon>CarritoCompra.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\DetalleManga.aspx.cs">
       <DependentUpon>DetalleManga.aspx</DependentUpon>
