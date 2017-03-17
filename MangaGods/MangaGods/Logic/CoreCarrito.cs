@@ -41,17 +41,24 @@ namespace MangaGods.Logic
         /// Obtiene el total a pagar de los carritos de compra
         /// </summary>
         /// <returns></returns>
-        public decimal GetTotal()
+        public decimal CalcularTotalPago()
         {
             IdCarrito = ObtenerIdCarrito();
 
             // Multiplica el precio del producto por la cantidad requerida
             // de cada manga para obtener el total a pagar del carrito
-            decimal? total = decimal.Zero;
-            total = (decimal?)(from carrito in contexto.Carrito
-                               where carrito.IdCarrito == IdCarrito
-                               select (carrito.Cantidad * carrito.Manga.Precio)).Sum();
-            return total ?? decimal.Zero;
+            var consulta = (from carrito in contexto.Carrito
+                            where carrito.IdCarrito == IdCarrito
+                            select carrito);
+            if (consulta.Count() > 0)
+            {
+                return (decimal)(from items in consulta
+                        select (items.Cantidad * items.Manga.Precio)).Sum();
+            }
+            else
+            {
+                return decimal.Zero;
+            }
         }
 
         /// <summary>
@@ -97,7 +104,7 @@ namespace MangaGods.Logic
         public void AgregarManga(int idManga)
         {
             IdCarrito = ObtenerIdCarrito();
-            
+
             //Obtiene de la base de datos si el carrito ya ha sido creado y si tiene el producto seleccionado
             var carro = contexto.Carrito.SingleOrDefault(
                 c => c.IdCarrito == IdCarrito
@@ -108,9 +115,9 @@ namespace MangaGods.Logic
                 // Crea un nuevo carrito con el producto seleccionado si no existe             
                 carro = new Carrito
                 {
-                    IdCarrito = Guid.NewGuid().ToString(),
+                    Id = Guid.NewGuid().ToString(),
                     IdManga = idManga,
-                    Id = IdCarrito,
+                    IdCarrito = IdCarrito,
                     Manga = contexto.Manga.SingleOrDefault(
                     p => p.Id == idManga),
                     Cantidad = 1,
@@ -133,7 +140,7 @@ namespace MangaGods.Logic
         /// </summary>
         /// <param name="cartId"></param>
         /// <param name="actualizaciones"></param>
-        public void UpdateShoppingCartDatabase(string idCarro, ActualizacionesCarrito[] actualizaciones)
+        public void ActualizarCarroCompra(string idCarro, ActualizacionesCarrito[] actualizaciones)
         {
             using (var db = new MangaContext())
             {
@@ -179,9 +186,9 @@ namespace MangaGods.Logic
                 try
                 {
                     var manga = (from c in _db.Carrito
-                                  where c.IdCarrito == idCarro &&
-                                        c.Manga.Id == idManga
-                                  select c).FirstOrDefault();
+                                 where c.IdCarrito == idCarro &&
+                                       c.Manga.Id == idManga
+                                 select c).FirstOrDefault();
                     if (manga != null)
                     {
                         // Remove Item.
@@ -209,9 +216,9 @@ namespace MangaGods.Logic
                 try
                 {
                     var manga = (from c in _db.Carrito
-                                  where c.IdCarrito == idCarro &&
-                                        c.Manga.Id == idManga
-                                  select c).FirstOrDefault();
+                                 where c.IdCarrito == idCarro &&
+                                       c.Manga.Id == idManga
+                                 select c).FirstOrDefault();
                     if (manga != null)
                     {
                         manga.Cantidad = nuevaCantidad;
@@ -242,29 +249,16 @@ namespace MangaGods.Logic
         }
 
         /// <summary>
-        /// Obtiene el precio de una compra correspondiente a un carro
-        /// </summary>
-        /// <returns></returns>
-        public int ObtenerPrecio()
-        {
-            IdCarrito = ObtenerIdCarrito();
-            int? precio = (from carro in contexto.Carrito
-                          where carro.IdCarrito == IdCarrito
-                          select (int?)carro.Cantidad).Sum();
-            return precio ?? 0;
-        }
-
-        /// <summary>
         /// Asocia un carro anónimo al usuario que se logea
         /// </summary>
         /// <param name="idCarro"></param>
         /// <param name="NombreUsuario"></param>
-        public void MigrateCart(string idCarro, string NombreUsuario)
+        public void AsociarCarroAUsuario(string idCarro, string NombreUsuario)
         {
             var compra = contexto.Carrito.Where(c => c.IdCarrito == idCarro);
             foreach (var carro in compra)
             {
-                 carro.IdCarrito = NombreUsuario;
+                carro.IdCarrito = NombreUsuario;
             }
             HttpContext.Current.Session[LlaveSesionCarrito] = NombreUsuario;
             contexto.SaveChanges();

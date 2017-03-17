@@ -48,9 +48,9 @@
                                         <b>Precio: </b><%#:String.Format("{0:N2}", "$" + Item.Precio)%>
                                     </span>
                                     <br />
-                                    <a href="/CarritoCompra.aspx?productID=<%#:Item.Id %>">
-                                        <span class="ProductListItem">
-                                            <b>Add To Cart<b>
+                                    <a href="CarritoCompra.aspx?Id=<%#:Item.Id %>">
+                                        <span class="ListaCarro">
+                                            <b>Agregar al Carrito<b>
                                         </span>
                                     </a>
                                 </td>

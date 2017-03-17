@@ -56,6 +56,7 @@
                         <li><a runat="server" href="~/Views/Administrador/AdminAutores">Autores</a></li>
                         <li><a runat="server" href="~/Views/Administrador/AdminGenero">Generos</a></li>
                         <li><a runat="server" href="~/Views/Administrador/AdminMangas">Mangas</a></li>
+                        <li><a runat="server" href="~/Views/CarritoCompra">Carrito Compra</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
