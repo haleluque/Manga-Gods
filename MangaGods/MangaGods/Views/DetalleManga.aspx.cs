@@ -1,22 +1,18 @@
 ﻿using MangaGods.Logic;
 using MangaGods.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.ModelBinding;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace MangaGods.Views
 {
-    public partial class DetalleManga : System.Web.UI.Page
+    public partial class DetalleManga : Page
     {
-        CoreManga core;
+        private CoreManga _core;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            core = new CoreManga();
+            _core = new CoreManga();
         }
 
         /// <summary>
@@ -25,7 +21,7 @@ namespace MangaGods.Views
         /// <returns></returns>
         public Manga ObtenerMangaXId([QueryString("Id")] int? id)
         {
-            return core.ObtenerMangaXId(id != null ? (int)id : 0);
+            return _core.ObtenerMangaXId(id ?? 0);
         }
     }
 }

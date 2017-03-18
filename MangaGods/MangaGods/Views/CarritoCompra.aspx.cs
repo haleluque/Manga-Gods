@@ -3,14 +3,12 @@ using MangaGods.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace MangaGods.Views
 {
-    public partial class CarritoCompra : System.Web.UI.Page
+    public partial class CarritoCompra : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,11 +29,10 @@ namespace MangaGods.Views
         {
             using (CoreCarrito core = new CoreCarrito())
             {
-                decimal TotalCarro = 0;
-                TotalCarro = core.CalcularTotalPago();
-                if (TotalCarro > 0)
+                var totalCarro = core.CalcularTotalPago();
+                if (totalCarro > 0)
                 {
-                    lblTotal.Text = string.Format("{0:N2}", TotalCarro);
+                    lblTotal.Text = $"{totalCarro:N2}";
                 }
                 else
                 {
@@ -43,7 +40,7 @@ namespace MangaGods.Views
                     lblTotal.Text = string.Empty;
                     Titulo.InnerText = "El Carro de compra está vacio";
                     btnActualizar.Visible = false;
-                    //CheckoutImageBtn.Visible = false;
+                    btnCompra.Visible = false;
                 }
             }
         }
@@ -86,19 +83,16 @@ namespace MangaGods.Views
                 // Se recorre la matriz y se extraen los datos para actualizar
                 for (int i = 0; i < ListaCarro.Rows.Count; i++)
                 {
-                    IOrderedDictionary rowValues = new OrderedDictionary();
-                    rowValues = ObtenerValoresGrilla(ListaCarro.Rows[i]);
+                    var rowValues = ObtenerValoresGrilla(ListaCarro.Rows[i]);
                     actualizaciones[i].IdManga = Convert.ToInt32(rowValues["Manga.Id"]);
-                    CheckBox cbRemover = new CheckBox();
-                    cbRemover = (CheckBox)ListaCarro.Rows[i].FindControl("chkQuitarManga");
+                    var cbRemover = (CheckBox)ListaCarro.Rows[i].FindControl("chkQuitarManga");
                     actualizaciones[i].QuitarManga = cbRemover.Checked;
-                    TextBox txtCantidad = new TextBox();
-                    txtCantidad = (TextBox)ListaCarro.Rows[i].FindControl("CantidadManga");
-                    actualizaciones[i].Cantidad = Convert.ToInt16(txtCantidad.Text.ToString());
+                    var txtCantidad = (TextBox)ListaCarro.Rows[i].FindControl("CantidadManga");
+                    actualizaciones[i].Cantidad = Convert.ToInt16(txtCantidad.Text);
                 }
                 core.ActualizarCarroCompra(idCarro, actualizaciones);
                 ListaCarro.DataBind();
-                lblTotal.Text = string.Format("{0:N2}", core.CalcularTotalPago());
+                lblTotal.Text = $"{core.CalcularTotalPago():N2}";
                 return core.ConsultarCarros();
             }
         }
@@ -119,6 +113,20 @@ namespace MangaGods.Views
                 }
             }
             return values;
+        }
+
+        /// <summary>
+        /// Evento que maneja la compra con paypal
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnCompra_Click(object sender, ImageClickEventArgs e)
+        {
+            using (var core = new CoreCarrito())
+            {
+                Session["payment_amt"] = core.CalcularTotalPago();
+            }
+            Response.Redirect("Checkout/CheckoutStart.aspx");
         }
     }
 }

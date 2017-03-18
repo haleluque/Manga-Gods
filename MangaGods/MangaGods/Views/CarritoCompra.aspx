@@ -42,13 +42,13 @@
             <td>
                 <asp:Button ID="btnActualizar" runat="server" Text="Actualizar" OnClick="Actualizar_Click" />
             </td>
-<%--            <td>
-                <asp:ImageButton ID="CheckoutImageBtn" runat="server"
+            <td>
+                <asp:ImageButton ID="btnCompra" runat="server"
                     ImageUrl="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"
-                    Width="145" AlternateText="Check out with PayPal"
-                    OnClick="CheckoutBtn_Click"
+                    Width="145" AlternateText="Compra con PayPal"
+                    OnClick="btnCompra_Click"
                     BackColor="Transparent" BorderWidth="0" />
-            </td>--%>
+            </td>
         </tr>
     </table>
 </asp:Content>

@@ -16,14 +16,14 @@ namespace MangaGods.Logic
         /// </summary>
         public string IdCarrito { get; set; }
         public const string LlaveSesionCarrito = "CartId";
-        private MangaContext contexto;
+        private MangaContext _contexto;
 
         /// <summary>
         /// Constructor
         /// </summary>
         public CoreCarrito()
         {
-            contexto = new MangaContext();
+            _contexto = new MangaContext();
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace MangaGods.Logic
         public List<Carrito> ConsultarCarros()
         {
             IdCarrito = ObtenerIdCarrito();
-            return contexto.Carrito.Where(
+            return _contexto.Carrito.Where(
             c => c.IdCarrito == IdCarrito).ToList();
         }
 
@@ -47,13 +47,13 @@ namespace MangaGods.Logic
 
             // Multiplica el precio del producto por la cantidad requerida
             // de cada manga para obtener el total a pagar del carrito
-            var consulta = (from carrito in contexto.Carrito
+            var consulta = (from carrito in _contexto.Carrito
                             where carrito.IdCarrito == IdCarrito
                             select carrito);
             if (consulta.Count() > 0)
             {
                 return (decimal)(from items in consulta
-                        select (items.Cantidad * items.Manga.Precio)).Sum();
+                                 select (items.Cantidad * items.Manga.Precio)).Sum();
             }
             else
             {
@@ -106,7 +106,7 @@ namespace MangaGods.Logic
             IdCarrito = ObtenerIdCarrito();
 
             //Obtiene de la base de datos si el carrito ya ha sido creado y si tiene el producto seleccionado
-            var carro = contexto.Carrito.SingleOrDefault(
+            var carro = _contexto.Carrito.SingleOrDefault(
                 c => c.IdCarrito == IdCarrito
                 && c.IdManga == idManga);
 
@@ -118,59 +118,54 @@ namespace MangaGods.Logic
                     Id = Guid.NewGuid().ToString(),
                     IdManga = idManga,
                     IdCarrito = IdCarrito,
-                    Manga = contexto.Manga.SingleOrDefault(
+                    Manga = _contexto.Manga.SingleOrDefault(
                     p => p.Id == idManga),
                     Cantidad = 1,
                     FechaCreacion = DateTime.Now
                 };
 
-                contexto.Carrito.Add(carro);
+                _contexto.Carrito.Add(carro);
             }
             else
             {
                 //Si el carro ya existe, agrega uno a la cantidad              
                 carro.Cantidad++;
             }
-            contexto.SaveChanges();
+            _contexto.SaveChanges();
 
         }
 
         /// <summary>
         /// Actualiza los datos de un carrito de compra
         /// </summary>
-        /// <param name="cartId"></param>
+        /// <param name="idCarro"></param>
         /// <param name="actualizaciones"></param>
         public void ActualizarCarroCompra(string idCarro, ActualizacionesCarrito[] actualizaciones)
         {
-            using (var db = new MangaContext())
+            try
             {
-                try
+                int cartItemCount = actualizaciones.Count();
+                var lista = ConsultarCarros();
+                foreach (var carro in lista)
                 {
-                    int CartItemCount = actualizaciones.Count();
-                    List<Carrito> lista = ConsultarCarros();
-                    foreach (var carro in lista)
+                    // Recorre la lista de mangas para identificar los cambios
+                    for (int i = 0; i < cartItemCount; i++)
                     {
-                        // Recorre la lista de mangas para identificar los cambios
-                        for (int i = 0; i < CartItemCount; i++)
+                        if (carro.Manga.Id != actualizaciones[i].IdManga) continue;
+                        if (actualizaciones[i].Cantidad < 1 || actualizaciones[i].QuitarManga)
                         {
-                            if (carro.Manga.Id == actualizaciones[i].IdManga)
-                            {
-                                if (actualizaciones[i].Cantidad < 1 || actualizaciones[i].QuitarManga == true)
-                                {
-                                    RemoverMnaga(idCarro, carro.IdManga);
-                                }
-                                else
-                                {
-                                    ActualizarDatos(idCarro, carro.IdManga, actualizaciones[i].Cantidad);
-                                }
-                            }
+                            RemoverMnaga(idCarro, carro.IdManga);
+                        }
+                        else
+                        {
+                            ActualizarDatos(idCarro, carro.IdManga, actualizaciones[i].Cantidad);
                         }
                     }
                 }
-                catch (Exception exp)
-                {
-                    throw new Exception("ERROR: Ha ocurrido un error al actualizar el carrito - " + exp.Message.ToString(), exp);
-                }
+            }
+            catch (Exception exp)
+            {
+                throw new Exception("ERROR: Ha ocurrido un error al actualizar el carrito - " + exp.Message, exp);
             }
         }
 
@@ -181,24 +176,22 @@ namespace MangaGods.Logic
         /// <param name="idManga"></param>
         public void RemoverMnaga(string idCarro, int idManga)
         {
-            using (var _db = new MangaContext())
+            using (var db = new MangaContext())
             {
                 try
                 {
-                    var manga = (from c in _db.Carrito
+                    var manga = (from c in db.Carrito
                                  where c.IdCarrito == idCarro &&
                                        c.Manga.Id == idManga
                                  select c).FirstOrDefault();
-                    if (manga != null)
-                    {
-                        // Remove Item.
-                        _db.Carrito.Remove(manga);
-                        _db.SaveChanges();
-                    }
+                    if (manga == null) return;
+                    // Remove Item.
+                    db.Carrito.Remove(manga);
+                    db.SaveChanges();
                 }
                 catch (Exception exp)
                 {
-                    throw new Exception("ERROR: No se pudo eliminar manga del carro - " + exp.Message.ToString(), exp);
+                    throw new Exception("ERROR: No se pudo eliminar manga del carro - " + exp.Message, exp);
                 }
             }
         }
@@ -211,23 +204,21 @@ namespace MangaGods.Logic
         /// <param name="nuevaCantidad"></param>
         public void ActualizarDatos(string idCarro, int idManga, int nuevaCantidad)
         {
-            using (var _db = new MangaContext())
+            using (var db = new MangaContext())
             {
                 try
                 {
-                    var manga = (from c in _db.Carrito
+                    var manga = (from c in db.Carrito
                                  where c.IdCarrito == idCarro &&
                                        c.Manga.Id == idManga
                                  select c).FirstOrDefault();
-                    if (manga != null)
-                    {
-                        manga.Cantidad = nuevaCantidad;
-                        _db.SaveChanges();
-                    }
+                    if (manga == null) return;
+                    manga.Cantidad = nuevaCantidad;
+                    db.SaveChanges();
                 }
                 catch (Exception exp)
                 {
-                    throw new Exception("ERROR: No se pudo actualizar los datos de los productos - " + exp.Message.ToString(), exp);
+                    throw new Exception("ERROR: No se pudo actualizar los datos de los productos - " + exp.Message, exp);
                 }
             }
         }
@@ -238,30 +229,30 @@ namespace MangaGods.Logic
         public void VaciarCarro()
         {
             IdCarrito = ObtenerIdCarrito();
-            var cartItems = contexto.Carrito.Where(
+            var cartItems = _contexto.Carrito.Where(
             c => c.IdCarrito == IdCarrito);
             foreach (var manga in cartItems)
             {
-                contexto.Carrito.Remove(manga);
+                _contexto.Carrito.Remove(manga);
             }
             // Save changes.
-            contexto.SaveChanges();
+            _contexto.SaveChanges();
         }
 
         /// <summary>
         /// Asocia un carro anónimo al usuario que se logea
         /// </summary>
         /// <param name="idCarro"></param>
-        /// <param name="NombreUsuario"></param>
-        public void AsociarCarroAUsuario(string idCarro, string NombreUsuario)
+        /// <param name="nombreUsuario"></param>
+        public void AsociarCarroAUsuario(string idCarro, string nombreUsuario)
         {
-            var compra = contexto.Carrito.Where(c => c.IdCarrito == idCarro);
+            var compra = _contexto.Carrito.Where(c => c.IdCarrito == idCarro);
             foreach (var carro in compra)
             {
-                carro.IdCarrito = NombreUsuario;
+                carro.IdCarrito = nombreUsuario;
             }
-            HttpContext.Current.Session[LlaveSesionCarrito] = NombreUsuario;
-            contexto.SaveChanges();
+            HttpContext.Current.Session[LlaveSesionCarrito] = nombreUsuario;
+            _contexto.SaveChanges();
         }
 
         /// <summary>
@@ -270,10 +261,10 @@ namespace MangaGods.Logic
         /// </summary>
         public void Dispose()
         {
-            if (contexto != null)
+            if (_contexto != null)
             {
-                contexto.Dispose();
-                contexto = null;
+                _contexto.Dispose();
+                _contexto = null;
             }
         }
 

@@ -1,8 +1,5 @@
 ﻿using MangaGods.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace MangaGods.Logic
 {
@@ -15,14 +12,14 @@ namespace MangaGods.Logic
         /// Variable de tipo contexto para manejo de datos con 
         /// EF
         /// </summary>
-        private MangaContext contexto { get; set; }
+        private MangaContext Contexto { get; set; }
 
         /// <summary>
         /// Constructor que instancia el contexto
         /// </summary>
         public CoreAutor()
         {
-            contexto = new MangaContext();
+            Contexto = new MangaContext();
         }
 
         /// <summary>
@@ -31,7 +28,7 @@ namespace MangaGods.Logic
         /// <returns></returns>
         public IQueryable ObtenerTodosAutores()
         {
-            return contexto.Autor;
+            return Contexto.Autor;
         }
 
         /// <summary>
@@ -40,7 +37,7 @@ namespace MangaGods.Logic
         /// <returns></returns>
         public Autor ObtenerAutorXId(int id)
         {
-            return contexto.Autor.FirstOrDefault(x => x.Id == id);
+            return Contexto.Autor.FirstOrDefault(x => x.Id == id);
         }
 
         /// <summary>
@@ -50,10 +47,10 @@ namespace MangaGods.Logic
         /// <returns></returns>
         public bool CrearAutor(Autor nuevo)
         {
-            using (contexto = new MangaContext())
+            using (Contexto = new MangaContext())
             {
-                contexto.Autor.Add(nuevo);
-                contexto.SaveChanges();
+                Contexto.Autor.Add(nuevo);
+                Contexto.SaveChanges();
             }
             return true;
         }
@@ -65,13 +62,16 @@ namespace MangaGods.Logic
         /// <returns></returns>
         public bool ActualizarAutor(Autor autor)
         {
-            using (contexto = new MangaContext())
+            using (Contexto = new MangaContext())
             {
-                var consulta = contexto.Autor.FirstOrDefault(x => x.Id == autor.Id);
-                consulta.Nombre = autor.Nombre;
-                consulta.Edad = autor.Edad;
-                consulta.Empresa = autor.Empresa;
-                contexto.SaveChanges();
+                var consulta = Contexto.Autor.FirstOrDefault(x => x.Id == autor.Id);
+                if (consulta != null)
+                {
+                    consulta.Nombre = autor.Nombre;
+                    consulta.Edad = autor.Edad;
+                    consulta.Empresa = autor.Empresa;
+                }
+                Contexto.SaveChanges();
             }
             return true;
         }
@@ -82,10 +82,10 @@ namespace MangaGods.Logic
         /// <returns></returns>
         public bool BorrarAutor(int id)
         {
-            using (contexto = new MangaContext())
+            using (Contexto = new MangaContext())
             {
-                contexto.Autor.Remove(contexto.Autor.FirstOrDefault(x => x.Id == id));
-                contexto.SaveChanges();
+                Contexto.Autor.Remove(Contexto.Autor.FirstOrDefault(x => x.Id == id));
+                Contexto.SaveChanges();
             }
             return true;
         }

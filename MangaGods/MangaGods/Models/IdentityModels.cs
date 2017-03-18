@@ -4,9 +4,6 @@ using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using MangaGods.Models;
 
 namespace MangaGods.Models
 {
@@ -30,7 +27,7 @@ namespace MangaGods.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("MangaContext", throwIfV1Schema: false)
+            : base("MangaContext", false)
         {
         }
 
@@ -70,13 +67,13 @@ namespace MangaGods
         public static string GetResetPasswordRedirectUrl(string code, HttpRequest request)
         {
             var absoluteUri = "/Account/ResetPassword?" + CodeKey + "=" + HttpUtility.UrlEncode(code);
-            return new Uri(request.Url, absoluteUri).AbsoluteUri.ToString();
+            return new Uri(request.Url, absoluteUri).AbsoluteUri;
         }
 
         public static string GetUserConfirmationRedirectUrl(string code, string userId, HttpRequest request)
         {
             var absoluteUri = "/Account/Confirm?" + CodeKey + "=" + HttpUtility.UrlEncode(code) + "&" + UserIdKey + "=" + HttpUtility.UrlEncode(userId);
-            return new Uri(request.Url, absoluteUri).AbsoluteUri.ToString();
+            return new Uri(request.Url, absoluteUri).AbsoluteUri;
         }
 
         private static bool IsLocalUrl(string url)

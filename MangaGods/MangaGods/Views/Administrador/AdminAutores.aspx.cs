@@ -12,7 +12,7 @@ namespace MangaGods.Views.Administrador
     /// </summary>
     public partial class AdminAutores : Page
     {
-        private CoreAutor Core;
+        private CoreAutor _core;
 
         /// <summary>
         /// Método de Inicio de página
@@ -21,7 +21,7 @@ namespace MangaGods.Views.Administrador
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            Core = new CoreAutor();
+            _core = new CoreAutor();
         }
 
         /// <summary>
@@ -32,19 +32,19 @@ namespace MangaGods.Views.Administrador
         protected void CrearAutor_Click(object sender, EventArgs e)
         {
             // Se valida que la creación haya sido exitosa
-            if (Core.CrearAutor(new Autor
+            if (_core.CrearAutor(new Autor
             {
                 Nombre = txtNombreAutor.Text,
                 Edad = string.IsNullOrEmpty(txtEdad.Text) ? (int?)null : Convert.ToInt32(txtEdad.Text),
                 Empresa = txtEmpresa.Text
             }))
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionCreacionAutor").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionCreacionAutor")?.ToString();
                 LimpiarCampos(1);
             }
             else
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCreacionAutor").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCreacionAutor")?.ToString();
             }           
         }
 
@@ -56,7 +56,7 @@ namespace MangaGods.Views.Administrador
         protected void Buscar_Click(object sender, EventArgs e)
         {
             alerta.InnerText = string.Empty;
-            var autor = Core.ObtenerAutorXId(Convert.ToInt32(txtId.Text));
+            var autor = _core.ObtenerAutorXId(Convert.ToInt32(txtId.Text));
             if (autor != null)
             {
                 MostrarDatosAutor(true);
@@ -64,7 +64,7 @@ namespace MangaGods.Views.Administrador
             }
             else
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdAutor").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdAutor")?.ToString();
             }
         }
 
@@ -76,7 +76,7 @@ namespace MangaGods.Views.Administrador
         protected void Actualizar_Click(object sender, EventArgs e)
         {
             // Se valida que la creación haya sido exitosa
-            if (Core.ActualizarAutor(new Autor
+            if (_core.ActualizarAutor(new Autor
             {
                 Id = Convert.ToInt32(txtId.Text),
                 Nombre = txtNombreConsulta.Text,
@@ -84,13 +84,13 @@ namespace MangaGods.Views.Administrador
                 Empresa = txtEmpresaConsulta.Text
             }))
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionActualizacionAutor").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionActualizacionAutor")?.ToString();
                 LimpiarCampos(2);
                 MostrarDatosAutor(false);
             }
             else
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarAutor").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarAutor")?.ToString();
             }
         }
 
@@ -101,15 +101,15 @@ namespace MangaGods.Views.Administrador
         /// <param name="e"></param>
         protected void Borrar_Click(object sender, EventArgs e)
         {
-            if (Core.BorrarAutor(Convert.ToInt32(txtId.Text)))
+            if (_core.BorrarAutor(Convert.ToInt32(txtId.Text)))
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionBorradoAutor").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionBorradoAutor")?.ToString();
                 LimpiarCampos(2);
                 MostrarDatosAutor(false);
             }
             else
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorrarAutor").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorrarAutor")?.ToString();
             }
         }
 

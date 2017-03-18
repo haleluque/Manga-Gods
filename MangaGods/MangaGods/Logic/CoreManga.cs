@@ -1,10 +1,7 @@
 ﻿using MangaGods.Models;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
-using System.Web;
 
 namespace MangaGods.Logic
 {
@@ -17,14 +14,14 @@ namespace MangaGods.Logic
         /// Variable de tipo contexto para manejo de datos con 
         /// EF
         /// </summary>
-        private MangaContext contexto { get; set; }
+        private MangaContext Contexto { get; set; }
 
         /// <summary>
         /// Constructor que instancia el contexto
         /// </summary>
         public CoreManga()
         {
-            contexto = new MangaContext();
+            Contexto = new MangaContext();
         }
 
         /// <summary>
@@ -33,7 +30,7 @@ namespace MangaGods.Logic
         /// <returns></returns>
         public IQueryable ObtenerTodosMangas()
         {
-            return contexto.Manga;
+            return Contexto.Manga;
         }
 
         /// <summary>
@@ -42,7 +39,7 @@ namespace MangaGods.Logic
         /// <returns></returns>
         public Manga ObtenerMangaXId(int id)
         {
-            return contexto.Manga.FirstOrDefault(x => x.Id == id);
+            return Contexto.Manga.FirstOrDefault(x => x.Id == id);
         }
 
         /// <summary>
@@ -51,7 +48,7 @@ namespace MangaGods.Logic
         /// <returns></returns>
         public IQueryable<Manga> ObtenerMangaXIdGenero(int id)
         {
-            return contexto.Manga.Where(x => x.IdGenero == id);
+            return Contexto.Manga.Where(x => x.IdGenero == id);
         }
 
         /// <summary>
@@ -63,10 +60,10 @@ namespace MangaGods.Logic
         {
             try
             {
-                using (contexto = new MangaContext())
+                using (Contexto = new MangaContext())
                 {
-                    contexto.Manga.Add(nuevo);
-                    contexto.SaveChanges();
+                    Contexto.Manga.Add(nuevo);
+                    Contexto.SaveChanges();
                 }
                 return true;
             }
@@ -92,17 +89,20 @@ namespace MangaGods.Logic
         /// <returns></returns>
         public bool ActualizarManga(Manga manga)
         {
-            using (contexto = new MangaContext())
+            using (Contexto = new MangaContext())
             {
-                var consulta = contexto.Manga.FirstOrDefault(x => x.Id == manga.Id);
-                consulta.Nombre = manga.Nombre;
-                consulta.Descripcion = manga.Descripcion;
-                consulta.IdGenero = manga.IdGenero;
-                consulta.Volumen = manga.Volumen;
-                consulta.Precio = manga.Precio;
-                consulta.ImagePath = manga.ImagePath;
-                consulta.IdAutor = manga.IdAutor;
-                contexto.SaveChanges();
+                var consulta = Contexto.Manga.FirstOrDefault(x => x.Id == manga.Id);
+                if (consulta != null)
+                {
+                    consulta.Nombre = manga.Nombre;
+                    consulta.Descripcion = manga.Descripcion;
+                    consulta.IdGenero = manga.IdGenero;
+                    consulta.Volumen = manga.Volumen;
+                    consulta.Precio = manga.Precio;
+                    consulta.ImagePath = manga.ImagePath;
+                    consulta.IdAutor = manga.IdAutor;
+                }
+                Contexto.SaveChanges();
             }
             return true;
         }
@@ -113,10 +113,10 @@ namespace MangaGods.Logic
         /// <returns></returns>
         public bool BorrarManga(int id)
         {
-            using (contexto = new MangaContext())
+            using (Contexto = new MangaContext())
             {
-                contexto.Manga.Remove(contexto.Manga.FirstOrDefault(x => x.Id == id));
-                contexto.SaveChanges();
+                Contexto.Manga.Remove(Contexto.Manga.FirstOrDefault(x => x.Id == id));
+                Contexto.SaveChanges();
             }
             return true;
         }

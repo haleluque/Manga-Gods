@@ -1,11 +1,8 @@
 ﻿using MangaGods.Logic;
 using MangaGods.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace MangaGods.Views.Administrador
 {
@@ -15,7 +12,7 @@ namespace MangaGods.Views.Administrador
     /// </summary>
     public partial class AdminGenero : Page
     {
-        private CoreGenero Core;
+        private CoreGenero _core;
 
         /// <summary>
         /// Método de Inicio de página
@@ -24,7 +21,7 @@ namespace MangaGods.Views.Administrador
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            Core = new CoreGenero();
+            _core = new CoreGenero();
         }
 
         /// <summary>
@@ -35,18 +32,18 @@ namespace MangaGods.Views.Administrador
         protected void CrearGenero_Click(object sender, EventArgs e)
         {
             // Se valida que la creación haya sido exitosa
-            if (Core.CrearGenero(new Genero
+            if (_core.CrearGenero(new Genero
             {
                 Nombre = txtNombreGenero.Text,
                 Descripcion = txtDescripcionGenero.Text
             }))
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionCreacionGenero").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionCreacionGenero")?.ToString();
                 LimpiarCampos(1);
             }
             else
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCreacionGenero").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCreacionGenero")?.ToString();
             }
         }
 
@@ -58,7 +55,7 @@ namespace MangaGods.Views.Administrador
         protected void Buscar_Click(object sender, EventArgs e)
         {
             alerta.InnerText = string.Empty;
-            var genero = Core.ObtenerGeneroXId(Convert.ToInt32(txtId.Text));
+            var genero = _core.ObtenerGeneroXId(Convert.ToInt32(txtId.Text));
             if (genero != null)
             {
                 MostrarDatosGenero(true);
@@ -66,7 +63,7 @@ namespace MangaGods.Views.Administrador
             }
             else
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdGenero").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdGenero")?.ToString();
             }
         }
 
@@ -78,20 +75,20 @@ namespace MangaGods.Views.Administrador
         protected void Actualizar_Click(object sender, EventArgs e)
         {
             // Se valida que la creación haya sido exitosa
-            if (Core.ActualizarGenero(new Genero
+            if (_core.ActualizarGenero(new Genero
             {
                 Id = Convert.ToInt32(txtId.Text),
                 Nombre = txtGeneroConsulta.Text,
                 Descripcion = txtDescripcionConsulta.Text
             }))
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionActualizacionGenero").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionActualizacionGenero")?.ToString();
                 LimpiarCampos(2);
                 MostrarDatosGenero(false);
             }
             else
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarAutor").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarAutor")?.ToString();
             }
         }
 
@@ -102,15 +99,15 @@ namespace MangaGods.Views.Administrador
         /// <param name="e"></param>
         protected void Borrar_Click(object sender, EventArgs e)
         {
-            if (Core.BorrarGenero(Convert.ToInt32(txtId.Text)))
+            if (_core.BorrarGenero(Convert.ToInt32(txtId.Text)))
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionBorradoGenero").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionBorradoGenero")?.ToString();
                 LimpiarCampos(2);
                 MostrarDatosGenero(false);
             }
             else
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorrarAutor").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorrarAutor")?.ToString();
             }
         }
 

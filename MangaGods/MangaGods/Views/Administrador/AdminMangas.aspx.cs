@@ -2,10 +2,10 @@
 using MangaGods.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace MangaGods.Views.Administrador
 {
@@ -15,9 +15,9 @@ namespace MangaGods.Views.Administrador
     /// </summary>
     public partial class AdminMangas : Page
     {
-        private CoreManga Core;
-        private CoreGenero CoreGenero;
-        private CoreAutor CoreAutor;
+        private CoreManga _core;
+        private CoreGenero _coreGenero;
+        private CoreAutor _coreAutor;
 
         /// <summary>
         /// Método de Inicio de página
@@ -26,9 +26,9 @@ namespace MangaGods.Views.Administrador
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            Core = new CoreManga();
-            CoreGenero = new CoreGenero();
-            CoreAutor = new CoreAutor();
+            _core = new CoreManga();
+            _coreGenero = new CoreGenero();
+            _coreAutor = new CoreAutor();
 
             if (comboAutor.Items.Count <= 0) comboAutor.Items.Insert(0, "Seleccione.....");
             if (comboGenero.Items.Count <= 0) comboGenero.Items.Insert(0, "Seleccione.....");
@@ -40,15 +40,16 @@ namespace MangaGods.Views.Administrador
         /// <returns></returns>
         public IQueryable ObtenerTodosGeneros()
         {
-            return CoreGenero.ObtenerTodosGeneros();
+            return _coreGenero.ObtenerTodosGeneros();
         }
 
+        /// <summary>
         /// Obtiene todos los autores de la tabla
         /// </summary>
         /// <returns></returns>
         public IQueryable ObtenerTodosAutores()
         {
-            return CoreAutor.ObtenerTodosAutores();
+            return _coreAutor.ObtenerTodosAutores();
         }
 
         /// <summary>
@@ -64,11 +65,11 @@ namespace MangaGods.Views.Administrador
             //valida que la extensión del archivo sea la correcta
             if (Archivo.HasFile)
             {
-                string fileExtension = System.IO.Path.GetExtension(Archivo.FileName).ToLower();
+                string fileExtension = System.IO.Path.GetExtension(Archivo.FileName)?.ToLower();
                 string[] extensionArchivo = { ".gif", ".png", ".jpeg", ".jpg" };
-                for (int i = 0; i < extensionArchivo.Length; i++)
+                foreach (string extension in extensionArchivo)
                 {
-                    if (fileExtension == extensionArchivo[i])
+                    if (fileExtension == extension)
                     {
                         cumple = true;
                     }
@@ -92,26 +93,26 @@ namespace MangaGods.Views.Administrador
                 {
                     Nombre = txtNombreManga.Text,
                     Descripcion = txtDescripcionManga.Text,
-                    IdGenero = convertirAInt(comboGenero.SelectedValue),
-                    IdAutor = convertirAInt(comboAutor.SelectedValue),
-                    Volumen = convertirAInt(txtVolumen.Text),
-                    Precio = convertirADouble(txtPrecio.Text),
+                    IdGenero = ConvertirAInt(comboGenero.SelectedValue),
+                    IdAutor = ConvertirAInt(comboAutor.SelectedValue),
+                    Volumen = ConvertirAInt(txtVolumen.Text),
+                    Precio = ConvertirADouble(txtPrecio.Text),
                     ImagePath = Archivo.FileName
                 };
 
-                if (Core.CrearManga(manga))
+                if (_core.CrearManga(manga))
                 {
-                    alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionCreacionManga").ToString();
+                    alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionCreacionManga")?.ToString();
                     LimpiarCampos(1);
                 }
                 else
                 {
-                    alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCreacionManga").ToString();
+                    alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCreacionManga")?.ToString();
                 }
             }
             else
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorFormatoArchivo").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorFormatoArchivo")?.ToString();
                 
             }
         }
@@ -126,7 +127,7 @@ namespace MangaGods.Views.Administrador
             CargarComboGeneros();
             CargarComboAutores();
             alerta.InnerText = string.Empty;
-            var manga = Core.ObtenerMangaXId(Convert.ToInt32(txtId.Text));
+            var manga = _core.ObtenerMangaXId(Convert.ToInt32(txtId.Text));
             if (manga != null)
             {
                 MostrarDatos(true);
@@ -134,7 +135,7 @@ namespace MangaGods.Views.Administrador
             }
             else
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdManga").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdManga")?.ToString();
             }
         }
 
@@ -151,11 +152,11 @@ namespace MangaGods.Views.Administrador
             //valida que la extensión del archivo sea la correcta
             if (archivoConsulta.HasFile)
             {
-                string fileExtension = System.IO.Path.GetExtension(archivoConsulta.FileName).ToLower();
+                string fileExtension = System.IO.Path.GetExtension(archivoConsulta.FileName)?.ToLower();
                 string[] extensionArchivo = { ".gif", ".png", ".jpeg", ".jpg" };
-                for (int i = 0; i < extensionArchivo.Length; i++)
+                foreach (string extension in extensionArchivo)
                 {
-                    if (fileExtension == extensionArchivo[i])
+                    if (fileExtension == extension)
                     {
                         cumple = true;
                     }
@@ -177,29 +178,29 @@ namespace MangaGods.Views.Administrador
                 //Se crea la entidad a crear
                 var manga = new Manga
                 {
-                    Id = convertirAInt(txtId.Text),
+                    Id = ConvertirAInt(txtId.Text),
                     Nombre = txtMangaConsulta.Text,
                     Descripcion = txtDescripcionConsulta.Text,
-                    IdGenero = convertirAInt(comboGeneroConsulta.SelectedValue),
-                    IdAutor = convertirAInt(comboAutorConsulta.SelectedValue),
-                    Volumen = convertirAInt(txtVolumenConsulta.Text),
-                    Precio = convertirADouble(txtPrecioConsulta.Text),
+                    IdGenero = ConvertirAInt(comboGeneroConsulta.SelectedValue),
+                    IdAutor = ConvertirAInt(comboAutorConsulta.SelectedValue),
+                    Volumen = ConvertirAInt(txtVolumenConsulta.Text),
+                    Precio = ConvertirADouble(txtPrecioConsulta.Text),
                     ImagePath = archivoConsulta.FileName
                 };
 
-                if (Core.ActualizarManga(manga))
+                if (_core.ActualizarManga(manga))
                 {
-                    alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionActualizacionManga").ToString();
+                    alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionActualizacionManga")?.ToString();
                     LimpiarCampos(1);
                 }
                 else
                 {
-                    alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarManga").ToString();
+                    alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarManga")?.ToString();
                 }
             }
             else
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorFormatoArchivo").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorFormatoArchivo")?.ToString();
 
             }
         }
@@ -211,15 +212,15 @@ namespace MangaGods.Views.Administrador
         /// <param name="e"></param>
         protected void Borrar_Click(object sender, EventArgs e)
         {
-            if (Core.BorrarManga(Convert.ToInt32(txtId.Text)))
+            if (_core.BorrarManga(Convert.ToInt32(txtId.Text)))
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionBorradoManga").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionBorradoManga")?.ToString();
                 LimpiarCampos(2);
                 MostrarDatos(false);
             }
             else
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorradoManga").ToString();
+                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorradoManga")?.ToString();
             }
         }
 
@@ -227,7 +228,7 @@ namespace MangaGods.Views.Administrador
         /// convierte un string a int
         /// </summary>
         /// <returns></returns>
-        public int convertirAInt(string valor)
+        public int ConvertirAInt(string valor)
         {
             try
             {
@@ -243,7 +244,7 @@ namespace MangaGods.Views.Administrador
         /// convierte un string a double
         /// </summary>
         /// <returns></returns>
-        public double convertirADouble(string valor)
+        public double ConvertirADouble(string valor)
         {
             try
             {
@@ -297,7 +298,7 @@ namespace MangaGods.Views.Administrador
         {
             txtMangaConsulta.Text = consulta.Nombre;
             txtDescripcionConsulta.Text = consulta.Descripcion;
-            txtPrecioConsulta.Text = consulta.Precio.ToString();
+            txtPrecioConsulta.Text = consulta.Precio.ToString(CultureInfo.CurrentCulture);
             txtVolumenConsulta.Text = consulta.Volumen.ToString();
             comboAutorConsulta.SelectedValue = consulta.IdAutor.ToString();
             comboGeneroConsulta.SelectedValue = consulta.IdGenero.ToString();
