@@ -453,6 +453,7 @@
     <Compile Include="Logic\CoreCarrito.cs" />
     <Compile Include="Logic\CoreGenero.cs" />
     <Compile Include="Logic\CoreManga.cs" />
+    <Compile Include="Logic\NVPAPICaller.cs" />
     <Compile Include="Models\Autor.cs" />
     <Compile Include="Models\Carrito.cs" />
     <Compile Include="Models\DetalleOrden.cs" />
