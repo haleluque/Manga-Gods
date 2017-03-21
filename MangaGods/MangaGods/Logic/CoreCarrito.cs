@@ -50,15 +50,12 @@ namespace MangaGods.Logic
             var consulta = (from carrito in _contexto.Carrito
                             where carrito.IdCarrito == IdCarrito
                             select carrito);
-            if (consulta.Count() > 0)
+            if (consulta.Any())
             {
                 return (decimal)(from items in consulta
                                  select (items.Cantidad * items.Manga.Precio)).Sum();
             }
-            else
-            {
-                return decimal.Zero;
-            }
+            return decimal.Zero;
         }
 
         /// <summary>

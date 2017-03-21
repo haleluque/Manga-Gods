@@ -59,11 +59,11 @@ namespace MangaGods
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "424918121761-nn27pmu55licf2le3eqh2qone8rivt2a.apps.googleusercontent.com",
+                ClientSecret = "EGXvnkd08Pu39aCnrGpcat2I"
+            });
         }
     }
 }
