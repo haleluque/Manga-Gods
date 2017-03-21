@@ -52,6 +52,15 @@ namespace MangaGods.Logic
         }
 
         /// <summary>
+        /// Obtiene un manga por el nombre del genero
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<Manga> ObtenerMangaXNombreGenero(string nombre)
+        {
+            return Contexto.Manga.Where(x => x.Genero.Nombre.Contains(nombre));
+        }
+
+        /// <summary>
         /// Crea un nuevo manga en la db
         /// </summary>
         /// <param name="nuevo"></param>

@@ -20,10 +20,17 @@ namespace MangaGods.Views
         /// Obtiene los mangas por id o en general
         /// </summary>
         /// <param name="genero"></param>
+        /// <param name="nombre"></param>
         /// <returns></returns>
-        public IQueryable<Manga> ObtenerTodosMangas([QueryString("id")] int? genero)
+        public IQueryable<Manga> ObtenerTodosMangas([QueryString("id")] int? genero, [RouteData] string nombre)
         {
-            return genero != null ? _core.ObtenerMangaXIdGenero((int)genero): null;
+            if (genero != null)
+            {
+                return _core.ObtenerMangaXIdGenero((int) genero);
+            }
+            return !string.IsNullOrEmpty(nombre) ? _core.ObtenerMangaXNombreGenero(nombre) : null;
+
+            //return genero != null ? _core.ObtenerMangaXIdGenero((int)genero): null;
         }
     }
 }
