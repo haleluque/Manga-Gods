@@ -6,6 +6,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using MangaGods.Logic;
 
 namespace MangaGods
 {
@@ -16,6 +17,10 @@ namespace MangaGods
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // Se crea el rol admin que será el que administre la app
+            var roleActions = new RoleActions();
+            roleActions.CrearUsuarioAdmin();
         }
     }
 }

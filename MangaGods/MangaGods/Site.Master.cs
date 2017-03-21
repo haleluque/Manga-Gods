@@ -20,6 +20,14 @@ namespace MangaGods
 
         protected void Page_Init(object sender, EventArgs e)
         {
+            //Solo habilitará el botón de administrar, si el usuario tiene el rol canEdit
+            if (HttpContext.Current.User.IsInRole("Admin"))
+            {
+                adminAutores.Visible = true;
+                adminGeneros.Visible = true;
+                adminMangas.Visible = true;
+            }
+
             // The code below helps to protect against XSRF attacks
             var requestCookie = Request.Cookies[AntiXsrfTokenKey];
             Guid requestCookieGuidValue;

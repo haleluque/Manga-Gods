@@ -53,9 +53,9 @@
                         <li><a runat="server" href="~/">Home</a></li>
                         <%--<li><a runat="server" href="~/About">Acerca de Nosotros</a></li>--%>
                         <%--<li><a runat="server" href="~/Contact">Contátenos</a></li>--%>
-                        <li><a runat="server" href="~/Views/Administrador/AdminAutores">Autores</a></li>
-                        <li><a runat="server" href="~/Views/Administrador/AdminGenero">Generos</a></li>
-                        <li><a runat="server" href="~/Views/Administrador/AdminMangas">Mangas</a></li>
+                        <li><a runat="server" id="adminAutores" visible="false" href="~/Views/Administrador/AdminAutores">Autores</a></li>
+                        <li><a runat="server" id="adminGeneros" visible="false" href="~/Views/Administrador/AdminGenero">Generos</a></li>
+                        <li><a runat="server" id="adminMangas" visible="false" href="~/Views/Administrador/AdminMangas">Mangas</a></li>
                         <li><a runat="server" href="~/Views/CarritoCompra">Carrito Compra</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
