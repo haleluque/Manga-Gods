@@ -3,6 +3,7 @@ using MangaGods.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -12,13 +13,15 @@ namespace MangaGods.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string idManga = Request.QueryString["Id"];
+            var idManga = RouteData.Values.Any() ? RouteData.Values["Id"].ToString() : null;
+
             if (!string.IsNullOrEmpty(idManga))
             {
-                using (CoreCarrito core = new CoreCarrito())
+                using (var core = new CoreCarrito())
                 {
                     core.AgregarManga(Convert.ToInt16(idManga));
-                    Response.Redirect("CarritoCompra.aspx");
+                    RouteData.Values.Remove("Id");
+                    Response.RedirectToRoute("RutaCarritoCompra");
                 }
             }
 

@@ -42,6 +42,16 @@ namespace MangaGods.Logic
             return Contexto.Manga.FirstOrDefault(x => x.Id == id);
         }
 
+
+        /// <summary>
+        /// Obtiene un manga por nombre
+        /// </summary>
+        /// <returns></returns>
+        public Manga ObtenerMangaXNombre(string nombre)
+        {
+            return Contexto.Manga.FirstOrDefault(x => x.Nombre.Contains(nombre));
+        }
+
         /// <summary>
         /// Obtiene un manga por el id del género
         /// </summary>

@@ -33,7 +33,9 @@
                                         <img src="/Catalogo/Imagenes/<%#:Item.ImagePath%>"
                                             width="100%" height="100%" style="border: solid" />
                                     </a>--%>
-                                     <a href="<%#: GetRouteUrl("RutaDetalleManga", new {nombre = Item.Nombre})%>"><%#: Item.Nombre %></a>
+                                     <a href="<%#: GetRouteUrl("RutaDetalleManga", new {nombre = Item.Nombre})%>">
+                                         <img src="/Catalogo/Imagenes/<%#:Item.ImagePath %>" width="100%" style="border: solid; height: 300px" alt=""/>
+                                     </a>
                                 </td>
                             </tr>
                             <tr>
@@ -55,7 +57,7 @@
                                             <b>Agregar al Carrito<b>
                                         </span>
                                     </a>--%>
-                                    <a href="<%#: GetRouteUrl("RutaCarritoCompraD", new {Id = Item.Id})%>"><%#: Item.Id %>
+                                    <a href="<%#: GetRouteUrl("RutaCarritoCompraD", new {Id = Item.Id})%>">
                                         <span class="ListaCarro">
                                             <b>Agregar al Carrito<b>
                                         </span>

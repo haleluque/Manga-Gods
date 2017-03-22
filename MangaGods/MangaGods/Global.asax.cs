@@ -69,6 +69,18 @@ namespace MangaGods
             "CarritoCompra",
             "~/Views/CarritoCompra.aspx"
             );
+
+            routes.MapPageRoute(
+            "RutaRegistro",
+            "RegistroUsuario",
+            "~/Account/Register.aspx"
+            );
+
+            routes.MapPageRoute(
+            "RuntaIngreso",
+            "Ingreso",
+            "~/Account/Login.aspx"
+            );
         }
     }
 }

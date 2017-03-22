@@ -51,20 +51,16 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Principal</a></li>
-                        <li><a runat="server" id="adminAutores" visible="false" href="~/Views/Administrador/AdminAutores">Autores</a></li>
-                        <%--<li><a Visible="false" runat="server" id="adminAutores" href="&<%$RouteUrl:routename=RutaAdminAutores %>">Autores</a></li>--%>
-                        <li><a runat="server" id="adminGeneros" visible="false" href="~/Views/Administrador/AdminGenero">Generos</a></li>
-                        <%--<li><a Visible="false" runat="server" id="adminGeneros" href="&<%$RouteUrl:routename=RutaAdminGeneros %>">Generos</a></li>--%>
-                        <li><a runat="server" id="adminMangas" visible="false" href="~/Views/Administrador/AdminMangas">Mangas</a></li>
-                        <%--<li><a Visible="false" runat="server" id="adminMangas" href="&<%$RouteUrl:routename=RutaAdminManga %>">Mangas</a></li>--%>
-                        <li><a runat="server" href="~/Views/CarritoCompra">Carrito Compra</a></li>
-                        <%--<li><a runat="server" href="<%#: GetRouteUrl("RutaCarritoCompra", new {})%>">Carrito Compra</a></li>--%>
+                        <li><a Visible="false" runat="server" id="adminAutores" href='<%$ RouteUrl:routename=RutaAdminAutores %>'>Autores</a></li>
+                        <li><a Visible="false" runat="server" id="adminGeneros" href='<%$ RouteUrl:routename=RutaAdminGeneros %>'>Generos</a></li>
+                        <li><a Visible="false" runat="server" id="adminMangas" href='<%$ RouteUrl:routename=RutaAdminManga %>'>Mangas</a></li>
+                        <li><a runat="server" href="<%$ RouteUrl:routename=RutaCarritoCompra %>">Carrito Compra</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Register">Regístrese</a></li>
-                                <li><a runat="server" href="~/Account/Login">Ingreso</a></li>
+                                <li><a runat="server" href="<%$ RouteUrl:routename=RutaRegistro %>">Regístrese</a></li>
+                                <li><a runat="server" href="<%$ RouteUrl:routename=RuntaIngreso %>">Ingreso</a></li>
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
