@@ -29,34 +29,23 @@
                         <table>
                             <tr>
                                 <td>
-                                    <%--<a href="DetalleManga.aspx?Id=<%#:Item.Id%>">
-                                        <img src="/Catalogo/Imagenes/<%#:Item.ImagePath%>"
-                                            width="100%" height="100%" style="border: solid" />
-                                    </a>--%>
-                                     <a href="<%#: GetRouteUrl("RutaDetalleManga", new {nombre = Item.Nombre})%>">
-                                         <img src="/Catalogo/Imagenes/<%#:Item.ImagePath %>" width="100%" style="border: solid; height: 300px" alt=""/>
-                                     </a>
+                                    <a href="<%#: GetRouteUrl("RutaDetalleManga", new {nombre = Item.Nombre})%>">
+                                        <img src="/Catalogo/Imagenes/<%#:Item.ImagePath %>" style="border: solid; height: 300px" alt="" />
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <%--<a href="DetalleManga.aspx?Id=<%#:Item.Id%>">
-                                        <span>
-                                            <%#:Item.Nombre%>
-                                        </span>
-                                    </a>--%>
                                     <a href="<%#: GetRouteUrl("RutaDetalleManga", new {nombre = Item.Nombre})%>"><%#: Item.Nombre %></a>
                                     <br />
-                                    <br />
                                     <span>
-                                        <b>Precio: </b><%#:String.Format("{0:N2}", "$" + Item.Precio)%>
+                                        <span><b>No. Volumen:</b>&nbsp;<%#:Item.Volumen %></span>
                                     </span>
                                     <br />
-                                    <%--<a href="CarritoCompra.aspx?Id=<%#:Item.Id %>">
-                                        <span class="ListaCarro">
-                                            <b>Agregar al Carrito<b>
-                                        </span>
-                                    </a>--%>
+                                    <span>
+                                        <b>Precio: </b><%#:$"{"$" + Item.Precio:N2}" %>
+                                    </span>
+                                    <br />
                                     <a href="<%#: GetRouteUrl("RutaCarritoCompraD", new {Id = Item.Id})%>">
                                         <span class="ListaCarro">
                                             <b>Agregar al Carrito<b>

@@ -44,9 +44,8 @@ namespace MangaGods.Account
                         Response.Redirect("/Account/Lockout");
                         break;
                     case SignInStatus.RequiresVerification:
-                        Response.Redirect(String.Format("/Account/TwoFactorAuthenticationSignIn?ReturnUrl={0}&RememberMe={1}", 
-                                                        Request.QueryString["ReturnUrl"],
-                                                        RememberMe.Checked),
+                        Response.Redirect(
+                            $"/Account/TwoFactorAuthenticationSignIn?ReturnUrl={Request.QueryString["ReturnUrl"]}&RememberMe={RememberMe.Checked}",
                                           true);
                         break;
                     case SignInStatus.Failure:

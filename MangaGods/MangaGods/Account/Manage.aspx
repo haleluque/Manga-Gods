@@ -1,6 +1,4 @@
-﻿<%@ Page Title="Manage Account" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Manage.aspx.cs" Inherits="MangaGods.Account.Manage" %>
-
-<%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
+﻿<%@ Page Title="Administración de Cuentas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Manage.aspx.cs" Inherits="MangaGods.Account.Manage" %>
 
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %>.</h2>
@@ -14,17 +12,17 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-horizontal">
-                <h4>Change your account settings</h4>
+                <h4>Cambia la configuración de tu cuenta</h4>
                 <hr />
                 <dl class="dl-horizontal">
-                    <dt>Password:</dt>
+                    <dt>Contraseña:</dt>
                     <dd>
-                        <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="[Change]" Visible="false" ID="ChangePassword" runat="server" />
-                        <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="[Create]" Visible="false" ID="CreatePassword" runat="server" />
+                        <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="[Cambiar]" Visible="false" ID="ChangePassword" runat="server" />
+                        <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="[Cambiar]" Visible="false" ID="CreatePassword" runat="server" />
                     </dd>
-                    <dt>External Logins:</dt>
+                    <dt>Ingreso Externo:</dt>
                     <dd><%: LoginsCount %>
-                        <asp:HyperLink NavigateUrl="/Account/ManageLogins" Text="[Manage]" runat="server" />
+                        <asp:HyperLink NavigateUrl="/Account/ManageLogins" Text="[Manejo]" runat="server" />
 
                     </dd>
                     <%--
@@ -50,13 +48,7 @@
                     </dd>
                     <% } %>
                     --%>
-
-                    <dt>Two-Factor Authentication:</dt>
                     <dd>
-                        <p>
-                            There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                            for details on setting up this ASP.NET application to support two-factor authentication.
-                        </p>
                         <% if (TwoFactorEnabled)
                           { %> 
                         <%--

@@ -12,6 +12,7 @@
             <asp:BoundField DataField="Manga.Id" HeaderText="Código" SortExpression="Id" />
             <asp:BoundField DataField="Manga.Nombre" HeaderText="Nombre Manga" />
             <asp:BoundField DataField="Manga.Precio" HeaderText="Precio/Unidad" DataFormatString="{0:N2}" />
+            <asp:BoundField DataField="Manga.Volumen" HeaderText="No. Volumen" />
             <asp:TemplateField HeaderText="Cantidad">
                 <ItemTemplate>
                     <asp:TextBox ID="CantidadManga" Width="40" runat="server" Text="<%#:Item.Cantidad %>"></asp:TextBox>
