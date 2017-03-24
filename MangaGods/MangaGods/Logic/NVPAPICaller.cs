@@ -38,9 +38,9 @@ namespace MangaGods.Logic
 
         //HttpWebRequest Timeout specified in milliseconds 
         private const int Timeout = 15000;
-/*
-        private static readonly string[] SecuredNvps = new string[] { Acct, Cvv2, Signature, Pwd };
-*/
+        /*
+                private static readonly string[] SecuredNvps = new string[] { Acct, Cvv2, Signature, Pwd };
+        */
 
         public void SetCredentials(string userid, string pwd, string signature)
         {
@@ -60,7 +60,7 @@ namespace MangaGods.Logic
             string returnURL = "https://localhost:44367/Checkout/CheckoutReview.aspx";
             string cancelURL = "https://localhost:44367/Checkout/CheckoutCancel.aspx";
 
-            NVPCodec encoder = new NVPCodec();
+            NvpCodec encoder = new NvpCodec();
             encoder["METHOD"] = "SetExpressCheckout";
             encoder["RETURNURL"] = returnURL;
             encoder["CANCELURL"] = cancelURL;
@@ -88,7 +88,7 @@ namespace MangaGods.Logic
             string pStrrequestforNvp = encoder.Encode();
             string pStresponsenvp = HttpCall(pStrrequestforNvp);
 
-            NVPCodec decoder = new NVPCodec();
+            NvpCodec decoder = new NvpCodec();
             decoder.Decode(pStresponsenvp);
 
             string strAck = decoder["ACK"].ToLower();
@@ -108,21 +108,21 @@ namespace MangaGods.Logic
             }
         }
 
-        public bool GetCheckoutDetails(string token, ref string payerId, ref NVPCodec decoder, ref string retMsg)
+        public bool GetCheckoutDetails(string token, ref string payerId, ref NvpCodec decoder, ref string retMsg)
         {
             if (BSandbox)
             {
                 _pEndPointUrl = pEndPointURL_SB;
             }
 
-            NVPCodec encoder = new NVPCodec();
+            NvpCodec encoder = new NvpCodec();
             encoder["METHOD"] = "GetExpressCheckoutDetails";
             encoder["TOKEN"] = token;
 
             string pStrrequestforNvp = encoder.Encode();
             string pStresponsenvp = HttpCall(pStrrequestforNvp);
 
-            decoder = new NVPCodec();
+            decoder = new NvpCodec();
             decoder.Decode(pStresponsenvp);
 
             string strAck = decoder["ACK"].ToLower();
@@ -141,14 +141,14 @@ namespace MangaGods.Logic
             }
         }
 
-        public bool DoCheckoutPayment(string finalPaymentAmount, string token, string payerId, ref NVPCodec decoder, ref string retMsg)
+        public bool DoCheckoutPayment(string finalPaymentAmount, string token, string payerId, ref NvpCodec decoder, ref string retMsg)
         {
             if (BSandbox)
             {
                 _pEndPointUrl = pEndPointURL_SB;
             }
 
-            NVPCodec encoder = new NVPCodec();
+            NvpCodec encoder = new NvpCodec();
             encoder["METHOD"] = "DoExpressCheckoutPayment";
             encoder["TOKEN"] = token;
             encoder["PAYERID"] = payerId;
@@ -159,7 +159,7 @@ namespace MangaGods.Logic
             string pStrrequestforNvp = encoder.Encode();
             string pStresponsenvp = HttpCall(pStrrequestforNvp);
 
-            decoder = new NVPCodec();
+            decoder = new NvpCodec();
             decoder.Decode(pStresponsenvp);
 
             string strAck = decoder["ACK"].ToLower();
@@ -180,51 +180,20 @@ namespace MangaGods.Logic
         public string HttpCall(string nvpRequest)
         {
             #region Prototipo anterior
-            //Estas dos líneas evitan que se genere el error de generación de certificado SSL
-            ServicePointManager.Expect100Continue = false;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            ////Estas dos líneas evitan que se genere el error de generación de certificado SSL
+            //ServicePointManager.Expect100Continue = false;
+            //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-            string url = _pEndPointUrl;
+            //string url = _pEndPointUrl;
 
-            string strPost = nvpRequest + "&" + BuildCredentialsNvpString();
-            strPost = strPost + "&BUTTONSOURCE=" + HttpUtility.UrlEncode(BNCode);
-
-            HttpWebRequest objRequest = (HttpWebRequest)WebRequest.Create(url);
-            objRequest.Timeout = Timeout;
-            objRequest.Method = "POST";
-            objRequest.ContentLength = strPost.Length;
-
-            try
-            {
-                using (StreamWriter myWriter = new StreamWriter(objRequest.GetRequestStream()))
-                {
-                    myWriter.Write(strPost);
-                }
-            }
-            catch (Exception)
-            {
-                // Log the exception.
-                //WingtipToys.Logic.ExceptionUtility.LogException(e, "HttpCall in PayPalFunction.cs");
-            }
-
-            //Retrieve the Response returned from the NVP API call to PayPal.
-            HttpWebResponse objResponse = (HttpWebResponse)objRequest.GetResponse();
-            string result;
-            using (StreamReader sr = new StreamReader(objResponse.GetResponseStream()))
-            {
-                result = sr.ReadToEnd();
-            }
-
-            return result;
-            #endregion
-
-            //string url = pEndPointURL;
-            //string strPost = NvpRequest + "&" + buildCredentialsNVPString();
+            //string strPost = nvpRequest + "&" + BuildCredentialsNvpString();
             //strPost = strPost + "&BUTTONSOURCE=" + HttpUtility.UrlEncode(BNCode);
+
             //HttpWebRequest objRequest = (HttpWebRequest)WebRequest.Create(url);
             //objRequest.Timeout = Timeout;
             //objRequest.Method = "POST";
             //objRequest.ContentLength = strPost.Length;
+
             //try
             //{
             //    using (StreamWriter myWriter = new StreamWriter(objRequest.GetRequestStream()))
@@ -232,11 +201,12 @@ namespace MangaGods.Logic
             //        myWriter.Write(strPost);
             //    }
             //}
-            //catch (Exception e)
+            //catch (Exception)
             //{
-            //    // Registra el error enviado el objeto de tipo Object y un mensaje para identificar la fuente
+            //    // Log the exception.
             //    //WingtipToys.Logic.ExceptionUtility.LogException(e, "HttpCall in PayPalFunction.cs");
             //}
+
             ////Retrieve the Response returned from the NVP API call to PayPal.
             //HttpWebResponse objResponse = (HttpWebResponse)objRequest.GetResponse();
             //string result;
@@ -244,12 +214,42 @@ namespace MangaGods.Logic
             //{
             //    result = sr.ReadToEnd();
             //}
+
             //return result;
+            #endregion
+
+            string url = _pEndPointUrl;
+            string strPost = nvpRequest + "&" + BuildCredentialsNvpString();
+            strPost = strPost + "&BUTTONSOURCE=" + HttpUtility.UrlEncode(BNCode);
+            HttpWebRequest objRequest = (HttpWebRequest)WebRequest.Create(url);
+            objRequest.Timeout = Timeout;
+            objRequest.Method = "POST";
+            objRequest.ContentLength = strPost.Length;
+            try
+            {
+                using (StreamWriter myWriter = new StreamWriter(objRequest.GetRequestStream()))
+                {
+                    myWriter.Write(strPost);
+                }
+            }
+            catch (Exception e)
+            {
+                // Registra el error enviado el objeto de tipo Object y un mensaje para identificar la fuente
+                ExceptionUtility.LogException(e, "HttpCall in PayPalFunction.cs");
+            }
+            //Retrieve the Response returned from the NVP API call to PayPal.
+            HttpWebResponse objResponse = (HttpWebResponse)objRequest.GetResponse();
+            string result;
+            using (StreamReader sr = new StreamReader(objResponse.GetResponseStream()))
+            {
+                result = sr.ReadToEnd();
+            }
+            return result;
         }
 
         private string BuildCredentialsNvpString()
         {
-            NVPCodec codec = new NVPCodec();
+            NvpCodec codec = new NvpCodec();
 
             if (!IsEmpty(ApiUsername))
                 codec["USER"] = ApiUsername;
@@ -275,7 +275,7 @@ namespace MangaGods.Logic
     }
 
 
-    public sealed class NVPCodec : NameValueCollection
+    public sealed class NvpCodec : NameValueCollection
     {
         private const string Ampersand = "&";
         private const string EQUALS = "=";

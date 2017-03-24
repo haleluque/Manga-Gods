@@ -18,7 +18,7 @@ namespace MangaGods.Checkout
             }
             NVPAPICaller payPalCaller = new NVPAPICaller();
             string retMsg = "";
-            NVPCodec decoder = new NVPCodec();
+            NvpCodec decoder = new NvpCodec();
             var token = Session["token"].ToString();
             var payerId = Session["payerId"].ToString();
             var finalPaymentAmount = Session["payment_amt"].ToString().Replace(",", ".");

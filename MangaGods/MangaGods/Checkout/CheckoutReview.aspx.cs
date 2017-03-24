@@ -12,7 +12,7 @@ namespace MangaGods.Checkout
             NVPAPICaller payPalCaller = new NVPAPICaller();
             string retMsg = "";
             string payerId = "";
-            NVPCodec decoder = new NVPCodec();
+            NvpCodec decoder = new NvpCodec();
             var token = Session["token"].ToString();
             bool ret = payPalCaller.GetCheckoutDetails(token, ref payerId, ref decoder, ref retMsg);
             if (ret)
