@@ -82,5 +82,22 @@ namespace MangaGods
             "~/Account/Login.aspx"
             );
         }
+
+        /// <summary>
+        /// Según el tipo de error que llega de la app, se redirecciona con el detalle de error
+        /// a la página de errores.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Application_Error(object sender, EventArgs e)
+        {
+            // Code that runs when an unhandled error occurs.
+            // Get last error from the server
+            var exc = Server.GetLastError();
+            if (!(exc is HttpUnhandledException)) return;
+            if (exc.InnerException == null) return;
+            exc = new Exception(exc.InnerException.Message);
+            Server.Transfer("/Views/Errores/ErrorPersonalizado.aspx?handler=Application_Error%20-%20Global.asax", true);
+        }
     }
 }

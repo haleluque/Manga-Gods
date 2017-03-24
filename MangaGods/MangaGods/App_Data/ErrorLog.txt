@@ -1,0 +1,104 @@
+********** 22/03/2017 15:08:26 **********
+Exception Type: System.Exception
+Exception: The error was unhandled by application code.
+Source: Error Page
+Stack Trace: 
+********** 22/03/2017 15:09:29 **********
+Exception Type: System.Web.HttpException
+Exception: Ha ocurrido un error de tipo HTTP. Página no encontrada. Por favor intente de nuevo.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 24/03/2017 10:56:45 **********
+Exception Type: System.Exception
+Exception: The error was unhandled by application code.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 24/03/2017 11:03:11 **********
+Exception Type: System.Exception
+Exception: The error was unhandled by application code.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 24/03/2017 11:06:52 **********
+Exception Type: System.Exception
+Exception: The error was unhandled by application code.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 24/03/2017 11:07:01 **********
+Exception Type: System.Exception
+Exception: The error was unhandled by application code.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 24/03/2017 11:07:43 **********
+Exception Type: System.Exception
+Exception: The error was unhandled by application code.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 24/03/2017 11:08:21 **********
+Exception Type: System.Exception
+Exception: The error was unhandled by application code.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 24/03/2017 11:12:45 **********
+Exception Type: System.Exception
+Exception: The error was unhandled by application code.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 24/03/2017 11:13:21 **********
+Inner Exception Type: System.InvalidOperationException
+Inner Exception: An InvalidOperationException Esto es un error de prueba ocurrido en la pagina Default.aspx.cs
+Inner Source: MangaGods
+Inner Stack Trace: 
+   en MangaGods._Default.Page_Load(Object sender, EventArgs e) en C:\Users\henry.luque\Source\Repos\Manga-Gods\MangaGods\MangaGods\Default.aspx.cs:línea 14
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+Exception Type: System.Web.HttpUnhandledException
+Exception: Se produjo una excepción de tipo 'System.Web.HttpUnhandledException'.
+Source: Application_Error - Global.asax
+Stack Trace: 
+   en System.Web.UI.Page.HandleError(Exception e)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   en System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   en System.Web.UI.Page.ProcessRequest()
+   en System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   en System.Web.UI.Page.ProcessRequest(HttpContext context)
+   en ASP.default_aspx.ProcessRequest(HttpContext context) en C:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\vs\9f580f6a\7907b0c5\App_Web_1tcrpkxa.1.cs:línea 0
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+********** 24/03/2017 11:16:46 **********
+Inner Exception Type: System.InvalidOperationException
+Inner Exception: An InvalidOperationException Esto es un error de prueba ocurrido en la pagina Default.aspx.cs
+Inner Source: MangaGods
+Inner Stack Trace: 
+   en MangaGods._Default.Page_Load(Object sender, EventArgs e) en C:\Users\henry.luque\Source\Repos\Manga-Gods\MangaGods\MangaGods\Default.aspx.cs:línea 14
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+Exception Type: System.Web.HttpUnhandledException
+Exception: Se produjo una excepción de tipo 'System.Web.HttpUnhandledException'.
+Source: Application_Error - Global.asax
+Stack Trace: 
+   en System.Web.UI.Page.HandleError(Exception e)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   en System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   en System.Web.UI.Page.ProcessRequest()
+   en System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   en System.Web.UI.Page.ProcessRequest(HttpContext context)
+   en ASP.default_aspx.ProcessRequest(HttpContext context) en C:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\vs\9f580f6a\7907b0c5\App_Web_aoj21hit.0.cs:línea 0
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+********** 24/03/2017 11:21:18 **********
+Exception Type: System.InvalidOperationException
+Exception: An InvalidOperationException Esto es un error de prueba ocurrido en la pagina Default.aspx.cs
+Source: Page_Error - Default.aspx
+Stack Trace: 
+   en MangaGods._Default.Page_Load(Object sender, EventArgs e) en C:\Users\henry.luque\Source\Repos\Manga-Gods\MangaGods\MangaGods\Default.aspx.cs:línea 14
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

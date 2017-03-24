@@ -200,6 +200,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="App_Data\ErrorLog.txt" />
     <Content Include="Catalogo\Imagenes\15-manga-font.jpg" />
     <Content Include="Catalogo\Imagenes\naruto-l0.jpg" />
     <Content Include="Checkout\CheckoutCancel.aspx" />
@@ -261,8 +262,11 @@
     <Content Include="Views\Administrador\AdminMangas.aspx" />
     <Content Include="Views\CarritoCompra.aspx" />
     <Content Include="Views\DetalleManga.aspx" />
+    <Content Include="Views\Errores\ErrorPersonalizado.aspx" />
     <Content Include="Views\Generos.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Bundle.config" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
@@ -454,6 +458,7 @@
     <Compile Include="Logic\CoreCarrito.cs" />
     <Compile Include="Logic\CoreGenero.cs" />
     <Compile Include="Logic\CoreManga.cs" />
+    <Compile Include="Logic\ExceptionUtility.cs" />
     <Compile Include="Logic\NVPAPICaller.cs" />
     <Compile Include="Logic\RoleActions.cs" />
     <Compile Include="Models\Autor.cs" />
@@ -522,6 +527,13 @@
     <Compile Include="Views\DetalleManga.aspx.designer.cs">
       <DependentUpon>DetalleManga.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Errores\ErrorPersonalizado.aspx.cs">
+      <DependentUpon>ErrorPersonalizado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Errores\ErrorPersonalizado.aspx.designer.cs">
+      <DependentUpon>ErrorPersonalizado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Generos.aspx.cs">
       <DependentUpon>Generos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -530,9 +542,7 @@
       <DependentUpon>Generos.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="App_GlobalResources\RecursosMangaGods.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
