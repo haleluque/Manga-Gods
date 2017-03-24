@@ -21,7 +21,7 @@ namespace MangaGods.Logic
             // Guarda el log en la carpeta App_Data
             //var logFile = "App_Data/ErrorLog.txt";
             //logFile = HttpContext.Current.Server.MapPath(logFile);
-            var logFile =  Path.Combine(HttpContext.Current.Server.MapPath("~"), "App_Data/ErrorLog.txt");
+            var logFile = Path.Combine(HttpContext.Current.Server.MapPath("~"), "App_Data/ErrorLog.txt");
             // Abre  el archivo y registra el error capturado
             var sw = new StreamWriter(logFile, true);
             sw.WriteLine($"********** {DateTime.Now} **********");

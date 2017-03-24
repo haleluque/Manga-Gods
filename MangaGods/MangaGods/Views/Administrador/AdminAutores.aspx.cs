@@ -12,6 +12,9 @@ namespace MangaGods.Views.Administrador
     /// </summary>
     public partial class AdminAutores : Page
     {
+        /// <summary>
+        /// Instancia de la clase core correspondiente
+        /// </summary>
         private CoreAutor _core;
 
         /// <summary>
@@ -25,46 +28,60 @@ namespace MangaGods.Views.Administrador
         }
 
         /// <summary>
-        /// Evento que maneja la creación de un nuevo autor
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void CrearAutor_Click(object sender, EventArgs e)
-        {
-            // Se valida que la creación haya sido exitosa
-            if (_core.CrearAutor(new Autor
-            {
-                Nombre = txtNombreAutor.Text,
-                Edad = string.IsNullOrEmpty(txtEdad.Text) ? (int?)null : Convert.ToInt32(txtEdad.Text),
-                Empresa = txtEmpresa.Text
-            }))
-            {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionCreacionAutor")?.ToString();
-                LimpiarCampos(1);
-            }
-            else
-            {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCreacionAutor")?.ToString();
-            }           
-        }
-
-        /// <summary>
         /// Evento que maneja la búsqueda de un autor por id
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void Buscar_Click(object sender, EventArgs e)
         {
-            alerta.InnerText = string.Empty;
-            var autor = _core.ObtenerAutorXId(Convert.ToInt32(txtId.Text));
-            if (autor != null)
+            try
             {
-                MostrarDatosAutor(true);
-                CargarDatosAutor(autor);
+                alerta.InnerText = string.Empty;
+                var autor = _core.ObtenerAutorXId(Convert.ToInt32(txtId.Text));
+                if (autor != null)
+                {
+                    MostrarDatosAutor(true);
+                    CargarDatosAutor(autor);
+                }
+                else
+                {
+                    alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdAutor")?.ToString();
+                }
             }
-            else
+            catch (Exception n)
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdAutor")?.ToString();
+                throw new Exception(n.Message, n);
+            }
+        }
+
+        /// <summary>
+        /// Evento que maneja la creación de un nuevo autor
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void CrearAutor_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Se valida que la creación haya sido exitosa
+                if (_core.CrearAutor(new Autor
+                {
+                    Nombre = txtNombreAutor.Text,
+                    Edad = string.IsNullOrEmpty(txtEdad.Text) ? (int?)null : Convert.ToInt32(txtEdad.Text),
+                    Empresa = txtEmpresa.Text
+                }))
+                {
+                    alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionCreacionAutor")?.ToString();
+                    LimpiarCampos(1);
+                }
+                else
+                {
+                    alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCreacionAutor")?.ToString();
+                }
+            }
+            catch (Exception n)
+            {
+                throw new Exception(n.Message, n);
             }
         }
 
@@ -75,22 +92,29 @@ namespace MangaGods.Views.Administrador
         /// <param name="e"></param>
         protected void Actualizar_Click(object sender, EventArgs e)
         {
-            // Se valida que la creación haya sido exitosa
-            if (_core.ActualizarAutor(new Autor
+            try
             {
-                Id = Convert.ToInt32(txtId.Text),
-                Nombre = txtNombreConsulta.Text,
-                Edad = string.IsNullOrEmpty(txtEdadConsulta.Text) ? (int?)null : Convert.ToInt32(txtEdadConsulta.Text),
-                Empresa = txtEmpresaConsulta.Text
-            }))
-            {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionActualizacionAutor")?.ToString();
-                LimpiarCampos(2);
-                MostrarDatosAutor(false);
+                // Se valida que la creación haya sido exitosa
+                if (_core.ActualizarAutor(new Autor
+                {
+                    Id = Convert.ToInt32(txtId.Text),
+                    Nombre = txtNombreConsulta.Text,
+                    Edad = string.IsNullOrEmpty(txtEdadConsulta.Text) ? (int?)null : Convert.ToInt32(txtEdadConsulta.Text),
+                    Empresa = txtEmpresaConsulta.Text
+                }))
+                {
+                    alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionActualizacionAutor")?.ToString();
+                    LimpiarCampos(2);
+                    MostrarDatosAutor(false);
+                }
+                else
+                {
+                    alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarAutor")?.ToString();
+                }
             }
-            else
+            catch (Exception n)
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarAutor")?.ToString();
+                throw new Exception(n.Message, n);
             }
         }
 
@@ -101,15 +125,22 @@ namespace MangaGods.Views.Administrador
         /// <param name="e"></param>
         protected void Borrar_Click(object sender, EventArgs e)
         {
-            if (_core.BorrarAutor(Convert.ToInt32(txtId.Text)))
+            try
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionBorradoAutor")?.ToString();
-                LimpiarCampos(2);
-                MostrarDatosAutor(false);
+                if (_core.BorrarAutor(Convert.ToInt32(txtId.Text)))
+                {
+                    alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionBorradoAutor")?.ToString();
+                    LimpiarCampos(2);
+                    MostrarDatosAutor(false);
+                }
+                else
+                {
+                    alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorrarAutor")?.ToString();
+                }
             }
-            else
+            catch (Exception n)
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorrarAutor")?.ToString();
+                throw new Exception(n.Message, n);
             }
         }
 
@@ -142,21 +173,31 @@ namespace MangaGods.Views.Administrador
         /// <param name="evento"></param>
         private void LimpiarCampos(int evento)
         {
-            //Creando autor
-            if (evento == 1)
+            switch (evento)
             {
-                txtNombreAutor.Text = string.Empty;
-                txtEdad.Text = string.Empty;
-                txtEmpresa.Text = string.Empty;
+                case 1:
+                    txtNombreAutor.Text = string.Empty;
+                    txtEdad.Text = string.Empty;
+                    txtEmpresa.Text = string.Empty;
+                    break;
+                case 2:
+                    txtId.Text = string.Empty;
+                    txtNombreConsulta.Text = string.Empty;
+                    txtEdadConsulta.Text = string.Empty;
+                    txtEmpresaConsulta.Text = string.Empty;
+                    break;
             }
-            else if (evento == 2) //Actualizando
-            {
-                txtId.Text = string.Empty;
-                txtNombreConsulta.Text = string.Empty;
-                txtEdadConsulta.Text = string.Empty;
-                txtEmpresaConsulta.Text = string.Empty;
-            }
-            
+        }
+
+        /// <summary>
+        /// Manejador de errores de la página de administración de autores de la app
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Page_Error(object sender, EventArgs e)
+        {
+            // Redireccionan a la página de errores
+            Server.Transfer("/Views/Errores/ErrorPersonalizado.aspx?handler=Page_Error%20-%20AdminAutores.aspx.cs", true);
         }
     }
 }

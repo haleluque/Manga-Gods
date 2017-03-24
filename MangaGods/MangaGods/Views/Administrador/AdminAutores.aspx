@@ -24,6 +24,9 @@
                     </td>
                     <td>
                         <asp:TextBox ID="txtEdad" runat="server"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="formatoEdad" ValidationGroup="grupoCrear" runat="server" Text="<%$ Resources:RecursosMangaGods, spanErrorFormatoId %>"
+                            ControlToValidate="txtEdad" SetFocusOnError="True" Display="Dynamic" ValidationExpression="^[0-9]*$">
+                        </asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
@@ -53,6 +56,9 @@
                             <asp:RequiredFieldValidator ID="requeridoId" ValidationGroup="grupoConsulta" runat="server" Text="<%$ Resources:RecursosMangaGods, spanErrorId %>"
                                 ControlToValidate="txtId" SetFocusOnError="true" Display="Dynamic">
                             </asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="expresionNumeros" ValidationGroup="grupoConsulta" runat="server" Text="<%$ Resources:RecursosMangaGods, spanErrorFormatoId %>"
+                                ControlToValidate="txtId" SetFocusOnError="True" Display="Dynamic" ValidationExpression="^[0-9]*$">
+                            </asp:RegularExpressionValidator>
                         </div>
                     </div>
                 </div>
@@ -70,6 +76,9 @@
                         <asp:Label ID="lblEdadConsulta" runat="server" Text="<%$ Resources:RecursosMangaGods, lblEdad %>"></asp:Label>
                         <div>
                             <asp:TextBox ID="txtEdadConsulta" runat="server"></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="formatoEdadConsulta" ValidationGroup="grupoCrear" runat="server" Text="<%$ Resources:RecursosMangaGods, spanErrorFormatoId %>"
+                                ControlToValidate="txtEdadConsulta" SetFocusOnError="True" Display="Dynamic" ValidationExpression="^[0-9]*$">
+                            </asp:RegularExpressionValidator>
                         </div>
                     </div>
                     <div>

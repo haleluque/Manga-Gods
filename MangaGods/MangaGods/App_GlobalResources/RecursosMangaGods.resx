@@ -156,6 +156,12 @@
   <data name="ErrorBorrarAutor" xml:space="preserve">
     <value>Ha ocurrido un error al borrar el autor</value>
   </data>
+  <data name="ErrorConsultaAutor" xml:space="preserve">
+    <value>Error inesperado al intentar obtener el autor por id.</value>
+  </data>
+  <data name="ErrorConsultarTodosAutores" xml:space="preserve">
+    <value>Error al intentar consultar los autores.</value>
+  </data>
   <data name="ErrorCreacionAutor" xml:space="preserve">
     <value>Ha ocurrido un error al crear el autor.</value>
   </data>
@@ -174,8 +180,17 @@
   <data name="ErrorIdGenero" xml:space="preserve">
     <value>El Id del género ingresado no existe</value>
   </data>
+  <data name="ErrorIdIncorrecto" xml:space="preserve">
+    <value>El id ingresado no es correcto.</value>
+  </data>
   <data name="ErrorIdManga" xml:space="preserve">
     <value>El Id del manga ingresado no existe</value>
+  </data>
+  <data name="ErrorIdNulo" xml:space="preserve">
+    <value>El campo Código no puede ser nulo.</value>
+  </data>
+  <data name="ErrorNulo" xml:space="preserve">
+    <value>El valor esperado no puede ser nulo.</value>
   </data>
   <data name="lblAniadirImagen" xml:space="preserve">
     <value>Imagen</value>
@@ -219,6 +234,9 @@
   <data name="spanErrorEmpresaAutor" xml:space="preserve">
     <value>* La descripción de la empresa es obligatoria</value>
     <comment>Mensaje de error al valida obligatoriedad de la empresa del autor</comment>
+  </data>
+  <data name="spanErrorFormatoId" xml:space="preserve">
+    <value>El formato del campo Código es incorrecto</value>
   </data>
   <data name="spanErrorFormatoPrecio" xml:space="preserve">
     <value>* El formato del precio no es correcto</value>
