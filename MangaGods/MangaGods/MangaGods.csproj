@@ -391,6 +391,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecursosMangaGods.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\RecursosMangaGods1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosMangaGods.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>

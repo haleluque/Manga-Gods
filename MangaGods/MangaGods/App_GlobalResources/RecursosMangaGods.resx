@@ -147,8 +147,17 @@
   <data name="ErrorActualizarAutor" xml:space="preserve">
     <value>Ha ocurrido un error al actualizar los datos del autor.</value>
   </data>
+  <data name="ErrorActualizarCarrito" xml:space="preserve">
+    <value>Ha ocurrido un error al intentar actualizar el carrito de compra.</value>
+  </data>
   <data name="ErrorActualizarManga" xml:space="preserve">
     <value>Ha ocurrido un error al actualizar los datos del manga.</value>
+  </data>
+  <data name="ErrorAgregarProductoCarrito" xml:space="preserve">
+    <value>Ha ocurrido un error al intentar agregar un manga al carrito de compra.</value>
+  </data>
+  <data name="ErrorAsociarIdCarrito" xml:space="preserve">
+    <value>Ha ocurrido al asociar/crear el id del carrito de compra.</value>
   </data>
   <data name="ErrorBorradoManga" xml:space="preserve">
     <value>Ha ocurrido un error al borrar el manga</value>
@@ -156,11 +165,20 @@
   <data name="ErrorBorrarAutor" xml:space="preserve">
     <value>Ha ocurrido un error al borrar el autor</value>
   </data>
+  <data name="ErrorBorrarProductoCarrito" xml:space="preserve">
+    <value>Ha ocurrido un error al intentar quitar un manga del carrito de compra.</value>
+  </data>
+  <data name="ErrorCalcularTotalCarrito" xml:space="preserve">
+    <value>Ha ocurrido un error al calcular el total de pago del carrito de compra.</value>
+  </data>
   <data name="ErrorConsultaAutor" xml:space="preserve">
     <value>Error inesperado al intentar obtener el autor por id.</value>
   </data>
   <data name="ErrorConsultarTodosAutores" xml:space="preserve">
     <value>Error al intentar consultar los autores.</value>
+  </data>
+  <data name="ErrorConsultarTodosCarritos" xml:space="preserve">
+    <value>Error al intentar consultar los carritos de compra.</value>
   </data>
   <data name="ErrorConversionDato" xml:space="preserve">
     <value>Ha ocurrido un error al intentar convertir el tipo de dato.</value>
@@ -194,6 +212,18 @@
   </data>
   <data name="ErrorNulo" xml:space="preserve">
     <value>El valor esperado no puede ser nulo.</value>
+  </data>
+  <data name="ErrorQueryString" xml:space="preserve">
+    <value>El parámetro enviado por query string no existe.</value>
+  </data>
+  <data name="ErrorResponseRedirect" xml:space="preserve">
+    <value>Ha ocurrido un error al intentar redireccionar a otra página.</value>
+  </data>
+  <data name="ErrorVaciarCarroCompra" xml:space="preserve">
+    <value>Ha ocurrido un error al vaciar el carrito de compra.</value>
+  </data>
+  <data name="ErrorValorNoEncontradoVector" xml:space="preserve">
+    <value>Ha ocurrido un error al intentar encontrar un ítem dentro de un vector.</value>
   </data>
   <data name="lblAniadirImagen" xml:space="preserve">
     <value>Imagen</value>

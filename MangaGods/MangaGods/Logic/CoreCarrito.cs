@@ -32,9 +32,16 @@ namespace MangaGods.Logic
         /// <returns></returns>
         public List<Carrito> ConsultarCarros()
         {
-            IdCarrito = ObtenerIdCarrito();
-            return _contexto.Carrito.Where(
-            c => c.IdCarrito == IdCarrito).ToList();
+            try
+            {
+                IdCarrito = ObtenerIdCarrito();
+                return _contexto.Carrito.Where(c => c.IdCarrito == IdCarrito).ToList();
+            }
+            catch (Exception e)
+            {
+                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultarTodosCarritos")?.ToString());
+                throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultarTodosCarritos")?.ToString());
+            }
         }
 
         /// <summary>
@@ -43,19 +50,27 @@ namespace MangaGods.Logic
         /// <returns></returns>
         public decimal CalcularTotalPago()
         {
-            IdCarrito = ObtenerIdCarrito();
-
-            // Multiplica el precio del producto por la cantidad requerida
-            // de cada manga para obtener el total a pagar del carrito
-            var consulta = (from carrito in _contexto.Carrito
-                            where carrito.IdCarrito == IdCarrito
-                            select carrito);
-            if (consulta.Any())
+            try
             {
-                return (decimal)(from items in consulta
-                                 select (items.Cantidad * items.Manga.Precio)).Sum();
+                IdCarrito = ObtenerIdCarrito();
+
+                // Multiplica el precio del producto por la cantidad requerida
+                // de cada manga para obtener el total a pagar del carrito
+                var consulta = (from carrito in _contexto.Carrito
+                                where carrito.IdCarrito == IdCarrito
+                                select carrito);
+                if (consulta.Any())
+                {
+                    return (decimal)(from items in consulta
+                                     select (items.Cantidad * items.Manga.Precio)).Sum();
+                }
+                return decimal.Zero;
             }
-            return decimal.Zero;
+            catch (Exception e)
+            {
+                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCalcularTotalCarrito")?.ToString());
+                throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCalcularTotalCarrito")?.ToString());
+            }
         }
 
         /// <summary>
@@ -79,19 +94,26 @@ namespace MangaGods.Logic
         /// <returns></returns>
         public string ObtenerIdCarrito()
         {
-            if (HttpContext.Current.Session[LlaveSesionCarrito] == null)
+            try
             {
+                if (HttpContext.Current.Session[LlaveSesionCarrito] != null)
+                    return HttpContext.Current.Session[LlaveSesionCarrito].ToString();
                 if (!string.IsNullOrWhiteSpace(HttpContext.Current.User.Identity.Name))
                 {
                     HttpContext.Current.Session[LlaveSesionCarrito] = HttpContext.Current.User.Identity.Name;
                 }
                 else
                 {
-                    Guid tempCartId = Guid.NewGuid();
+                    var tempCartId = Guid.NewGuid();
                     HttpContext.Current.Session[LlaveSesionCarrito] = tempCartId.ToString();
                 }
+                return HttpContext.Current.Session[LlaveSesionCarrito].ToString();
             }
-            return HttpContext.Current.Session[LlaveSesionCarrito].ToString();
+            catch (Exception e)
+            {
+                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorAsociarIdCarrito")?.ToString());
+                throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorAsociarIdCarrito")?.ToString());
+            }
         }
 
         /// <summary>
@@ -102,34 +124,41 @@ namespace MangaGods.Logic
         {
             IdCarrito = ObtenerIdCarrito();
 
-            //Obtiene de la base de datos si el carrito ya ha sido creado y si tiene el producto seleccionado
-            var carro = _contexto.Carrito.SingleOrDefault(
-                c => c.IdCarrito == IdCarrito
-                && c.IdManga == idManga);
-
-            if (carro == null)
+            try
             {
-                // Crea un nuevo carrito con el producto seleccionado si no existe             
-                carro = new Carrito
+                //Obtiene de la base de datos si el carrito ya ha sido creado y si tiene el producto seleccionado
+                var carro = _contexto.Carrito.SingleOrDefault(
+                    c => c.IdCarrito == IdCarrito
+                    && c.IdManga == idManga);
+
+                if (carro == null)
                 {
-                    Id = Guid.NewGuid().ToString(),
-                    IdManga = idManga,
-                    IdCarrito = IdCarrito,
-                    Manga = _contexto.Manga.SingleOrDefault(
-                    p => p.Id == idManga),
-                    Cantidad = 1,
-                    FechaCreacion = DateTime.Now
-                };
+                    // Crea un nuevo carrito con el producto seleccionado si no existe             
+                    carro = new Carrito
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        IdManga = idManga,
+                        IdCarrito = IdCarrito,
+                        Manga = _contexto.Manga.SingleOrDefault(
+                        p => p.Id == idManga),
+                        Cantidad = 1,
+                        FechaCreacion = DateTime.Now
+                    };
 
-                _contexto.Carrito.Add(carro);
+                    _contexto.Carrito.Add(carro);
+                }
+                else
+                {
+                    //Si el carro ya existe, agrega uno a la cantidad              
+                    carro.Cantidad++;
+                }
+                _contexto.SaveChanges();
             }
-            else
+            catch (Exception e)
             {
-                //Si el carro ya existe, agrega uno a la cantidad              
-                carro.Cantidad++;
+                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorAgregarProductoCarrito")?.ToString());
+                throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorAgregarProductoCarrito")?.ToString());
             }
-            _contexto.SaveChanges();
-
         }
 
         /// <summary>
@@ -160,9 +189,10 @@ namespace MangaGods.Logic
                     }
                 }
             }
-            catch (Exception exp)
+            catch (Exception e)
             {
-                throw new Exception("ERROR: Ha ocurrido un error al actualizar el carrito - " + exp.Message, exp);
+                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarCarrito")?.ToString());
+                throw new Exception(e.Message);
             }
         }
 
@@ -186,9 +216,10 @@ namespace MangaGods.Logic
                     db.Carrito.Remove(manga);
                     db.SaveChanges();
                 }
-                catch (Exception exp)
+                catch (Exception e)
                 {
-                    throw new Exception("ERROR: No se pudo eliminar manga del carro - " + exp.Message, exp);
+                    ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorrarProductoCarrito")?.ToString());
+                    throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorrarProductoCarrito")?.ToString());
                 }
             }
         }
@@ -213,9 +244,10 @@ namespace MangaGods.Logic
                     manga.Cantidad = nuevaCantidad;
                     db.SaveChanges();
                 }
-                catch (Exception exp)
+                catch (Exception e)
                 {
-                    throw new Exception("ERROR: No se pudo actualizar los datos de los productos - " + exp.Message, exp);
+                    ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarCarrito")?.ToString());
+                    throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarCarrito")?.ToString());
                 }
             }
         }
@@ -226,14 +258,23 @@ namespace MangaGods.Logic
         public void VaciarCarro()
         {
             IdCarrito = ObtenerIdCarrito();
-            var cartItems = _contexto.Carrito.Where(
-            c => c.IdCarrito == IdCarrito);
-            foreach (var manga in cartItems)
+
+            try
             {
-                _contexto.Carrito.Remove(manga);
+                var cartItems = _contexto.Carrito.Where(
+                c => c.IdCarrito == IdCarrito);
+                foreach (var manga in cartItems)
+                {
+                    _contexto.Carrito.Remove(manga);
+                }
+                // Save changes.
+                _contexto.SaveChanges();
             }
-            // Save changes.
-            _contexto.SaveChanges();
+            catch (Exception e)
+            {
+                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorVaciarCarroCompra")?.ToString());
+                throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorVaciarCarroCompra")?.ToString());
+            }
         }
 
         /// <summary>
@@ -258,11 +299,9 @@ namespace MangaGods.Logic
         /// </summary>
         public void Dispose()
         {
-            if (_contexto != null)
-            {
-                _contexto.Dispose();
-                _contexto = null;
-            }
+            if (_contexto == null) return;
+            _contexto.Dispose();
+            _contexto = null;
         }
 
         /// <summary>
