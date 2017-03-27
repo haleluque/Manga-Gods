@@ -213,7 +213,7 @@ namespace MangaGods.Views.Administrador
         private void Page_Error(object sender, EventArgs e)
         {
             // Redireccionan a la página de errores
-            Server.Transfer("/Views/Errores/ErrorPersonalizado.aspx?handler=Page_Error%20-%20AdminAutores.aspx.cs", true);
+            Server.Transfer("/Views/Errores/ErrorPersonalizado.aspx?handler=Page_Error%20-%20AdminAutores.aspx.cs", false);
         }
     }
 }

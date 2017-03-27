@@ -200,7 +200,7 @@ namespace MangaGods.Views
         private void Page_Error(object sender, EventArgs e)
         {
             // Redireccionan a la página de errores
-            Server.Transfer("/Views/Errores/ErrorPersonalizado.aspx?handler=Page_Error%20-%CarritoCompra.aspx.cs", true);
+            Server.Transfer("/Views/Errores/ErrorPersonalizado.aspx?handler=Page_Error%20-%CarritoCompra.aspx.cs", false);
         }
     }
 }

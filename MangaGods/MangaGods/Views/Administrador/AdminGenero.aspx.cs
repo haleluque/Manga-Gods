@@ -31,19 +31,26 @@ namespace MangaGods.Views.Administrador
         /// <param name="e"></param>
         protected void CrearGenero_Click(object sender, EventArgs e)
         {
-            // Se valida que la creación haya sido exitosa
-            if (_core.CrearGenero(new Genero
+            try
             {
-                Nombre = txtNombreGenero.Text,
-                Descripcion = txtDescripcionGenero.Text
-            }))
-            {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionCreacionGenero")?.ToString();
-                LimpiarCampos(1);
+                // Se valida que la creación haya sido exitosa
+                if (_core.CrearGenero(new Genero
+                {
+                    Nombre = txtNombreGenero.Text,
+                    Descripcion = txtDescripcionGenero.Text
+                }))
+                {
+                    alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionCreacionGenero")?.ToString();
+                    LimpiarCampos(1);
+                }
+                else
+                {
+                    alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCreacionGenero")?.ToString();
+                }
             }
-            else
+            catch (Exception n)
             {
-                alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCreacionGenero")?.ToString();
+                throw new Exception(n.Message, n);
             }
         }
 
@@ -71,6 +78,10 @@ namespace MangaGods.Views.Administrador
             catch (InvalidCastException a)
             {
                 throw new InvalidCastException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConversionDato")?.ToString(), a);
+            }
+            catch (Exception n)
+            {
+                throw new Exception(n.Message, n);
             }
         }
 
@@ -104,6 +115,10 @@ namespace MangaGods.Views.Administrador
             {
                 throw new InvalidCastException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConversionDato")?.ToString(), a);
             }
+            catch (Exception n)
+            {
+                throw new Exception(n.Message, n);
+            }
         }
 
         /// <summary>
@@ -130,6 +145,10 @@ namespace MangaGods.Views.Administrador
             {
                 throw new InvalidCastException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConversionDato")?.ToString(), a);
             }
+            catch (Exception n)
+            {
+                throw new Exception(n.Message, n);
+            }
         }
 
         /// <summary>
@@ -140,16 +159,17 @@ namespace MangaGods.Views.Administrador
         private void LimpiarCampos(int evento)
         {
             //Creando genero
-            if (evento == 1)
+            switch (evento)
             {
-                txtNombreGenero.Text = string.Empty;
-                txtDescripcionGenero.Text = string.Empty;
-            }
-            else if (evento == 2) //Actualizando
-            {
-                txtId.Text = string.Empty;
-                txtGeneroConsulta.Text = string.Empty;
-                txtDescripcionConsulta.Text = string.Empty;
+                case 1:
+                    txtNombreGenero.Text = string.Empty;
+                    txtDescripcionGenero.Text = string.Empty;
+                    break;
+                case 2:
+                    txtId.Text = string.Empty;
+                    txtGeneroConsulta.Text = string.Empty;
+                    txtDescripcionConsulta.Text = string.Empty;
+                    break;
             }
         }
 
@@ -172,6 +192,17 @@ namespace MangaGods.Views.Administrador
         {
             txtGeneroConsulta.Text = consulta.Nombre;
             txtDescripcionConsulta.Text = consulta.Descripcion;
+        }
+
+        /// <summary>
+        /// Manejador de errores de la página de administración de generos de manga de la app
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Page_Error(object sender, EventArgs e)
+        {
+            // Redireccionan a la página de errores
+            Server.Transfer("/Views/Errores/ErrorPersonalizado.aspx?handler=Page_Error%20-%AdminGenero.aspx.cs", false);
         }
     }
 }

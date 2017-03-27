@@ -138,8 +138,8 @@ namespace MangaGods.Logic
                 }
                 catch (Exception e)
                 {
-                    ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarAutor")?.ToString());
-                    throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarAutor")?.ToString());
+                    ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorrarAutor")?.ToString());
+                    throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorrarAutor")?.ToString());
                 }
             }
             return true;

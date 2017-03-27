@@ -150,6 +150,9 @@
   <data name="ErrorActualizarCarrito" xml:space="preserve">
     <value>Ha ocurrido un error al intentar actualizar el carrito de compra.</value>
   </data>
+  <data name="ErrorActualizarGenero" xml:space="preserve">
+    <value>Ha ocurrido un error al actualizar los datos del genero de manga.</value>
+  </data>
   <data name="ErrorActualizarManga" xml:space="preserve">
     <value>Ha ocurrido un error al actualizar los datos del manga.</value>
   </data>
@@ -165,6 +168,9 @@
   <data name="ErrorBorrarAutor" xml:space="preserve">
     <value>Ha ocurrido un error al borrar el autor</value>
   </data>
+  <data name="ErrorBorrarGenero" xml:space="preserve">
+    <value>Ha ocurrido un error al borrar el genero de manga.</value>
+  </data>
   <data name="ErrorBorrarProductoCarrito" xml:space="preserve">
     <value>Ha ocurrido un error al intentar quitar un manga del carrito de compra.</value>
   </data>
@@ -174,11 +180,17 @@
   <data name="ErrorConsultaAutor" xml:space="preserve">
     <value>Error inesperado al intentar obtener el autor por id.</value>
   </data>
+  <data name="ErrorConsultaGenero" xml:space="preserve">
+    <value>Ha ocurrido un error al intentar consultar un genero de manga por el id.</value>
+  </data>
   <data name="ErrorConsultarTodosAutores" xml:space="preserve">
     <value>Error al intentar consultar los autores.</value>
   </data>
   <data name="ErrorConsultarTodosCarritos" xml:space="preserve">
     <value>Error al intentar consultar los carritos de compra.</value>
+  </data>
+  <data name="ErrorConsultarTodosGeneros" xml:space="preserve">
+    <value>Ha ocuriddo un error al intentar consultar los generos de manga.</value>
   </data>
   <data name="ErrorConversionDato" xml:space="preserve">
     <value>Ha ocurrido un error al intentar convertir el tipo de dato.</value>
