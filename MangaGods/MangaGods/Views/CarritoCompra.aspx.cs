@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -75,28 +76,35 @@ namespace MangaGods.Views
         /// <returns></returns>
         public List<Carrito> ActualizarProductosCarro()
         {
-            using (CoreCarrito core = new CoreCarrito())
+            try
             {
-                string idCarro = core.ObtenerIdCarrito();
-
-                //Se instancia la estructura que contiene las actualizaciones a 
-                CoreCarrito.ActualizacionesCarrito[] actualizaciones = new
-                CoreCarrito.ActualizacionesCarrito[ListaCarro.Rows.Count];
-
-                // Se recorre la matriz y se extraen los datos para actualizar
-                for (int i = 0; i < ListaCarro.Rows.Count; i++)
+                using (CoreCarrito core = new CoreCarrito())
                 {
-                    var rowValues = ObtenerValoresGrilla(ListaCarro.Rows[i]);
-                    actualizaciones[i].IdManga = Convert.ToInt32(rowValues["Manga.Id"]);
-                    var cbRemover = (CheckBox)ListaCarro.Rows[i].FindControl("chkQuitarManga");
-                    actualizaciones[i].QuitarManga = cbRemover.Checked;
-                    var txtCantidad = (TextBox)ListaCarro.Rows[i].FindControl("CantidadManga");
-                    actualizaciones[i].Cantidad = Convert.ToInt16(txtCantidad.Text);
+                    string idCarro = core.ObtenerIdCarrito();
+
+                    //Se instancia la estructura que contiene las actualizaciones a 
+                    CoreCarrito.ActualizacionesCarrito[] actualizaciones = new
+                    CoreCarrito.ActualizacionesCarrito[ListaCarro.Rows.Count];
+
+                    // Se recorre la matriz y se extraen los datos para actualizar
+                    for (int i = 0; i < ListaCarro.Rows.Count; i++)
+                    {
+                        var rowValues = ObtenerValoresGrilla(ListaCarro.Rows[i]);
+                        actualizaciones[i].IdManga = Convert.ToInt32(rowValues["Manga.Id"]);
+                        var cbRemover = (CheckBox)ListaCarro.Rows[i].FindControl("chkQuitarManga");
+                        actualizaciones[i].QuitarManga = cbRemover.Checked;
+                        var txtCantidad = (TextBox)ListaCarro.Rows[i].FindControl("CantidadManga");
+                        actualizaciones[i].Cantidad = Convert.ToInt16(txtCantidad.Text);
+                    }
+                    core.ActualizarCarroCompra(idCarro, actualizaciones);
+                    ListaCarro.DataBind();
+                    lblTotal.Text = $"{core.CalcularTotalPago():N2}";
+                    return core.ConsultarCarros();
                 }
-                core.ActualizarCarroCompra(idCarro, actualizaciones);
-                ListaCarro.DataBind();
-                lblTotal.Text = $"{core.CalcularTotalPago():N2}";
-                return core.ConsultarCarros();
+            }
+            catch (InvalidCastException a)
+            {
+                throw new InvalidCastException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConversionDato")?.ToString(), a);
             }
         }
 

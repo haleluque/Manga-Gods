@@ -48,6 +48,10 @@ namespace MangaGods.Views.Administrador
                     alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdAutor")?.ToString();
                 }
             }
+            catch (InvalidCastException a)
+            {
+                throw new InvalidCastException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConversionDato")?.ToString(), a);
+            }
             catch (Exception n)
             {
                 throw new Exception(n.Message, n);
@@ -78,6 +82,10 @@ namespace MangaGods.Views.Administrador
                 {
                     alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCreacionAutor")?.ToString();
                 }
+            }
+            catch (InvalidCastException a)
+            {
+                throw new InvalidCastException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConversionDato")?.ToString(), a);
             }
             catch (Exception n)
             {
@@ -112,6 +120,10 @@ namespace MangaGods.Views.Administrador
                     alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarAutor")?.ToString();
                 }
             }
+            catch (InvalidCastException a)
+            {
+                throw new InvalidCastException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConversionDato")?.ToString(), a);
+            }
             catch (Exception n)
             {
                 throw new Exception(n.Message, n);
@@ -137,6 +149,10 @@ namespace MangaGods.Views.Administrador
                 {
                     alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorrarAutor")?.ToString();
                 }
+            }
+            catch (InvalidCastException a)
+            {
+                throw new InvalidCastException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConversionDato")?.ToString(), a);
             }
             catch (Exception n)
             {

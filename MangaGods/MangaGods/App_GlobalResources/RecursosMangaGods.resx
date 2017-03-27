@@ -162,6 +162,9 @@
   <data name="ErrorConsultarTodosAutores" xml:space="preserve">
     <value>Error al intentar consultar los autores.</value>
   </data>
+  <data name="ErrorConversionDato" xml:space="preserve">
+    <value>Ha ocurrido un error al intentar convertir el tipo de dato.</value>
+  </data>
   <data name="ErrorCreacionAutor" xml:space="preserve">
     <value>Ha ocurrido un error al crear el autor.</value>
   </data>
