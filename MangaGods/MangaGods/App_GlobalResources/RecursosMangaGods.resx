@@ -183,6 +183,18 @@
   <data name="ErrorConsultaGenero" xml:space="preserve">
     <value>Ha ocurrido un error al intentar consultar un genero de manga por el id.</value>
   </data>
+  <data name="ErrorConsultaManga" xml:space="preserve">
+    <value>Ha ocurrido un error al intentar consultar un manga por el id.</value>
+  </data>
+  <data name="ErrorConsultaMangaGenero" xml:space="preserve">
+    <value>Ha ocurrido un error al intentar consultar un manga por el id del genero.</value>
+  </data>
+  <data name="ErrorConsultaMangaNombre" xml:space="preserve">
+    <value>Ha ocurrido un error al intentar consultar un manga por el nombre.</value>
+  </data>
+  <data name="ErrorConsultaMangaNombreGenero" xml:space="preserve">
+    <value>Ha ocurrido un error al intentar consultar un manga por el nombre del genero.</value>
+  </data>
   <data name="ErrorConsultarTodosAutores" xml:space="preserve">
     <value>Error al intentar consultar los autores.</value>
   </data>
@@ -191,6 +203,9 @@
   </data>
   <data name="ErrorConsultarTodosGeneros" xml:space="preserve">
     <value>Ha ocuriddo un error al intentar consultar los generos de manga.</value>
+  </data>
+  <data name="ErrorConsultarTodosManga" xml:space="preserve">
+    <value>Ha ocuriddo un error al intentar consultar los mangas.</value>
   </data>
   <data name="ErrorConversionDato" xml:space="preserve">
     <value>Ha ocurrido un error al intentar convertir el tipo de dato.</value>
@@ -221,6 +236,9 @@
   </data>
   <data name="ErrorIdNulo" xml:space="preserve">
     <value>El campo Código no puede ser nulo.</value>
+  </data>
+  <data name="ErrorNombreMangaIncorrecto" xml:space="preserve">
+    <value>El nombre del manga ingresado no es correcto.</value>
   </data>
   <data name="ErrorNulo" xml:space="preserve">
     <value>El valor esperado no puede ser nulo.</value>
