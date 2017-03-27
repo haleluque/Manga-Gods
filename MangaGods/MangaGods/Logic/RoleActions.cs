@@ -12,7 +12,7 @@ namespace MangaGods.Logic
         /// </summary>
         internal void CrearUsuarioAdmin()
         {
-            ApplicationDbContext context = new ApplicationDbContext();
+            var context = new ApplicationDbContext();
             var roleStore = new RoleStore<IdentityRole>(context);
             var roleMgr = new RoleManager<IdentityRole>(roleStore);
 

@@ -21,11 +21,29 @@ namespace MangaGods.Views
         /// <returns></returns>
         public Manga ObtenerMangaXId([QueryString("Id")] int? id, [RouteData] string nombre)
         {
-            if (id != null)
+            try
             {
-                return _core.ObtenerMangaXId(id ?? 0);
+                if (id != null)
+                {
+                    return _core.ObtenerMangaXId(id ?? 0);
+                }
+                return !string.IsNullOrEmpty(nombre) ? _core.ObtenerMangaXNombre(nombre) : null;
             }
-            return !string.IsNullOrEmpty(nombre) ? _core.ObtenerMangaXNombre(nombre) : null;
+            catch (Exception n)
+            {
+                throw new Exception(n.Message, n);
+            }
+        }
+
+        /// <summary>
+        /// Manejador de errores de la página del detalle del manga.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Page_Error(object sender, EventArgs e)
+        {
+            // Redireccionan a la página de errores
+            Server.Transfer("/Views/Errores/ErrorPersonalizado.aspx?handler=Page_Error%20-%DetalleManga.aspx.cs", false);
         }
     }
 }

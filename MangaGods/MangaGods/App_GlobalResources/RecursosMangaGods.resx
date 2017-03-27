@@ -159,6 +159,9 @@
   <data name="ErrorAgregarProductoCarrito" xml:space="preserve">
     <value>Ha ocurrido un error al intentar agregar un manga al carrito de compra.</value>
   </data>
+  <data name="ErrorArchivoNoEncontrado" xml:space="preserve">
+    <value>El archivo de tipo log no se encuentra.</value>
+  </data>
   <data name="ErrorAsociarIdCarrito" xml:space="preserve">
     <value>Ha ocurrido al asociar/crear el id del carrito de compra.</value>
   </data>
@@ -218,6 +221,12 @@
   </data>
   <data name="ErrorCreacionManga" xml:space="preserve">
     <value>Ha ocurrido un error al crear el manga</value>
+  </data>
+  <data name="ErrorDespachoArchivo" xml:space="preserve">
+    <value>Ha ocurrido un error al intentar liberar la memoria del archivo log.</value>
+  </data>
+  <data name="ErrorEscrituraLog" xml:space="preserve">
+    <value>Ha ocurrido un error al intentar registrar el log de errores de la aplicación.</value>
   </data>
   <data name="ErrorFormatoArchivo" xml:space="preserve">
     <value>La imágen tiene que ser de formato gif, png, jpeg o jpg</value>

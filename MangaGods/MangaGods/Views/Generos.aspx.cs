@@ -24,13 +24,18 @@ namespace MangaGods.Views
         /// <returns></returns>
         public IQueryable<Manga> ObtenerTodosMangas([QueryString("id")] int? genero, [RouteData] string nombre)
         {
-            if (genero != null)
+            try
             {
-                return _core.ObtenerMangaXIdGenero((int) genero);
+                if (genero != null)
+                {
+                    return _core.ObtenerMangaXIdGenero((int)genero);
+                }
+                return !string.IsNullOrEmpty(nombre) ? _core.ObtenerMangaXNombreGenero(nombre) : null;
             }
-            return !string.IsNullOrEmpty(nombre) ? _core.ObtenerMangaXNombreGenero(nombre) : null;
-
-            //return genero != null ? _core.ObtenerMangaXIdGenero((int)genero): null;
+            catch (Exception n)
+            {
+                throw new Exception(n.Message, n);
+            }
         }
     }
 }
