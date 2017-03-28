@@ -34,9 +34,8 @@ namespace MangaGods.Logic
             {
                 return Contexto.Autor;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultarTodosAutores")?.ToString());
                 throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultarTodosAutores")?.ToString());
             }
         }
@@ -49,16 +48,14 @@ namespace MangaGods.Logic
         {
             try
             {
-                return Contexto.Autor.FirstOrDefault(x => x.Id == id);
+                return Contexto.Autor.FirstOrDefault(x => x.Id == id);                
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
-                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdIncorrecto")?.ToString());
                 throw new NullReferenceException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdIncorrecto")?.ToString());
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultaAutor")?.ToString());
                 throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultaAutor")?.ToString());
             }
         }
@@ -77,9 +74,8 @@ namespace MangaGods.Logic
                     Contexto.Autor.Add(nuevo);
                     Contexto.SaveChanges();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCreacionAutor")?.ToString());
                     throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCreacionAutor")?.ToString());
                 }
             }
@@ -104,14 +100,12 @@ namespace MangaGods.Logic
                     consulta.Empresa = autor.Empresa;
                     Contexto.SaveChanges();
                 }
-                catch (NullReferenceException e)
+                catch (NullReferenceException)
                 {
-                    ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdIncorrecto")?.ToString());
                     throw new NullReferenceException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdIncorrecto")?.ToString());
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarAutor")?.ToString());
                     throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarAutor")?.ToString());
                 }
             }
@@ -131,14 +125,12 @@ namespace MangaGods.Logic
                     Contexto.Autor.Remove(Contexto.Autor.FirstOrDefault(x => x.Id == id));
                     Contexto.SaveChanges();
                 }
-                catch (NullReferenceException e)
+                catch (NullReferenceException)
                 {
-                    ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdIncorrecto")?.ToString());
                     throw new NullReferenceException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdIncorrecto")?.ToString());
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorrarAutor")?.ToString());
                     throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorrarAutor")?.ToString());
                 }
             }

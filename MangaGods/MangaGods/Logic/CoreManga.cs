@@ -36,9 +36,8 @@ namespace MangaGods.Logic
             {
                 return Contexto.Manga;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultarTodosManga")?.ToString());
                 throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultarTodosManga")?.ToString());
             }
         }
@@ -53,14 +52,12 @@ namespace MangaGods.Logic
             {
                 return Contexto.Manga.FirstOrDefault(x => x.Id == id);
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
-                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdIncorrecto")?.ToString());
                 throw new NullReferenceException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdIncorrecto")?.ToString());
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultaManga")?.ToString());
                 throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultaManga")?.ToString());
             }
         }
@@ -76,14 +73,12 @@ namespace MangaGods.Logic
             {
                 return Contexto.Manga.FirstOrDefault(x => x.Nombre.Contains(nombre));
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
-                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorNombreMangaIncorrecto")?.ToString());
                 throw new NullReferenceException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorNombreMangaIncorrecto")?.ToString());
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultaMangaNombre")?.ToString());
                 throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultaMangaNombre")?.ToString());
             }
         }
@@ -98,14 +93,12 @@ namespace MangaGods.Logic
             {
                 return Contexto.Manga.Where(x => x.IdGenero == id);
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
-                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdIncorrecto")?.ToString());
                 throw new NullReferenceException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdIncorrecto")?.ToString());
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultaMangaGenero")?.ToString());
                 throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultaMangaGenero")?.ToString());
             }
         }
@@ -120,14 +113,12 @@ namespace MangaGods.Logic
             {
                 return Contexto.Manga.Where(x => x.Genero.Nombre.Contains(nombre));
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
-                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultaMangaNombreGenero")?.ToString());
                 throw new NullReferenceException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultaMangaNombreGenero")?.ToString());
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultaMangaGenero")?.ToString());
                 throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultaMangaGenero")?.ToString());
             }
         }
@@ -159,9 +150,8 @@ namespace MangaGods.Logic
                 }
                 return false;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCreacionManga")?.ToString());
                 throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCreacionManga")?.ToString());
             }
         }
@@ -190,14 +180,12 @@ namespace MangaGods.Logic
                     }
                     Contexto.SaveChanges();
                 }
-                catch (NullReferenceException e)
+                catch (NullReferenceException)
                 {
-                    ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdIncorrecto")?.ToString());
                     throw new NullReferenceException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdIncorrecto")?.ToString());
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarManga")?.ToString());
                     throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarManga")?.ToString());
                 }
             }
@@ -217,14 +205,12 @@ namespace MangaGods.Logic
                     Contexto.Manga.Remove(Contexto.Manga.FirstOrDefault(x => x.Id == id));
                     Contexto.SaveChanges();
                 }
-                catch (NullReferenceException e)
+                catch (NullReferenceException)
                 {
-                    ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdIncorrecto")?.ToString());
                     throw new NullReferenceException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorIdIncorrecto")?.ToString());
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorradoManga")?.ToString());
                     throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorradoManga")?.ToString());
                 }
             }

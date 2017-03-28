@@ -52,10 +52,6 @@ namespace MangaGods.Views.Administrador
             {
                 throw new InvalidCastException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConversionDato")?.ToString(), a);
             }
-            catch (Exception n)
-            {
-                throw new Exception(n.Message, n);
-            }
         }
 
         /// <summary>
@@ -86,10 +82,6 @@ namespace MangaGods.Views.Administrador
             catch (InvalidCastException a)
             {
                 throw new InvalidCastException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConversionDato")?.ToString(), a);
-            }
-            catch (Exception n)
-            {
-                throw new Exception(n.Message, n);
             }
         }
 
@@ -124,10 +116,6 @@ namespace MangaGods.Views.Administrador
             {
                 throw new InvalidCastException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConversionDato")?.ToString(), a);
             }
-            catch (Exception n)
-            {
-                throw new Exception(n.Message, n);
-            }
         }
 
         /// <summary>
@@ -153,10 +141,6 @@ namespace MangaGods.Views.Administrador
             catch (InvalidCastException a)
             {
                 throw new InvalidCastException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConversionDato")?.ToString(), a);
-            }
-            catch (Exception n)
-            {
-                throw new Exception(n.Message, n);
             }
         }
 

@@ -31,19 +31,10 @@ namespace MangaGods.Views
 
                 ValidarCarro();
             }
-            catch (ArgumentOutOfRangeException arg)
+            catch (ArgumentOutOfRangeException)
             {
                 throw new ArgumentOutOfRangeException(
-                    HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorQueryString")?.ToString(), arg);
-            }
-            catch (ThreadAbortException th)
-            {
-                ExceptionUtility.LogException(th,
-                    HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorResponseRedirect")?.ToString());
-            }
-            catch (Exception n)
-            {
-                throw new Exception(n.Message, n);
+                    HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorQueryString")?.ToString());
             }
         }
 
@@ -73,15 +64,8 @@ namespace MangaGods.Views
         /// <returns></returns>
         public List<Carrito> ConsultarCarros()
         {
-            try
-            {
-                var core = new CoreCarrito();
-                return core.ConsultarCarros();
-            }
-            catch (Exception n)
-            {
-                throw new Exception(n.Message, n);
-            }
+            var core = new CoreCarrito();
+            return core.ConsultarCarros();
         }
 
         /// <summary>
@@ -126,18 +110,14 @@ namespace MangaGods.Views
                     return core.ConsultarCarros();
                 }
             }
-            catch (ArgumentOutOfRangeException arg)
+            catch (ArgumentOutOfRangeException)
             {
                 throw new ArgumentOutOfRangeException(
-                    HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorValorNoEncontradoVector")?.ToString(), arg);
+                    HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorValorNoEncontradoVector")?.ToString());
             }
-            catch (InvalidCastException a)
+            catch (InvalidCastException)
             {
-                throw new InvalidCastException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConversionDato")?.ToString(), a);
-            }
-            catch (Exception n)
-            {
-                throw new Exception(n.Message, n);
+                throw new InvalidCastException(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConversionDato")?.ToString());
             }
         }
 
@@ -148,22 +128,15 @@ namespace MangaGods.Views
         /// <returns></returns>
         public static IOrderedDictionary ObtenerValoresGrilla(GridViewRow fila)
         {
-            try
+            IOrderedDictionary values = new OrderedDictionary();
+            foreach (DataControlFieldCell cell in fila.Cells)
             {
-                IOrderedDictionary values = new OrderedDictionary();
-                foreach (DataControlFieldCell cell in fila.Cells)
+                if (cell.Visible)
                 {
-                    if (cell.Visible)
-                    {
-                        cell.ContainingField.ExtractValuesFromCell(values, cell, fila.RowState, true);
-                    }
+                    cell.ContainingField.ExtractValuesFromCell(values, cell, fila.RowState, true);
                 }
-                return values;
             }
-            catch (Exception n)
-            {
-                throw new Exception(n.Message, n);
-            }
+            return values;
         }
 
         /// <summary>
@@ -173,23 +146,11 @@ namespace MangaGods.Views
         /// <param name="e"></param>
         protected void btnCompra_Click(object sender, ImageClickEventArgs e)
         {
-            try
+            using (var core = new CoreCarrito())
             {
-                using (var core = new CoreCarrito())
-                {
-                    Session["payment_amt"] = core.CalcularTotalPago();
-                }
-                Response.Redirect("Checkout/CheckoutStart.aspx");
+                Session["payment_amt"] = core.CalcularTotalPago();
             }
-            catch (ThreadAbortException th)
-            {
-                ExceptionUtility.LogException(th,
-                    HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorResponseRedirect")?.ToString());
-            }
-            catch (Exception n)
-            {
-                throw new Exception(n.Message, n);
-            }
+            Response.Redirect("Checkout/CheckoutStart.aspx");
         }
 
         /// <summary>

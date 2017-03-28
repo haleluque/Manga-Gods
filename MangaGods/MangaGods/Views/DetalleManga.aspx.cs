@@ -21,18 +21,11 @@ namespace MangaGods.Views
         /// <returns></returns>
         public Manga ObtenerMangaXId([QueryString("Id")] int? id, [RouteData] string nombre)
         {
-            try
+            if (id != null)
             {
-                if (id != null)
-                {
-                    return _core.ObtenerMangaXId(id ?? 0);
-                }
-                return !string.IsNullOrEmpty(nombre) ? _core.ObtenerMangaXNombre(nombre) : null;
+                return _core.ObtenerMangaXId(id ?? 0);
             }
-            catch (Exception n)
-            {
-                throw new Exception(n.Message, n);
-            }
+            return !string.IsNullOrEmpty(nombre) ? _core.ObtenerMangaXNombre(nombre) : null;
         }
 
         /// <summary>

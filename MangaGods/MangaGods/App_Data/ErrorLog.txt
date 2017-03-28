@@ -1,0 +1,14 @@
+********** 27/03/2017 21:14:28 **********
+Exception Type: System.NullReferenceException
+Exception: El id ingresado no es correcto.
+Source: Page_Error - AdminAutores.aspx.cs
+Stack Trace: 
+   en MangaGods.Logic.CoreAutor.ObtenerAutorXId(Int32 id) en C:\Users\USUARIO\Source\Repos\Manga-Gods\MangaGods\MangaGods\Logic\CoreAutor.cs:línea 58
+   en MangaGods.Views.Administrador.AdminAutores.Buscar_Click(Object sender, EventArgs e) en C:\Users\USUARIO\Source\Repos\Manga-Gods\MangaGods\MangaGods\Views\Administrador\AdminAutores.aspx.cs:línea 40
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

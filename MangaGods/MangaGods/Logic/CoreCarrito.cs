@@ -37,9 +37,8 @@ namespace MangaGods.Logic
                 IdCarrito = ObtenerIdCarrito();
                 return _contexto.Carrito.Where(c => c.IdCarrito == IdCarrito).ToList();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultarTodosCarritos")?.ToString());
                 throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultarTodosCarritos")?.ToString());
             }
         }
@@ -66,9 +65,8 @@ namespace MangaGods.Logic
                 }
                 return decimal.Zero;
             }
-            catch (Exception e)
-            {
-                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCalcularTotalCarrito")?.ToString());
+            catch (Exception)
+            {                
                 throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorCalcularTotalCarrito")?.ToString());
             }
         }
@@ -109,9 +107,8 @@ namespace MangaGods.Logic
                 }
                 return HttpContext.Current.Session[LlaveSesionCarrito].ToString();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorAsociarIdCarrito")?.ToString());
                 throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorAsociarIdCarrito")?.ToString());
             }
         }
@@ -154,9 +151,8 @@ namespace MangaGods.Logic
                 }
                 _contexto.SaveChanges();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorAgregarProductoCarrito")?.ToString());
                 throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorAgregarProductoCarrito")?.ToString());
             }
         }
@@ -189,10 +185,9 @@ namespace MangaGods.Logic
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarCarrito")?.ToString());
-                throw new Exception(e.Message);
+                throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarCarrito")?.ToString());
             }
         }
 
@@ -216,9 +211,8 @@ namespace MangaGods.Logic
                     db.Carrito.Remove(manga);
                     db.SaveChanges();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorrarProductoCarrito")?.ToString());
                     throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorBorrarProductoCarrito")?.ToString());
                 }
             }
@@ -244,9 +238,8 @@ namespace MangaGods.Logic
                     manga.Cantidad = nuevaCantidad;
                     db.SaveChanges();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarCarrito")?.ToString());
                     throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorActualizarCarrito")?.ToString());
                 }
             }
@@ -270,9 +263,8 @@ namespace MangaGods.Logic
                 // Save changes.
                 _contexto.SaveChanges();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                ExceptionUtility.LogException(e, HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorVaciarCarroCompra")?.ToString());
                 throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorVaciarCarroCompra")?.ToString());
             }
         }
