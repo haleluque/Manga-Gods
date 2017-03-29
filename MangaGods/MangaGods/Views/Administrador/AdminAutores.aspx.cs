@@ -145,6 +145,17 @@ namespace MangaGods.Views.Administrador
         }
 
         /// <summary>
+        /// Evento que maneja la cancelación
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Cancelar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos(2);
+            MostrarDatosAutor(false);
+        }
+
+        /// <summary>
         /// Muestra los datos de un autor Consultado
         /// </summary>
         private void MostrarDatosAutor(bool estado)
@@ -153,6 +164,7 @@ namespace MangaGods.Views.Administrador
             btnActualizar.Visible = estado;
             btnBorrar.Visible = estado;
             btnBuscar.Visible = !estado;
+            btnCancelar.Visible = estado;
         }
 
         /// <summary>

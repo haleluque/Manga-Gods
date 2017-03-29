@@ -12,3 +12,38 @@ Stack Trace:
    en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
    en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
 
+********** 29/03/2017 9:16:27 **********
+Exception Type: System.FormatException
+Exception: La cadena de entrada no tiene el formato correcto.
+Source: Page_Error - AdminAutores.aspx.cs
+Stack Trace: 
+   en System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   en System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   en System.Convert.ToInt32(String value)
+   en MangaGods.Views.Administrador.AdminAutores.Actualizar_Click(Object sender, EventArgs e) en C:\Users\henry.luque\Source\Repos\Manga-Gods\MangaGods\MangaGods\Views\Administrador\AdminAutores.aspx.cs:línea 98
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+********** 29/03/2017 9:16:27 **********
+Exception Type: System.Exception
+Exception: The error was unhandled by application code.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 29/03/2017 9:27:11 **********
+Exception Type: System.Exception
+Exception: Ha ocurrido un error al borrar el autor
+Source: Page_Error - AdminAutores.aspx.cs
+Stack Trace: 
+   en MangaGods.Logic.CoreAutor.BorrarAutor(Int32 id) en C:\Users\henry.luque\Source\Repos\Manga-Gods\MangaGods\MangaGods\Logic\CoreAutor.cs:línea 134
+   en MangaGods.Views.Administrador.AdminAutores.Borrar_Click(Object sender, EventArgs e) en C:\Users\henry.luque\Source\Repos\Manga-Gods\MangaGods\MangaGods\Views\Administrador\AdminAutores.aspx.cs:línea 130
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
