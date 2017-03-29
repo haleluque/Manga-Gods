@@ -36,3 +36,8 @@ input[type="select"] {
         padding: 0;
     }
 }
+
+.text-area {
+    max-width: 280px;
+    resize:none;
+}

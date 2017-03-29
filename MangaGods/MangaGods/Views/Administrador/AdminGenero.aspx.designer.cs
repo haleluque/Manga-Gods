@@ -103,6 +103,15 @@ namespace MangaGods.Views.Administrador {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator requeridoId;
         
         /// <summary>
+        /// expresionNumeros control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator expresionNumeros;
+        
+        /// <summary>
         /// datosGenero control.
         /// </summary>
         /// <remarks>
@@ -191,6 +200,15 @@ namespace MangaGods.Views.Administrador {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBorrar;
+        
+        /// <summary>
+        /// btnCancelar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
         
         /// <summary>
         /// alerta control.
