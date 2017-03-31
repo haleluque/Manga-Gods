@@ -236,6 +236,18 @@ namespace MangaGods.Views.Administrador
             }
         }
 
+
+        /// <summary>
+        /// Evento que maneja la cancelación
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Cancelar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos(2);
+            MostrarDatos(false);
+        }
+
         /// <summary>
         /// convierte un string a int
         /// </summary>
@@ -288,6 +300,7 @@ namespace MangaGods.Views.Administrador
                     Archivo.Attributes.Clear();
                     break;
                 case 2:
+                    txtId.Text = string.Empty;
                     txtMangaConsulta.Text = string.Empty;
                     txtDescripcionConsulta.Text = string.Empty;
                     comboGeneroConsulta.SelectedIndex = 0;
@@ -308,6 +321,7 @@ namespace MangaGods.Views.Administrador
             btnActualizar.Visible = estado;
             btnBorrar.Visible = estado;
             btnBuscar.Visible = !estado;
+            btnCancelar.Visible = estado;
         }
 
         /// <summary>
@@ -331,7 +345,7 @@ namespace MangaGods.Views.Administrador
         {
             if (comboGeneroConsulta.Items.Count >= 2) return;
             comboGeneroConsulta.Items.Insert(0, "Seleccione.....");
-            comboGeneroConsulta.DataSource = ((IEnumerable<Genero>)ObtenerTodosGeneros()).ToList();
+            comboGeneroConsulta.DataSource = (ObtenerTodosGeneros() as IEnumerable<Genero>).ToList();
             comboGeneroConsulta.DataBind();
         }
 

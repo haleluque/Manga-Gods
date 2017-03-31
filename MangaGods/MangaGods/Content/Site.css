@@ -41,3 +41,7 @@ input[type="select"] {
     max-width: 280px;
     resize:none;
 }
+
+.combo-box {
+    max-width: 280px;
+}
