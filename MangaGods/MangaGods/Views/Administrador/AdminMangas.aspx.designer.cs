@@ -409,13 +409,13 @@ namespace MangaGods.Views.Administrador {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator requeridoVolumenConsulta;
         
         /// <summary>
-        /// expresionVolumenConsulta control.
+        /// formatoVolumenConsulta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator expresionVolumenConsulta;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator formatoVolumenConsulta;
         
         /// <summary>
         /// lblPrecioConsulta control.

@@ -236,7 +236,6 @@ namespace MangaGods.Views.Administrador
             }
         }
 
-
         /// <summary>
         /// Evento que maneja la cancelación
         /// </summary>
