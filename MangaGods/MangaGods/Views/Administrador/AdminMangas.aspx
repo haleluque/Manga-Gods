@@ -85,7 +85,7 @@
         </div>
     </div>
     <div class="form-horizontal">
-        <h3>Actualizar Un Género:</h3>
+        <h3>Actualizar Un Mnaga:</h3>
         <hr />
         <div class="form-group">
             <asp:Label ID="lblId" runat="server" CssClass="col-md-2 control-label" Text="<%$ Resources:RecursosMangaGods, lblId %>"></asp:Label>

@@ -192,6 +192,7 @@ namespace MangaGods.Views.Administrador
                     if (_core.ActualizarManga(manga))
                     {
                         alerta.InnerText = HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ConfirmacionActualizacionManga")?.ToString();
+                        MostrarDatos(false);
                         LimpiarCampos(1);
                     }
                     else

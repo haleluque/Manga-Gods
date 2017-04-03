@@ -202,7 +202,14 @@
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="App_Data\ErrorLog.txt" />
     <Content Include="Catalogo\Imagenes\15-manga-font.jpg" />
+    <Content Include="Catalogo\Imagenes\baka to test.jpg" />
+    <Content Include="Catalogo\Imagenes\berserk-l0.jpg" />
+    <Content Include="Catalogo\Imagenes\gantz.jpg" />
+    <Content Include="Catalogo\Imagenes\gekkan shoujo nozaki 7.jpg" />
+    <Content Include="Catalogo\Imagenes\gekkan-shoujo-nozaki-kun-l0.jpg" />
     <Content Include="Catalogo\Imagenes\naruto-l0.jpg" />
+    <Content Include="Catalogo\Imagenes\Ore Monogatari!!.jpg" />
+    <Content Include="Catalogo\Imagenes\school-rumble-l0.jpg" />
     <Content Include="Checkout\CheckoutCancel.aspx" />
     <Content Include="Checkout\CheckoutComplete.aspx" />
     <Content Include="Checkout\CheckoutError.aspx" />
