@@ -15,7 +15,7 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
-<body>
+<body class="sg-body sg-type2">
     <form runat="server" class="sg-form">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -37,84 +37,83 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-        <asp:UpdatePanel ID="UpdatePanel" runat="server">
-            <ContentTemplate>
-                <!--Barra superior-->
-                <div class="navbar navbar-inverse navbar-fixed-top">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" runat="server" href="~/">Manga Gods</a>
-                        </div>
-                        <div class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav">
-                                <li><a visible="false" runat="server" id="adminAutores" href='<%$ RouteUrl:routename=RutaAdminAutores %>'>Autores</a></li>
-                                <li><a visible="false" runat="server" id="adminGeneros" href='<%$ RouteUrl:routename=RutaAdminGeneros %>'>Generos</a></li>
-                                <li><a visible="false" runat="server" id="adminMangas" href='<%$ RouteUrl:routename=RutaAdminManga %>'>Mangas</a></li>
-                                <li><a runat="server" href="<%$ RouteUrl:routename=RutaCarritoCompra %>">Carrito Compra</a></li>
+
+
+        <!--Barra superior-->
+        <div class="navbar navbar-inverse navbar-fixed-top sg-navbar">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="~/">Manga Gods</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a visible="false" runat="server" id="adminAutores" href='<%$ RouteUrl:routename=RutaAdminAutores %>'>Autores</a></li>
+                        <li><a visible="false" runat="server" id="adminGeneros" href='<%$ RouteUrl:routename=RutaAdminGeneros %>'>Generos</a></li>
+                        <li><a visible="false" runat="server" id="adminMangas" href='<%$ RouteUrl:routename=RutaAdminManga %>'>Mangas</a></li>
+                        <li><a runat="server" href="<%$ RouteUrl:routename=RutaCarritoCompra %>">Carrito Compra</a></li>
+                    </ul>
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="<%$ RouteUrl:routename=RutaRegistro %>">Regístrese</a></li>
+                                <li><a runat="server" href="<%$ RouteUrl:routename=RuntaIngreso %>">Ingreso</a></li>
                             </ul>
-                            <asp:LoginView runat="server" ViewStateMode="Disabled">
-                                <AnonymousTemplate>
-                                    <ul class="nav navbar-nav navbar-right">
-                                        <li><a runat="server" href="<%$ RouteUrl:routename=RutaRegistro %>">Regístrese</a></li>
-                                        <li><a runat="server" href="<%$ RouteUrl:routename=RuntaIngreso %>">Ingreso</a></li>
-                                    </ul>
-                                </AnonymousTemplate>
-                                <LoggedInTemplate>
-                                    <ul class="nav navbar-nav navbar-right">
-                                        <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hola, <%: Context.User.Identity.GetUserName()  %> !</a></li>
-                                        <li>
-                                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
-                                        </li>
-                                    </ul>
-                                </LoggedInTemplate>
-                            </asp:LoginView>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hola, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                <li>
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                </li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid sg-main-content">
+            <div class="row">
+                <div id="MenuNormal" runat="server" class="sg-left-panel sg-accordion col-md-2" role="navigation">
+                    <div id="main-accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <asp:Menu ID="Menu1" runat="server">
+                                <Items>
+                                    <asp:MenuItem Text="Administración" Value="Administración">
+                                        <asp:MenuItem NavigateUrl='<%$ RouteUrl:routename=RutaAdminAutores %>' Text="Autores" Value="Autores"></asp:MenuItem>
+                                        <asp:MenuItem NavigateUrl='<%$ RouteUrl:routename=RutaAdminGeneros %>' Text="Géneros" Value="Géneros"></asp:MenuItem>
+                                        <asp:MenuItem NavigateUrl='<%$ RouteUrl:routename=RutaAdminManga %>' Text="Mangas" Value="Mangas"></asp:MenuItem>
+                                    </asp:MenuItem>
+                                    <asp:MenuItem Text="Lista Géneros" NavigateUrl="~/Views/ListaGeneros.aspx" Value="Lista Géneros"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="<%$ RouteUrl:routename=RutaCarritoCompra %>" Text="Carrito Compra" Value="Carrito Compra"></asp:MenuItem>
+                                </Items>
+                            </asp:Menu>
                         </div>
                     </div>
                 </div>
-
-                <div class="container-fluid sg-main-content">
-                    <div class="row">
-                        <div id="MenuNormal" runat="server" class="sg-left-panel sg-accordion" role="navigation">
-                            <div id="main-accordion" role="tablist" aria-multiselectable="true">
-                                <asp:Menu ID="Menu1" runat="server">
-                                    <Items>
-                                        <asp:MenuItem Text="Administración" Value="Administración">
-                                            <asp:MenuItem NavigateUrl='<%$ RouteUrl:routename=RutaAdminAutores %>' Text="Autores" Value="Autores"></asp:MenuItem>
-                                            <asp:MenuItem NavigateUrl='<%$ RouteUrl:routename=RutaAdminGeneros %>' Text="Géneros" Value="Géneros"></asp:MenuItem>
-                                            <asp:MenuItem NavigateUrl='<%$ RouteUrl:routename=RutaAdminManga %>' Text="Mangas" Value="Mangas"></asp:MenuItem>
-                                        </asp:MenuItem>
-                                        <asp:MenuItem Text="Lista Géneros" NavigateUrl="~/Views/ListaGeneros.aspx" Value="Lista Géneros"></asp:MenuItem>
-                                        <asp:MenuItem NavigateUrl="<%$ RouteUrl:routename=RutaCarritoCompra %>" Text="Carrito Compra" Value="Carrito Compra"></asp:MenuItem>
-                                    </Items>
-                                </asp:Menu>
-                            </div>
-                        </div>
-
-                        <!--Panel derecho-->
-                        <div class="sg-right-panel sg-left-open sg-pattern">
-                            <div class="sg-right-panel sg-left-open">
-                                <div class="sg-main-container panel sg-panel">
-                                    <div class="container body-content">
-                                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                                        </asp:ContentPlaceHolder>
-                                        <hr />
+                <!--Panel derecho-->
+                <div class="sg-right-panel sg-left-open sg-pattern col-md-10">
+                    <div class="sg-right-panel sg-left-open">
+                        <div class="sg-main-container panel sg-panel">
+                            <div class="container-fluid">
+                                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                                </asp:ContentPlaceHolder>
+                                <%-- <hr />
                                         <br />
                                         <footer class="col-md-12">
                                             <p>&copy; <%: DateTime.Now.Year %> - Manga Gods</p>
-                                        </footer>
-                                    </div>
-                                </div>
+                                        </footer>--%>
                             </div>
                         </div>
                     </div>
                 </div>
-            </ContentTemplate>
-        </asp:UpdatePanel>
+            </div>
+        </div>
     </form>
 </body>
 </html>
