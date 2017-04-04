@@ -79,31 +79,17 @@
 
                 <div class="container-fluid sg-main-content">
                     <div class="row">
-                        <div id="MenuGenero" style="text-align: center">
-                            <asp:ListView ID="listaGeneros"
-                                ItemType="MangaGods.Models.Genero"
-                                runat="server"
-                                SelectMethod="ObtenerTodosGeneros">
-                                <ItemTemplate>
-                                    <b style="font-size: large; font-style: normal">
-                                        <a href="<%#: GetRouteUrl("RutaGeneros", new {nombre = Item.Nombre})%>"><%#: Item.Nombre %></a>
-                                    </b>
-                                </ItemTemplate>
-                                <ItemSeparatorTemplate>| </ItemSeparatorTemplate>
-                            </asp:ListView>
-                        </div>
-
                         <div id="MenuNormal" runat="server" class="sg-left-panel sg-accordion" role="navigation">
                             <div id="main-accordion" role="tablist" aria-multiselectable="true">
                                 <asp:Menu ID="Menu1" runat="server">
                                     <Items>
                                         <asp:MenuItem Text="Administración" Value="Administración">
-                                            <asp:MenuItem NavigateUrl="~/Views/Administrador/AdminAutores.aspx" Text="Autores" Value="Autores"></asp:MenuItem>
-                                            <asp:MenuItem NavigateUrl="~/Views/Administrador/AdminGenero.aspx" Text="Géneros" Value="Géneros"></asp:MenuItem>
-                                            <asp:MenuItem NavigateUrl="~/Views/Administrador/AdminMangas.aspx" Text="Mangas" Value="Mangas"></asp:MenuItem>
+                                            <asp:MenuItem NavigateUrl='<%$ RouteUrl:routename=RutaAdminAutores %>' Text="Autores" Value="Autores"></asp:MenuItem>
+                                            <asp:MenuItem NavigateUrl='<%$ RouteUrl:routename=RutaAdminGeneros %>' Text="Géneros" Value="Géneros"></asp:MenuItem>
+                                            <asp:MenuItem NavigateUrl='<%$ RouteUrl:routename=RutaAdminManga %>' Text="Mangas" Value="Mangas"></asp:MenuItem>
                                         </asp:MenuItem>
-                                        <asp:MenuItem Text="Lista Géneros" Value="Lista Géneros"></asp:MenuItem>
-                                        <asp:MenuItem NavigateUrl="~/Views/CarritoCompra.aspx" Text="Carrito Compra" Value="Carrito Compra"></asp:MenuItem>
+                                        <asp:MenuItem Text="Lista Géneros" NavigateUrl="~/Views/ListaGeneros.aspx" Value="Lista Géneros"></asp:MenuItem>
+                                        <asp:MenuItem NavigateUrl="<%$ RouteUrl:routename=RutaCarritoCompra %>" Text="Carrito Compra" Value="Carrito Compra"></asp:MenuItem>
                                     </Items>
                                 </asp:Menu>
                             </div>

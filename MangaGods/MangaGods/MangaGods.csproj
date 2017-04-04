@@ -271,6 +271,7 @@
     <Content Include="Views\DetalleManga.aspx" />
     <Content Include="Views\Errores\ErrorPersonalizado.aspx" />
     <Content Include="Views\Generos.aspx" />
+    <Content Include="Views\ListaGeneros.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -547,6 +548,13 @@
     </Compile>
     <Compile Include="Views\Generos.aspx.designer.cs">
       <DependentUpon>Generos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaGeneros.aspx.cs">
+      <DependentUpon>ListaGeneros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ListaGeneros.aspx.designer.cs">
+      <DependentUpon>ListaGeneros.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />

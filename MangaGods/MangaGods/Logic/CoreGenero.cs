@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using MangaGods.Models;
 using System.Linq;
 using System.Web;
@@ -33,6 +34,22 @@ namespace MangaGods.Logic
             try
             {
                 return Contexto.Genero;
+            }
+            catch (Exception)
+            {
+                throw new Exception(HttpContext.GetGlobalResourceObject("RecursosMangaGods", "ErrorConsultarTodosGeneros")?.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Obtiene todos los generos de la tabla
+        /// </summary>
+        /// <returns></returns>
+        public List<Genero> ObtenerTodosGenerosLista()
+        {
+            try
+            {
+                return Contexto.Genero.ToList();
             }
             catch (Exception)
             {

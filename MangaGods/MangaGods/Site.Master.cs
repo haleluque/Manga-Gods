@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Web;
@@ -9,6 +10,8 @@ using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using System.Linq;
 using MangaGods.Logic;
+using MangaGods.Models;
+using MangaGods.Views;
 
 namespace MangaGods
 {
@@ -69,8 +72,8 @@ namespace MangaGods
             else
             {
                 // Validate the Anti-XSRF token
-                if ((string)ViewState[AntiXsrfTokenKey] != _antiXsrfTokenValue
-                    || (string)ViewState[AntiXsrfUserNameKey] != (Context.User.Identity.Name ?? String.Empty))
+                if ((string) ViewState[AntiXsrfTokenKey] != _antiXsrfTokenValue
+                    || (string) ViewState[AntiXsrfUserNameKey] != (Context.User.Identity.Name ?? String.Empty))
                 {
                     throw new InvalidOperationException("Validation of Anti-XSRF token failed.");
                 }
@@ -95,6 +98,36 @@ namespace MangaGods
         {
             var core = new CoreGenero();
             return core.ObtenerTodosGeneros();
+        }
+
+        /// <summary>
+        /// Obtiene todos los generos de la tabla
+        /// </summary>
+        /// <returns></returns>
+        public List<Genero> ObtenerTodosGenerosLista()
+        {
+            var core = new CoreGenero();
+            return core.ObtenerTodosGenerosLista();
+        }
+
+        /// <summary>
+        /// Llena la opción de géneros de manga del menú
+        /// </summary>
+        private void PoblarMenu()
+        {
+
+        }
+
+        /// <summary>
+        /// General el Objeto de tipo data set para el menú
+        /// </summary>
+        /// <returns></returns>
+        private DataSet GenerarDataSetGeneros()
+        {
+            var listaGeneros = ObtenerTodosGenerosLista();
+            var ds = new DataSet();
+
+            return null;
         }
     }
 
