@@ -82,7 +82,12 @@
                 <div id="MenuNormal" runat="server" class="sg-left-panel sg-accordion col-md-2" role="navigation">
                     <div id="main-accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
-                            <asp:Menu ID="Menu1" runat="server">
+                            <asp:Menu ID="Menu1" EnableViewState="false"
+                                IncludeStyleBlock="false" Orientation="Vertical"
+                                CssClass="navbar navbar-fixed-left"
+                                StaticMenuStyle-CssClass="nav"
+                                StaticSelectedStyle-CssClass="active"
+                                DynamicMenuStyle-CssClass="dropdown-menu" runat="server">
                                 <Items>
                                     <asp:MenuItem Text="Administración" Value="Administración">
                                         <asp:MenuItem NavigateUrl='<%$ RouteUrl:routename=RutaAdminAutores %>' Text="Autores" Value="Autores"></asp:MenuItem>
