@@ -89,3 +89,18 @@ Stack Trace:
    en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
    en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
 
+********** 17/04/2017 16:54:12 **********
+Exception Type: System.Exception
+Exception: The error was unhandled by application code.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 17/04/2017 16:54:16 **********
+Exception Type: System.Exception
+Exception: The error was unhandled by application code.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 17/04/2017 17:08:22 **********
+Exception Type: System.Exception
+Exception: The error was unhandled by application code.
+Source: customErrors section - Web.config
+Stack Trace: 

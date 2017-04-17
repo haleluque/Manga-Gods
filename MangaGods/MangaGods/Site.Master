@@ -79,7 +79,7 @@
 
         <div class="container-fluid sg-main-content">
             <div class="row">
-                <div id="MenuNormal" runat="server" class="sg-left-panel sg-accordion col-md-2" role="navigation">
+                <div id="MenuNormal" runat="server" class="sg-left-panel sg-accordion menu col-md-2" role="navigation">
                     <div id="main-accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
                             <asp:Menu ID="Menu1" EnableViewState="false"
@@ -102,17 +102,17 @@
                     </div>
                 </div>
                 <!--Panel derecho-->
-                <div class="sg-right-panel sg-left-open sg-pattern col-md-10">
+                <div class="sg-right-panel sg-left-open sg-pattern menu col-md-10">
                     <div class="sg-right-panel sg-left-open">
                         <div class="sg-main-container panel sg-panel">
                             <div class="container-fluid">
                                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                                 </asp:ContentPlaceHolder>
-                                <%-- <hr />
-                                        <br />
-                                        <footer class="col-md-12">
-                                            <p>&copy; <%: DateTime.Now.Year %> - Manga Gods</p>
-                                        </footer>--%>
+                                <%--<hr />
+                                <br />
+                                <footer class="col-md-12">
+                                    <p>&copy; <%: DateTime.Now.Year %> - Manga Gods</p>
+                                </footer>--%>
                             </div>
                         </div>
                     </div>
