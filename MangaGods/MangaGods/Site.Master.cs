@@ -24,11 +24,20 @@ namespace MangaGods
         protected void Page_Init(object sender, EventArgs e)
         {
             //Solo habilitará el botón de administrar, si el usuario tiene el rol canEdit
-            if (HttpContext.Current.User.IsInRole("Admin"))
+            if (!HttpContext.Current.User.IsInRole("Admin"))
             {
-                adminAutores.Visible = true;
-                adminGeneros.Visible = true;
-                adminMangas.Visible = true;
+                //adminAutores.Visible = true;
+                //adminGeneros.Visible = true;
+                //adminMangas.Visible = true;
+
+                var menuItems = Menu1.Items;
+                var adminItem = new MenuItem();
+                foreach (MenuItem menuItem in menuItems)
+                {
+                    if (menuItem.Text == @"Administración")
+                        adminItem = menuItem;
+                }
+                menuItems.Remove(adminItem);
             }
 
             // The code below helps to protect against XSRF attacks

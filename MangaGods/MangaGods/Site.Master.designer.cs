@@ -13,33 +13,6 @@ namespace MangaGods {
     public partial class SiteMaster {
         
         /// <summary>
-        /// adminAutores control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor adminAutores;
-        
-        /// <summary>
-        /// adminGeneros control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor adminGeneros;
-        
-        /// <summary>
-        /// adminMangas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor adminMangas;
-        
-        /// <summary>
         /// MenuNormal control.
         /// </summary>
         /// <remarks>
