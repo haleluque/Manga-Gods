@@ -38,7 +38,6 @@
             </Scripts>
         </asp:ScriptManager>
 
-
         <!--Barra superior-->
         <div class="navbar navbar-inverse navbar-fixed-top sg-navbar">
             <div class="container-fluid">
@@ -48,15 +47,26 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Manga Gods</a>
+                    <%-- <a class="navbar-brand" runat="server" href="~/">Manga Gods</a>--%>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <%--                        <li><a visible="false" runat="server" id="adminAutores" href='<%$ RouteUrl:routename=RutaAdminAutores %>'>Autores</a></li>
-                        <li><a visible="false" runat="server" id="adminGeneros" href='<%$ RouteUrl:routename=RutaAdminGeneros %>'>Generos</a></li>
-                        <li><a visible="false" runat="server" id="adminMangas" href='<%$ RouteUrl:routename=RutaAdminManga %>'>Mangas</a></li>
-                        <li><a runat="server" href="<%$ RouteUrl:routename=RutaCarritoCompra %>">Carrito Compra</a></li>--%>
-                    </ul>
+                    <asp:Menu ID="Menu1" runat="server" EnableViewState="false"
+                        IncludeStyleBlock="false" Orientation="Horizontal"
+                        CssClass="navbar-brand navbar-fixed-left"
+                        StaticMenuStyle-CssClass="nav"
+                        StaticSelectedStyle-CssClass="active"
+                        DynamicMenuStyle-CssClass="dropdown-menu">
+                        <Items>
+                            <asp:MenuItem Text="Manga Gods" NavigateUrl="~/" Value="Manga Gods"></asp:MenuItem>
+                            <asp:MenuItem Text="Administración" Value="Administración">
+                                <asp:MenuItem NavigateUrl='<%$ RouteUrl:routename=RutaAdminAutores %>' Text="Autores" Value="Autores"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl='<%$ RouteUrl:routename=RutaAdminGeneros %>' Text="Géneros" Value="Géneros"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl='<%$ RouteUrl:routename=RutaAdminManga %>' Text="Mangas" Value="Mangas"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Lista Géneros" NavigateUrl="~/Views/ListaGeneros.aspx" Value="Lista Géneros"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="<%$ RouteUrl:routename=RutaCarritoCompra %>" Text="Carrito Compra" Value="Carrito Compra"></asp:MenuItem>
+                        </Items>
+                    </asp:Menu>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
@@ -79,30 +89,8 @@
 
         <div class="container-fluid sg-main-content">
             <div class="row">
-                <div id="MenuNormal" runat="server" class="sg-left-panel sg-accordion menu col-md-2" role="navigation">
-                    <div id="main-accordion" role="tablist" aria-multiselectable="true">
-                        <div class="panel panel-default">
-                            <asp:Menu ID="Menu1" EnableViewState="false"
-                                IncludeStyleBlock="false" Orientation="Vertical"
-                                CssClass="navbar navbar-fixed-left"
-                                StaticMenuStyle-CssClass="nav"
-                                StaticSelectedStyle-CssClass="active"
-                                DynamicMenuStyle-CssClass="dropdown-menu" runat="server">
-                                <Items>
-                                    <asp:MenuItem Text="Administración" Value="Administración">
-                                        <asp:MenuItem NavigateUrl='<%$ RouteUrl:routename=RutaAdminAutores %>' Text="Autores" Value="Autores"></asp:MenuItem>
-                                        <asp:MenuItem NavigateUrl='<%$ RouteUrl:routename=RutaAdminGeneros %>' Text="Géneros" Value="Géneros"></asp:MenuItem>
-                                        <asp:MenuItem NavigateUrl='<%$ RouteUrl:routename=RutaAdminManga %>' Text="Mangas" Value="Mangas"></asp:MenuItem>
-                                    </asp:MenuItem>
-                                    <asp:MenuItem Text="Lista Géneros" NavigateUrl="~/Views/ListaGeneros.aspx" Value="Lista Géneros"></asp:MenuItem>
-                                    <asp:MenuItem NavigateUrl="<%$ RouteUrl:routename=RutaCarritoCompra %>" Text="Carrito Compra" Value="Carrito Compra"></asp:MenuItem>
-                                </Items>
-                            </asp:Menu>
-                        </div>
-                    </div>
-                </div>
                 <!--Panel derecho-->
-                <div class="sg-right-panel sg-left-open sg-pattern menu col-md-10">
+                <div class="sg-right-panel sg-left-open sg-pattern contenedor col-md-12">
                     <div class="sg-right-panel sg-left-open">
                         <div class="sg-main-container panel sg-panel">
                             <div class="container-fluid">
