@@ -50,9 +50,9 @@
                     <%-- <a class="navbar-brand" runat="server" href="~/">Manga Gods</a>--%>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <asp:Menu ID="Menu1" runat="server" EnableViewState="false"
+                    <asp:Menu ID="Menu1" runat="server" EnableViewState="false" SkipLinkText=""
                         IncludeStyleBlock="false" Orientation="Horizontal"
-                        CssClass="navbar-brand navbar-fixed-left"
+                        CssClass="nav navbar-nav" ClientIDMode="Static"
                         StaticMenuStyle-CssClass="nav"
                         StaticSelectedStyle-CssClass="active"
                         DynamicMenuStyle-CssClass="dropdown-menu">

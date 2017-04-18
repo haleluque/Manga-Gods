@@ -54,3 +54,7 @@ input[type="select"] {
 .barra-superior {
     margin-bottom: 0 !important;
 }
+
+#Menu1 + div {
+    clear: none !important;
+}
