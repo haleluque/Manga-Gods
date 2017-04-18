@@ -7,7 +7,7 @@
         <div class="col-md-8">
             <section id="loginForm">
                 <div class="form-horizontal">
-                    <h4>Ingrese su usuario y contraseña</h4>
+                    <h1>Ingrese su usuario y contraseña</h1>
                     <hr />
                     <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                         <p class="text-danger">

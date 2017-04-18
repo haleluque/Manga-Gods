@@ -53,11 +53,11 @@
                     <asp:Menu ID="Menu1" runat="server" EnableViewState="false" SkipLinkText=""
                         IncludeStyleBlock="false" Orientation="Horizontal"
                         CssClass="nav navbar-nav" ClientIDMode="Static"
-                        StaticMenuStyle-CssClass="nav"
+                        StaticMenuStyle-CssClass="nav itemsMenu"
                         StaticSelectedStyle-CssClass="active"
                         DynamicMenuStyle-CssClass="dropdown-menu">
                         <Items>
-                            <asp:MenuItem Text="Manga Gods" NavigateUrl="~/" Value="Manga Gods"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/" Value="Manga Gods"></asp:MenuItem>
                             <asp:MenuItem Text="Administración" Value="Administración">
                                 <asp:MenuItem NavigateUrl='<%$ RouteUrl:routename=RutaAdminAutores %>' Text="Autores" Value="Autores"></asp:MenuItem>
                                 <asp:MenuItem NavigateUrl='<%$ RouteUrl:routename=RutaAdminGeneros %>' Text="Géneros" Value="Géneros"></asp:MenuItem>
@@ -78,7 +78,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hola, <%: Context.User.Identity.GetUserName()  %> !</a></li>
                                 <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Cerrar Sesión" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
                                 </li>
                             </ul>
                         </LoggedInTemplate>
@@ -90,18 +90,11 @@
         <div class="container-fluid sg-main-content">
             <div class="row">
                 <!--Panel derecho-->
-                <div class="sg-right-panel sg-left-open sg-pattern contenedor col-md-12">
-                    <div class="sg-right-panel sg-left-open">
-                        <div class="sg-main-container panel sg-panel">
-                            <div class="container-fluid">
-                                <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                                </asp:ContentPlaceHolder>
-                                <%--<hr />
-                                <br />
-                                <footer class="col-md-12">
-                                    <p>&copy; <%: DateTime.Now.Year %> - Manga Gods</p>
-                                </footer>--%>
-                            </div>
+                <div class="sg-right-panel sg-left-open">
+                    <div class="sg-main-container panel sg-panel">
+                        <div class="container-fluid">
+                            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                            </asp:ContentPlaceHolder>
                         </div>
                     </div>
                 </div>

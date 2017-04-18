@@ -32,6 +32,7 @@ input[type="select"] {
     .jumbotron {
         margin-top: 20px;
     }
+
     .body-content {
         padding: 0;
     }
@@ -39,7 +40,7 @@ input[type="select"] {
 
 .text-area {
     max-width: 280px;
-    resize:none;
+    resize: none;
 }
 
 .combo-box {
@@ -57,4 +58,21 @@ input[type="select"] {
 
 #Menu1 + div {
     clear: none !important;
+}
+
+.carritoCompra {
+    padding-right: 15px;
+    padding-left: 0;
+}
+
+.itemsMenu {
+    padding-top: 10px;
+    padding-bottom: 1px;
+    text-align: center;
+}
+
+.itemsMenu img 
+{
+  width: 40px;
+  height: 40px;
 }

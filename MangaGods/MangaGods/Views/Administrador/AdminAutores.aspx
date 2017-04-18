@@ -2,7 +2,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1>Administración de Autores</h1>
-    <hr />
     <div class="form-horizontal">
         <h3>Crear Un Autor:</h3>
         <div class="form-group">

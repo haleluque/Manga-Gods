@@ -20,7 +20,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Precio Total">
                 <ItemTemplate>
-                    <%#: String.Format("{0:N2}", ((Convert.ToDouble(Item.Cantidad)) * Convert.ToDouble(Item.Manga.Precio)))%>
+                    <%#: $"{Convert.ToDouble(Item.Cantidad)*Convert.ToDouble(Item.Manga.Precio):N2}" %>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Quitar Manga">
@@ -40,8 +40,8 @@
     <br />
     <table>
         <tr>
-            <td>
-                <asp:Button ID="btnActualizar" runat="server" Text="Actualizar" OnClick="Actualizar_Click" />
+            <td class="carritoCompra">
+                <asp:Button ID="btnActualizar" runat="server" Text="Actualizar" OnClick="Actualizar_Click" CssClass="btn btn-default"/>
             </td>
             <td>
                 <asp:ImageButton ID="btnCompra" runat="server"
