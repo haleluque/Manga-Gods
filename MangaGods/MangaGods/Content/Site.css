@@ -1,5 +1,5 @@
 ﻿/*-----------------------------------------CSS Plantilla----------------------------------------*/
-.header {
+/*.header {
     background: #000;
     padding: 1.5% 0;
 }
@@ -31,7 +31,7 @@
 
         .menu li a {
             display: block;
-            /*font-size: 0.8125em;*/
+            font-size: 0.8125em;
             text-transform: uppercase;
             padding: 5px 20px;
             color: #FFF;
@@ -47,13 +47,127 @@
                 color: #000;
             }
 
-#nav .current a {
+section.navbar{
+	margin-bottom:0;
+}
+.navbar-inner.main-menu {	
+	height: 40px;
+	padding-left:10px;	
+	padding-right:0;	
+	border-right: 0;
+	border-left: 0;
+	border-top: 0;
+	border-bottom:5px solid #eb4800;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;	
+	border-radius: 0;
+	filter: none;	
+}
+.navbar-inner.main-menu a.logo{
+	position:absolute;
+}
+.navbar-inner.main-menu ul ul a{
+	font-size:13px;
+	font-weight:normal;
+	line-height:17px;
+	text-transform: none;
+}*/
+
+/*#menu > ul {
+    display: block;
+    margin-left: 0;
+}
+
+    #menu > ul > li {
+        list-style: none;
+        float: left;
+        position: relative;
+        margin-right: 0;
+    }
+
+        #menu > ul > li > a {
+            font-size: 11px;
+            display: block;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px 14px;
+        }
+
+            #menu > ul > li.active > a {
+                color: #fff;
+            }
+
+#menu ul ul {
+    background: none repeat scroll 0 0 #eee;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    position: absolute;
+    min-width: 170px;
+    display: none;
+}
+
+#menu > ul > li > ul {
+    margin-left: 10px;
+    margin-top: -12px;
+    border: 1px solid #ddd;
+    border-top: 0;
+}
+
+#menu ul ul li {
+    list-style: none outside none;
+    position: relative;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+    #menu ul ul li:last-child {
+        border-bottom: none !important;
+    }
+
+    #menu ul ul li.menu-last {
+        border-bottom: none;
+    }
+
+#menu ul ul a {
+    display: block;
+    padding: 7px 10px;
+    color: #333;
+    font-size: 12px;
+}
+
+#menu > ul > li:hover {
+    visibility: inherit;
+}
+
+#menu li:hover {
+    visibility: inherit;
+}
+
+    #menu li:hover ul,
+    #menu li.sfHover ul {
+        left: -10px;
+        top: 52px;
+        z-index: 2299;
+    }
+
+#menu li li:hover ul,
+#menu li li.sfHover ul {
+    left: 130px;
+    top: 0;
+}
+
+#menu .sf-sub-indicator {
+    display: none;
+}*/
+
+/*#nav .current a {
     color: red;
 }
 
 .toggleMenu {
     display: none;
-    padding: 4px 5px 0px 5px;
+    padding: 4px 5px 0 5px;
 }
 
 .nav:before,
@@ -149,7 +263,7 @@
     .nav li:first-child a {
         border-top: none;
     }
-}
+}*/
 /*-----------------------------------------CSS Plantilla----------------------------------------*/
 
 
@@ -183,7 +297,7 @@ input[type="select"] {
 }
 
 /* Responsive: Portrait tablets and up */
-/*@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
     .jumbotron {
         margin-top: 20px;
     }
@@ -191,7 +305,7 @@ input[type="select"] {
     .body-content {
         padding: 0;
     }
-}*/
+}
 
 .text-area {
     max-width: 280px;
@@ -226,7 +340,7 @@ input[type="select"] {
     text-align: center;
 }
 
-.itemsMenu img {
+    .itemsMenu img {
         width: 40px;
         height: 40px;
     }

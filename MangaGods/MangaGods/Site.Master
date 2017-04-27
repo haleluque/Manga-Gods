@@ -38,7 +38,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="header">
+        <%--<div class="header">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -48,32 +48,32 @@
                                     <img class="logo" src="Catalogo/Imagenes/mg-photography-logo.jpg" alt="" />
                                 </a>
                             </div>
-                            <div class="menu">
-                                <a class="toggleMenu" href="#"><img src="images/nav.png" alt="" /></a>
-                                <ul class="nav" id="nav">
-<%--                                    <li>Administración
-                                        <ul>
-                                            <li><a href=""></a></li>
+                            <section class="navbar main-menu">
+                                <div class="navbar-inner main-menu">
+                                    <nav class="menu" id="menu">
+                                        <a class="toggleMenu" href="#">
+                                            <img src="images/nav.png" alt="" /></a>
+                                        <ul class="nav" id="nav">
+                                            <li><a href="./">Administración</a>
+                                                <ul>
+                                                    <li><a href="./">oiasfjoashfa</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="Views/ListaGeneros.aspx">Lista Géneros</a></li>
+                                            <div class="clear"></div>
                                         </ul>
-                                    </li>--%>
-                                    <li><a href="./">Administración</a>
-                                        <ul>
-                                            <li><a href="./">oiasfjoashfa</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="Views/ListaGeneros.aspx">Lista Géneros</a></li>
+                                        <script type="text/javascript" src="js/responsive-nav.js"></script>
+                                    </nav>
                                     <div class="clear"></div>
-                                </ul>
-                                <script type="text/javascript" src="js/responsive-nav.js"></script>
-                            </div>
-                            <div class="clear"></div>
+                                </div>
+                            </section>
                         </div>
                         <div class="header_right">
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--%>
 
         <!--Barra superior-->
         <div class="navbar navbar-inverse navbar-fixed-top sg-navbar">
