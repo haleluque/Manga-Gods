@@ -16,7 +16,7 @@
 
 </head>
 <body class="sg-body sg-type2">
-    <form runat="server" class="sg-form">
+    <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -37,6 +37,43 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
+
+        <div class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="header-left">
+                            <div class="logo">
+                                <a href="./">
+                                    <img class="logo" src="Catalogo/Imagenes/mg-photography-logo.jpg" alt="" />
+                                </a>
+                            </div>
+                            <div class="menu">
+                                <a class="toggleMenu" href="#"><img src="images/nav.png" alt="" /></a>
+                                <ul class="nav" id="nav">
+<%--                                    <li>Administración
+                                        <ul>
+                                            <li><a href=""></a></li>
+                                        </ul>
+                                    </li>--%>
+                                    <li><a href="./">Administración</a>
+                                        <ul>
+                                            <li><a href="./">oiasfjoashfa</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="Views/ListaGeneros.aspx">Lista Géneros</a></li>
+                                    <div class="clear"></div>
+                                </ul>
+                                <script type="text/javascript" src="js/responsive-nav.js"></script>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="header_right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!--Barra superior-->
         <div class="navbar navbar-inverse navbar-fixed-top sg-navbar">
